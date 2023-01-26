@@ -50,13 +50,22 @@
 
     <fragment
         android:id="@+id/focusFragment"
-        android:name="com.andreesperanca.gymde.FocusFragment"
+        android:name="com.andreesperanca.gymde.AgeFragment"
         android:label="fragment_focus"
-        tools:layout="@layout/fragment_focus" />
+        tools:layout="@layout/fragment_age" >
+        <action
+            android:id="@+id/action_focusFragment_to_finishRegister"
+            app:destination="@id/finishRegister" />
+    </fragment>
     <fragment
         android:id="@+id/loginFragment"
         android:name="com.andreesperanca.gymde.LoginFragment"
         android:label="fragment_login"
         tools:layout="@layout/fragment_login" />
+    <fragment
+        android:id="@+id/finishRegister"
+        android:name="com.andreesperanca.gymde.FinishRegisterFragment"
+        android:label="fragment_finish_register"
+        tools:layout="@layout/fragment_finish_register" />
 
 </navigation>

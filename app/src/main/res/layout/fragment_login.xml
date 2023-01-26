@@ -84,10 +84,7 @@
         android:layout_marginTop="10dp"
         android:text="Não tem conta? Crie aqui!"
         android:textSize="15sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
-
-        />
+        app:layout_constraintBottom_toBottomOf="parent" />
 
 
 
