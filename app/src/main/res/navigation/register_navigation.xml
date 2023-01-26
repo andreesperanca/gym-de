@@ -10,12 +10,21 @@
         android:id="@+id/genderFragment"
         android:name="com.andreesperanca.gymde.GenderFragment"
         android:label="fragment_gender"
-        tools:layout="@layout/fragment_gender" />
+        tools:layout="@layout/fragment_gender" >
+        <action
+            android:id="@+id/action_genderFragment_to_heightFragment"
+            app:destination="@id/heightFragment" />
+    </fragment>
+
     <fragment
         android:id="@+id/heightFragment"
         android:name="com.andreesperanca.gymde.HeightFragment"
         android:label="fragment_height"
-        tools:layout="@layout/fragment_height" />
+        tools:layout="@layout/fragment_height" >
+        <action
+            android:id="@+id/action_heightFragment_to_weightFragment"
+            app:destination="@id/weightFragment" />
+    </fragment>
     <fragment
         android:id="@+id/weightFragment"
         android:name="com.andreesperanca.gymde.WeightFragment"
