@@ -13,4 +13,6 @@
     <string name="male">Masculino</string>
     <string name="female">Feminino</string>
     <string name="advance">Avançar</string>
+    <string name="whats_is_your_height">Qual é a sua altura?</string>
+    <string name="height">Altura ( cm )</string>
 </resources>
