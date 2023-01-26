@@ -30,12 +30,11 @@ class LoginHomeScreen : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         binding.btnEnter.setOnClickListener {
+            findNavController().navigate(R.id.action_loginHomeScreen_to_loginFragment)
         }
 
         binding.btnCreateAccount.setOnClickListener {
-
+            findNavController().navigate(R.id.action_loginHomeScreen_to_genderFragment)
         }
-
     }
-
 }

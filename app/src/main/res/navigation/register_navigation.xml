@@ -9,7 +9,14 @@
         android:id="@+id/loginHomeScreen"
         android:name="com.andreesperanca.gymde.LoginHomeScreen"
         android:label="fragment_login_home_screen"
-        tools:layout="@layout/fragment_login_home_screen" />
+        tools:layout="@layout/fragment_login_home_screen" >
+        <action
+            android:id="@+id/action_loginHomeScreen_to_loginFragment"
+            app:destination="@id/loginFragment" />
+        <action
+            android:id="@+id/action_loginHomeScreen_to_genderFragment"
+            app:destination="@id/genderFragment" />
+    </fragment>
 
     <fragment
         android:id="@+id/genderFragment"
@@ -46,5 +53,10 @@
         android:name="com.andreesperanca.gymde.FocusFragment"
         android:label="fragment_focus"
         tools:layout="@layout/fragment_focus" />
+    <fragment
+        android:id="@+id/loginFragment"
+        android:name="com.andreesperanca.gymde.LoginFragment"
+        android:label="fragment_login"
+        tools:layout="@layout/fragment_login" />
 
 </navigation>
