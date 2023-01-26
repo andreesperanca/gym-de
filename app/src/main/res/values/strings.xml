@@ -5,4 +5,8 @@
     <string name="enter">Entrar</string>
     <string name="create_account">Criar conta</string>
     <string name="gymBrandLogo">Logotipo da marca de academia Gym De.</string>
+    <string name="login">Login</string>
+    <string name="email">Email</string>
+    <string name="password">Senha</string>
+    <string name="noHaveAccount">Não tem conta? Crie aqui!</string>
 </resources>
