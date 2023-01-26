@@ -9,55 +9,57 @@
     android:orientation="vertical"
     tools:context=".GenderFragment">
 
-    <TextView
+    <com.google.android.material.textview.MaterialTextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
-        android:text="Qual é o seu sexo?"
-        android:textAlignment="center"
-        android:textSize="18sp" />
+        style="@style/TextAppearance.Material3.TitleLarge"
+
+        android:layout_marginBottom="@dimen/small_margin"
+        android:text="@string/what_is_your_sex"
+        android:textAlignment="center" />
 
     <RadioGroup
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_margin="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginBottom="8dp"
+
+        android:layout_marginVertical="@dimen/small_margin"
         android:orientation="horizontal">
 
-        <RadioButton
+        <com.google.android.material.radiobutton.MaterialRadioButton
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="@android:color/transparent"
+
+            android:layout_marginHorizontal="@dimen/small_margin"
             android:drawableTop="@drawable/ic_male"
-            android:text="Masculino" />
+            android:text="@string/male" />
 
-        <RadioButton
+        <com.google.android.material.radiobutton.MaterialRadioButton
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="@android:color/transparent"
+
+            android:layout_marginHorizontal="@dimen/small_margin"
             android:drawableTop="@drawable/ic_female"
-            android:text="Feminino" />
-
-
+            android:text="@string/female" />
     </RadioGroup>
 
     <com.google.android.material.progressindicator.LinearProgressIndicator
         android:layout_width="100dp"
         android:layout_height="50dp"
-        android:layout_marginTop="8dp"
+
+        android:layout_marginVertical="@dimen/small_margin"
         android:progress="20"
+
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <Button
+    <com.google.android.material.button.MaterialButton
         android:id="@+id/btn_advance"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:padding="8dp"
-        android:text="Avançar" />
+
+        android:layout_marginTop="@dimen/small_margin"
+        android:text="@string/advance" />
 
 </androidx.appcompat.widget.LinearLayoutCompat>

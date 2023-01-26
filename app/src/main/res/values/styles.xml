@@ -2,4 +2,12 @@
 <resources>
 
 
+    <style name="Theme.GymDe.ProgressBar" parent="Widget.AppCompat.ProgressBar.Horizontal">
+        <item name="android:width">100dp</item>
+        <item name="android:layout_height">50dp</item>
+
+
+    </style>
+
+
 </resources>

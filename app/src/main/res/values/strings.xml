@@ -9,4 +9,8 @@
     <string name="email">Email</string>
     <string name="password">Senha</string>
     <string name="noHaveAccount">Não tem conta? Crie aqui!</string>
+    <string name="what_is_your_sex">Qual é o seu sexo?</string>
+    <string name="male">Masculino</string>
+    <string name="female">Feminino</string>
+    <string name="advance">Avançar</string>
 </resources>
