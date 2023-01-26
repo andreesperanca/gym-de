@@ -6,12 +6,18 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
-import com.andreesperanca.gymde.databinding.FragmentWeightBinding
+import com.andreesperanca.gymde.databinding.FragmentLoginHomeScreenBinding
 
-class WeightFragment : Fragment() {
+// TODO: Rename parameter arguments, choose names that match
+// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
+private const val ARG_PARAM1 = "param1"
+private const val ARG_PARAM2 = "param2"
+
+
+class LoginHomeScreen : Fragment() {
 
     private val binding by lazy {
-        FragmentWeightBinding.inflate(layoutInflater)
+        FragmentLoginHomeScreenBinding.inflate(layoutInflater)
     }
 
     override fun onCreateView(
@@ -19,10 +25,17 @@ class WeightFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View = binding.root
 
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        binding.btnAdvance.setOnClickListener {
-            findNavController().navigate(R.id.action_weightFragment_to_focusFragment)
+
+        binding.btnEnter.setOnClickListener {
         }
+
+        binding.btnCreateAccount.setOnClickListener {
+
+        }
+
     }
+
 }
