@@ -19,4 +19,7 @@
     <string name="weight">Peso ( kg )</string>
     <string name="what_is_your_age">Qual é a sua idade?</string>
     <string name="age">Idade</string>
+    <string name="name">Nome</string>
+    <string name="confirm_password">Confirmar senha</string>
+    <string name="register">Registrar</string>
 </resources>

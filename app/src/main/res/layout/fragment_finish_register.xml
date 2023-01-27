@@ -1,86 +1,94 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:orientation="vertical"
+
     android:gravity="center"
+    android:orientation="vertical"
     tools:context=".FinishRegisterFragment">
 
     <com.google.android.material.textfield.TextInputLayout
-        android:layout_marginHorizontal="48dp"
         android:id="@+id/til_name"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Nome">
+
+        android:layout_marginHorizontal="@dimen/big_margin"
+        android:hint="@string/name">
 
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:inputType="textEmailAddress"
-            />
+
+            android:inputType="textPersonName" />
 
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
-        android:layout_marginHorizontal="48dp"
         android:id="@+id/til_email"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Email">
+
+        android:layout_marginHorizontal="@dimen/big_margin"
+        android:hint="@string/email">
 
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:inputType="textEmailAddress"
-            />
+
+            android:inputType="textEmailAddress" />
 
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
-        android:layout_marginHorizontal="48dp"
         android:id="@+id/til_password"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Senha">
+
+        android:layout_marginHorizontal="@dimen/big_margin"
+        android:hint="@string/password">
 
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:inputType="textEmailAddress"
-            />
+
+            android:inputType="textPassword" />
 
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
-        android:layout_marginHorizontal="48dp"
         android:id="@+id/til_password_confirm"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Confirmar senha">
+
+        android:layout_marginHorizontal="@dimen/big_margin"
+        android:hint="@string/confirm_password">
 
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:inputType="textEmailAddress"
-            />
+
+            android:inputType="textPassword" />
 
     </com.google.android.material.textfield.TextInputLayout>
-
-    <Button
-        android:text="Registrar"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
 
     <com.google.android.material.progressindicator.LinearProgressIndicator
         android:layout_width="100dp"
         android:layout_height="50dp"
-        android:layout_marginTop="8dp"
+
+        android:layout_marginTop="@dimen/small_margin"
         android:progress="100"
+
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <com.google.android.material.button.MaterialButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:text="@string/register" />
 
 </androidx.appcompat.widget.LinearLayoutCompat>
