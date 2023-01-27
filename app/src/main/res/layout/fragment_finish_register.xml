@@ -15,6 +15,7 @@
         android:layout_height="wrap_content"
 
         android:layout_marginHorizontal="@dimen/big_margin"
+        android:layout_marginVertical="@dimen/small_margin"
         android:hint="@string/name">
 
         <com.google.android.material.textfield.TextInputEditText
@@ -31,6 +32,7 @@
         android:layout_height="wrap_content"
 
         android:layout_marginHorizontal="@dimen/big_margin"
+        android:layout_marginVertical="@dimen/small_margin"
         android:hint="@string/email">
 
         <com.google.android.material.textfield.TextInputEditText
@@ -47,6 +49,7 @@
         android:layout_height="wrap_content"
 
         android:layout_marginHorizontal="@dimen/big_margin"
+        android:layout_marginVertical="@dimen/small_margin"
         android:hint="@string/password">
 
         <com.google.android.material.textfield.TextInputEditText
@@ -63,6 +66,7 @@
         android:layout_height="wrap_content"
 
         android:layout_marginHorizontal="@dimen/big_margin"
+        android:layout_marginVertical="@dimen/small_margin"
         android:hint="@string/confirm_password">
 
         <com.google.android.material.textfield.TextInputEditText
@@ -89,6 +93,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
 
+        android:layout_marginTop="@dimen/small_margin"
         android:text="@string/register" />
 
 </androidx.appcompat.widget.LinearLayoutCompat>
