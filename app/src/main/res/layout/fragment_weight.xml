@@ -9,50 +9,46 @@
     android:orientation="vertical"
     tools:context=".GenderFragment">
 
-    <TextView
+    <com.google.android.material.textview.MaterialTextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
-        android:text="Qual é o seu peso?"
-        android:textAlignment="center"
-        android:textSize="18sp" />
+        style="@style/TextAppearance.Material3.TitleLarge"
+
+        android:layout_marginBottom="@dimen/small_margin"
+        android:text="@string/what_is_your_weight"
+        android:textAlignment="center" />
 
     <com.google.android.material.textfield.TextInputLayout
-        app:startIconDrawable="@drawable/ic_height"
-        android:layout_marginHorizontal="48dp"
-        android:id="@+id/til_height"
+        android:id="@+id/til_weight"
+        android:layout_marginHorizontal="@dimen/big_margin"
+
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Peso(kg)"
-        app:startIconContentDescription="Altura">
+        android:hint="@string/weight">
 
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:inputType="numberDecimal"
-            />
-
+            android:inputType="numberDecimal"/>
     </com.google.android.material.textfield.TextInputLayout>
-
-
 
     <com.google.android.material.progressindicator.LinearProgressIndicator
         android:layout_width="100dp"
         android:layout_height="50dp"
-        android:layout_marginTop="8dp"
+
+        android:layout_marginTop="@dimen/small_margin"
         android:progress="60"
+
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        style="@style/Widget.Material3.Button.ElevatedButton"
         android:id="@+id/btn_advance"
-        android:layout_marginTop="8dp"
-        android:textSize="17sp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Avançar" />
 
+        android:layout_marginTop="@dimen/small_margin"
+        android:text="@string/advance" />
 </androidx.appcompat.widget.LinearLayoutCompat>

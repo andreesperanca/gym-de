@@ -15,4 +15,6 @@
     <string name="advance">Avançar</string>
     <string name="whats_is_your_height">Qual é a sua altura?</string>
     <string name="height">Altura ( cm )</string>
+    <string name="what_is_your_weight">Qual é o seu peso?</string>
+    <string name="weight">Peso ( kg )</string>
 </resources>
