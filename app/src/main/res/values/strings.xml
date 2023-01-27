@@ -17,4 +17,6 @@
     <string name="height">Altura ( cm )</string>
     <string name="what_is_your_weight">Qual é o seu peso?</string>
     <string name="weight">Peso ( kg )</string>
+    <string name="what_is_your_age">Qual é a sua idade?</string>
+    <string name="age">Idade</string>
 </resources>
