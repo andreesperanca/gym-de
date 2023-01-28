@@ -2,49 +2,57 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
     <com.google.android.material.imageview.ShapeableImageView
         android:id="@+id/iv_workout"
         android:layout_width="60dp"
         android:layout_height="60dp"
-        android:layout_margin="@dimen/small_margin"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
 
+        android:layout_margin="@dimen/small_margin"
         android:scaleType="centerCrop"
         android:contentDescription="@string/image_workout"
+        tools:src="@drawable/mockphoto1"
         app:shapeAppearanceOverlay="@style/ShapeAppearance.Material3.Corner.None"
-        app:srcCompat="@drawable/mockphoto1" />
+
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/tv_workoutTitle"
-        app:layout_constraintStart_toEndOf="@id/iv_workout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+
         app:layout_constraintTop_toTopOf="@id/iv_workout"
         android:layout_marginStart="@dimen/medium_margin"
-        android:text="Treino de peito/bíceps"
+
+        tools:text="@string/title_workout"
         style="@style/TextAppearance.Material3.TitleMedium"
 
-        />
+        app:layout_constraintStart_toEndOf="@id/iv_workout"/>
 
     <TextView
-        app:layout_constraintStart_toEndOf="@id/iv_workout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+
+        tools:text="@string/workout_day"
+        style="@style/TextAppearance.Material3.BodySmall"
+
+        app:layout_constraintStart_toEndOf="@id/iv_workout"
         app:layout_constraintTop_toBottomOf="@id/tv_workoutTitle"
-        app:layout_constraintStart_toStartOf="@id/tv_workoutTitle"
-        android:text="Treino de segunda-feira."
-        style="@style/TextAppearance.Material3.BodySmall" />
+        app:layout_constraintStart_toStartOf="@id/tv_workoutTitle"/>
 
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/iconButton"
-        style="?attr/materialIconButtonStyle"
-        app:icon="@drawable/ic_edit"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        style="?attr/materialIconButtonStyle"
+
+        app:icon="@drawable/ic_edit"
+        android:contentDescription="@string/edit_workout"
+
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="@id/iv_workout" />
 

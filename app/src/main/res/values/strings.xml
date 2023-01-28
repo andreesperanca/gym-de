@@ -38,4 +38,8 @@
     <string name="description">Descrição</string>
     <string name="alimentation">Alimentação</string>
     <string name="read_article">Ler artigo</string>
+    <string name="workouts">Treinos</string>
+    <string name="title_workout">Título de treino</string>
+    <string name="workout_day">Dia do treino.</string>
+    <string name="edit_workout">Botão editar treino.</string>
 </resources>
