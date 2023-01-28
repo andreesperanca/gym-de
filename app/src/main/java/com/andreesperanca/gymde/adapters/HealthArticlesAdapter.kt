@@ -28,8 +28,9 @@ class HealthArticlesAdapter() : RecyclerView.Adapter<HealthArticlesViewHolder>()
         RecyclerView.ViewHolder(binding.root) {
         fun bind(healthArticles: HealthArticles) {
 
-            binding.ivHealthArticles.setImageResource(R.drawable.mockphoto2)
+            binding.ivHealthArticles.setImageResource(healthArticles.bg)
 
+            binding.tvTitleArticle.text = healthArticles.title
         }
     }
 }

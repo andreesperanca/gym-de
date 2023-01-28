@@ -34,4 +34,8 @@
     <string name="btn_edit_photo">Botão de editar foto.</string>
     <string name="start">Iniciar</string>
     <string name="edit">Editar</string>
+    <string name="image_health_article">Imagem do artigo de saúde.</string>
+    <string name="description">Descrição</string>
+    <string name="alimentation">Alimentação</string>
+    <string name="read_article">Ler artigo</string>
 </resources>

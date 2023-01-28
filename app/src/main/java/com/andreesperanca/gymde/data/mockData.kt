@@ -51,7 +51,7 @@ val healthArticles = listOf<HealthArticles>(
                 "Faça sopa. Sopa é uma ótima maneira de incluir mais vegetais em sua dieta. Experimente fazer sopa de legumes ou sopa de abóbora.\""
     ),
     HealthArticles(
-        R.drawable.mockphoto2,
+        R.drawable.sono_photo,
         title = "Como o sono afeta sua saúde mental e física",
         description = "O sono é essencial para uma boa saúde mental e física. Descubra como o sono afeta seu corpo e mente e como melhorar sua qualidade de sono.",
         content = "O sono é essencial para uma boa saúde mental e física. Quando você dorme, seu corpo se recupera e se prepara para o dia seguinte. O sono também ajuda a regular seu humor, memória e capacidade de aprendizado.\n" +
