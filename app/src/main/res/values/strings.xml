@@ -22,11 +22,14 @@
     <string name="name">Nome</string>
     <string name="confirm_password">Confirmar senha</string>
     <string name="register">Registrar</string>
-    <string name="myWorkouts">Meus Treinos</string>
+    <string name="workouts">Treinos</string>
     <string name="health_articles">Artigos de saúde</string>
     <string name="about_us">Sobre nós</string>
     <string name="about_Gym_De">\""</string>
     <string name="image_workout">Imagem do treino.</string>
     <string name="home">Início</string>
     <string name="me">Eu</string>
+    <string name="new_workout">Novo treino</string>
+    <string name="new_workout_btn_description">Botão para adicionar novo treino.</string>
+    <string name="btn_edit_photo">Botão de editar foto.</string>
 </resources>

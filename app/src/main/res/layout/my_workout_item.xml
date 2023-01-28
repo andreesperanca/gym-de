@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <com.google.android.material.imageview.ShapeableImageView
+        android:id="@+id/iv_workout"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_margin="@dimen/small_margin"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+
+        android:scaleType="centerCrop"
+        android:contentDescription="@string/image_workout"
+        app:shapeAppearanceOverlay="@style/ShapeAppearance.Material3.Corner.None"
+        app:srcCompat="@drawable/mockphoto1" />
+
+    <TextView
+        android:id="@+id/tv_workoutTitle"
+        app:layout_constraintStart_toEndOf="@id/iv_workout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="@id/iv_workout"
+        android:layout_marginStart="@dimen/medium_margin"
+        android:text="Treino de peito/bíceps"
+        style="@style/TextAppearance.Material3.TitleMedium"
+
+        />
+
+    <TextView
+        app:layout_constraintStart_toEndOf="@id/iv_workout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/tv_workoutTitle"
+        app:layout_constraintStart_toStartOf="@id/tv_workoutTitle"
+        android:text="Treino de segunda-feira."
+        style="@style/TextAppearance.Material3.BodySmall" />
+
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/iconButton"
+        style="?attr/materialIconButtonStyle"
+        app:icon="@drawable/ic_edit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@id/iv_workout" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

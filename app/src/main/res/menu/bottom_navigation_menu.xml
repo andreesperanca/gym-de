@@ -11,7 +11,7 @@
         android:id="@+id/myWorkoutsFragment"
         android:enabled="true"
         android:icon="@drawable/ic_workout"
-        android:title="@string/myWorkouts" />
+        android:title="@string/workouts" />
 
     <item
         android:id="@+id/myAccountFragment"

@@ -8,7 +8,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager.HORIZONTAL
 import com.andreesperanca.gymde.adapters.HealthArticlesAdapter
-import com.andreesperanca.gymde.adapters.WorkoutsAdapter
+import com.andreesperanca.gymde.adapters.TodayWorkoutAdapter
 import com.andreesperanca.gymde.databinding.FragmentHomeBinding
 
 // TODO: Rename parameter arguments, choose names that match
@@ -21,7 +21,7 @@ class HomeFragment : Fragment() {
 
 
     private val adapter by lazy {
-        WorkoutsAdapter()
+        TodayWorkoutAdapter()
     }
 
 

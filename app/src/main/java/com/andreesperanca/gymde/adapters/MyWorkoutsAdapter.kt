@@ -4,16 +4,16 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.andreesperanca.gymde.data.mockWorkouts
-import com.andreesperanca.gymde.databinding.WorkoutsItemBinding
+import com.andreesperanca.gymde.databinding.MyWorkoutItemBinding
 import com.andreesperanca.gymde.models.Workouts
 
-class WorkoutsAdapter() : RecyclerView.Adapter<WorkoutsAdapter.WorkoutsViewHolder>() {
+class MyWorkoutsAdapter() : RecyclerView.Adapter<MyWorkoutsAdapter.WorkoutsViewHolder>() {
 
     val workoutsList: List<Workouts> = mockWorkouts
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): WorkoutsViewHolder {
         val binding =
-            WorkoutsItemBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+            MyWorkoutItemBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         return WorkoutsViewHolder(binding)
     }
 
@@ -23,7 +23,7 @@ class WorkoutsAdapter() : RecyclerView.Adapter<WorkoutsAdapter.WorkoutsViewHolde
 
     override fun getItemCount(): Int = workoutsList.size
 
-    inner class WorkoutsViewHolder(private val binding: WorkoutsItemBinding) :
+    inner class WorkoutsViewHolder(private val binding: MyWorkoutItemBinding) :
         RecyclerView.ViewHolder(binding.root) {
 
         fun bind(workouts: Workouts) {

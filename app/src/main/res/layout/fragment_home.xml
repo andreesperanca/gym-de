@@ -23,7 +23,7 @@
             android:layout_height="wrap_content"
 
             android:layout_margin="@dimen/small_margin"
-            android:text="@string/myWorkouts" />
+            android:text="@string/workouts" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rv_workouts"
