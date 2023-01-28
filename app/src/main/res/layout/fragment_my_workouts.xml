@@ -15,10 +15,12 @@
         android:id="@+id/extended_fab"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        app:shapeAppearance="@style/ShapeAppearanceOverlay.Material3.Corner.Top"
+
         android:elevation="8dp"
         android:layout_gravity="bottom|center_horizontal"
         android:contentDescription="@string/new_workout_btn_description"
         android:text="@string/new_workout"
-        app:icon="@drawable/ic_plus"
-        app:shapeAppearance="@style/ShapeAppearanceOverlay.Material3.Corner.Top" />
+        app:icon="@drawable/ic_plus" />
+
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
