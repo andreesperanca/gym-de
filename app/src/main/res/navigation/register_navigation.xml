@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/loginHomeScreen"
-        android:name="com.andreesperanca.gymde.LoginHomeScreen"
+        android:name="com.andreesperanca.gymde.ui.login_and_register.LoginHomeScreen"
         android:label="fragment_login_home_screen"
         tools:layout="@layout/fragment_login_home_screen" >
         <action
@@ -20,7 +20,7 @@
 
     <fragment
         android:id="@+id/genderFragment"
-        android:name="com.andreesperanca.gymde.GenderFragment"
+        android:name="com.andreesperanca.gymde.ui.login_and_register.GenderFragment"
         android:label="fragment_gender"
         tools:layout="@layout/fragment_gender" >
         <action
@@ -30,7 +30,7 @@
 
     <fragment
         android:id="@+id/heightFragment"
-        android:name="com.andreesperanca.gymde.HeightFragment"
+        android:name="com.andreesperanca.gymde.ui.login_and_register.HeightFragment"
         android:label="fragment_height"
         tools:layout="@layout/fragment_height" >
         <action
@@ -50,7 +50,7 @@
 
     <fragment
         android:id="@+id/focusFragment"
-        android:name="com.andreesperanca.gymde.AgeFragment"
+        android:name="com.andreesperanca.gymde.ui.login_and_register.AgeFragment"
         android:label="fragment_focus"
         tools:layout="@layout/fragment_age" >
         <action
@@ -59,12 +59,12 @@
     </fragment>
     <fragment
         android:id="@+id/loginFragment"
-        android:name="com.andreesperanca.gymde.LoginFragment"
+        android:name="com.andreesperanca.gymde.ui.login_and_register.LoginFragment"
         android:label="fragment_login"
         tools:layout="@layout/fragment_login" />
     <fragment
         android:id="@+id/finishRegister"
-        android:name="com.andreesperanca.gymde.FinishRegisterFragment"
+        android:name="com.andreesperanca.gymde.ui.login_and_register.FinishRegisterFragment"
         android:label="fragment_finish_register"
         tools:layout="@layout/fragment_finish_register" />
 

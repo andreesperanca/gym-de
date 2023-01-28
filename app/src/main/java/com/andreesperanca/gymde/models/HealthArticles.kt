@@ -6,4 +6,5 @@ data class HealthArticles(
     @DrawableRes val bg: Int,
     val title: String,
     val description: String,
+    val content: String
 )

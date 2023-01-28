@@ -7,7 +7,7 @@
 
     android:gravity="center"
     android:orientation="vertical"
-    tools:context=".FinishRegisterFragment">
+    tools:context=".ui.login_and_register.FinishRegisterFragment">
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/til_name"

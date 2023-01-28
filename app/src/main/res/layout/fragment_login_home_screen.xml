@@ -7,7 +7,7 @@
 
     android:background="@color/blue"
     android:orientation="vertical"
-    tools:context=".LoginHomeScreen">
+    tools:context=".ui.login_and_register.LoginHomeScreen">
 
     <androidx.appcompat.widget.LinearLayoutCompat
         android:layout_width="match_parent"

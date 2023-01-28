@@ -1,4 +1,4 @@
-package com.andreesperanca.gymde
+package com.andreesperanca.gymde.ui.login_and_register
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity

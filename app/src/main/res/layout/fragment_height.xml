@@ -7,7 +7,7 @@
 
     android:gravity="center"
     android:orientation="vertical"
-    tools:context=".GenderFragment">
+    tools:context=".ui.login_and_register.GenderFragment">
 
     <com.google.android.material.textview.MaterialTextView
         android:layout_width="match_parent"

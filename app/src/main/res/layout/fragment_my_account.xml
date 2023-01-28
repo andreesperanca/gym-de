@@ -66,7 +66,6 @@
                 <include layout="@layout/edit_account_component" />
 
             </androidx.appcompat.widget.LinearLayoutCompat>
-
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.appcompat.widget.LinearLayoutCompat>
 </ScrollView>
