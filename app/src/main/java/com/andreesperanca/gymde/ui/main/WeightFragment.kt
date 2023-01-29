@@ -1,11 +1,12 @@
-package com.andreesperanca.gymde
+package com.andreesperanca.gymde.ui.main
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
+import com.andreesperanca.gymde.R
 import com.andreesperanca.gymde.databinding.FragmentWeightBinding
 
 class WeightFragment : Fragment() {

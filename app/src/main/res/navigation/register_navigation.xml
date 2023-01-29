@@ -40,7 +40,7 @@
 
     <fragment
         android:id="@+id/weightFragment"
-        android:name="com.andreesperanca.gymde.WeightFragment"
+        android:name="com.andreesperanca.gymde.ui.main.WeightFragment"
         android:label="fragment_weight"
         tools:layout="@layout/fragment_weight" >
         <action

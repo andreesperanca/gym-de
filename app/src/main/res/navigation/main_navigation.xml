@@ -7,17 +7,17 @@
 
     <fragment
         android:id="@+id/homeFragment"
-        android:name="com.andreesperanca.gymde.HomeFragment"
+        android:name="com.andreesperanca.gymde.ui.main.HomeFragment"
         android:label="fragment_home"
         tools:layout="@layout/fragment_home" />
     <fragment
         android:id="@+id/myWorkoutsFragment"
-        android:name="com.andreesperanca.gymde.MyWorkoutsFragment"
+        android:name="com.andreesperanca.gymde.ui.main.MyWorkoutsFragment"
         android:label="fragment_my_workouts"
         tools:layout="@layout/fragment_my_workouts" />
     <fragment
         android:id="@+id/myAccountFragment"
-        android:name="com.andreesperanca.gymde.MyAccountFragment"
+        android:name="com.andreesperanca.gymde.ui.main.MyAccountFragment"
         android:label="fragment_my_account"
         tools:layout="@layout/fragment_my_account" />
 </navigation>

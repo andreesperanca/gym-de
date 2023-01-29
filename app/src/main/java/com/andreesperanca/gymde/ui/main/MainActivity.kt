@@ -1,4 +1,4 @@
-package com.andreesperanca.gymde
+package com.andreesperanca.gymde.ui.main
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity

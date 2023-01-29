@@ -10,8 +10,8 @@
         android:src="@drawable/ic_me"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        android:layout_width="48dp"
-        android:layout_height="48dp"/>
+        android:layout_width="24dp"
+        android:layout_height="24dp"/>
 
     <TextView
         android:id="@+id/tv_workoutTitle"
@@ -20,10 +20,11 @@
         android:layout_height="wrap_content"
         app:layout_constraintTop_toTopOf="@id/iv_icon"
         android:layout_marginStart="@dimen/medium_margin"
-        android:text="Nome"
+
         style="@style/TextAppearance.Material3.TitleMedium" />
 
     <TextView
+        android:id="@+id/tv_description"
         app:layout_constraintStart_toEndOf="@id/iv_icon"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -47,6 +48,4 @@
         app:layout_constraintTop_toBottomOf="@id/iconButton"
         app:dividerInsetStart="16dp"
         app:dividerInsetEnd="16dp"/>
-
-
 </androidx.constraintlayout.widget.ConstraintLayout>

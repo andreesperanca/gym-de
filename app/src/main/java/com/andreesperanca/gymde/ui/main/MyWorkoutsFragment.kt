@@ -1,11 +1,11 @@
-package com.andreesperanca.gymde
+package com.andreesperanca.gymde.ui.main
 
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.recyclerview.widget.DividerItemDecoration.VERTICAL
+import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.andreesperanca.gymde.adapters.MyWorkoutsAdapter
 import com.andreesperanca.gymde.databinding.FragmentMyWorkoutsBinding
@@ -26,7 +26,8 @@ class MyWorkoutsFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val divider = MaterialDividerItemDecoration(requireContext(), VERTICAL)
+        val divider =
+            MaterialDividerItemDecoration(requireContext(), DividerItemDecoration.VERTICAL)
         val recyclerView = binding.rvWorkout
         recyclerView.adapter = MyWorkoutsAdapter()
         recyclerView.layoutManager = LinearLayoutManager(requireContext())

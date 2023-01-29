@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".MyAccountFragment">
+    tools:context=".ui.main.MyAccountFragment">
 
 
     <androidx.appcompat.widget.LinearLayoutCompat
@@ -46,25 +46,53 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/medium_margin"
+                android:gravity="center"
                 android:orientation="vertical"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/floating_action_button">
 
 
-                <include layout="@layout/edit_account_component" />
+                <com.andreesperanca.gymde.utils.custom.ConfigureCustomComponent
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
 
-                <include layout="@layout/edit_account_component" />
+                    app:mTitle="@string/email"
+                    app:mDescription=""
+                    app:mIcon="@drawable/ic_me"
 
-                <include layout="@layout/edit_account_component" />
+                    tools:mDescription="andre@gmail.com"
+                    />
 
-                <include layout="@layout/edit_account_component" />
+                <com.andreesperanca.gymde.utils.custom.ConfigureCustomComponent
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
 
-                <include layout="@layout/edit_account_component" />
+                    app:mTitle="@string/name"
 
-                <include layout="@layout/edit_account_component" />
+                    app:mIcon="@drawable/ic_me"
 
-                <include layout="@layout/edit_account_component" />
+                    tools:mDescription="André Luiz Esperança Correia"
+                    />
 
+                <com.andreesperanca.gymde.utils.custom.ConfigureCustomComponent
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+
+                    app:mTitle="@string/weight"
+                    app:mIcon="@drawable/ic_me"
+
+                    app:mDescription="68"
+                    />
+
+                <com.andreesperanca.gymde.utils.custom.ConfigureCustomComponent
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+
+                    app:mTitle="@string/height"
+                    app:mIcon="@drawable/ic_me"
+
+                    tools:mDescription="178"
+                    />
             </androidx.appcompat.widget.LinearLayoutCompat>
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.appcompat.widget.LinearLayoutCompat>

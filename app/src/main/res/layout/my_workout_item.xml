@@ -33,6 +33,7 @@
         app:layout_constraintStart_toEndOf="@id/iv_workout"/>
 
     <TextView
+        android:id="@+id/tv_workoutDay"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
 
