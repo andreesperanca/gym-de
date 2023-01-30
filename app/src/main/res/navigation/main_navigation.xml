@@ -32,5 +32,13 @@
         <argument
             android:name="workout"
             app:argType="com.andreesperanca.gymde.models.Workout" />
+        <action
+            android:id="@+id/action_workoutDetailsFragment_to_newExerciseFragment"
+            app:destination="@id/newExerciseFragment" />
     </fragment>
+    <fragment
+        android:id="@+id/newExerciseFragment"
+        android:name="com.andreesperanca.gymde.NewExerciseFragment"
+        android:label="fragment_new_exercise"
+        tools:layout="@layout/fragment_new_exercise" />
 </navigation>
