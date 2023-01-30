@@ -8,11 +8,11 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.DialogFragment
 import com.andreesperanca.gymde.R
-import com.andreesperanca.gymde.databinding.NewWorkoutDialogItemBinding
+import com.andreesperanca.gymde.databinding.NewWorkoutDialogBinding
 
-class FullScreenDialog : DialogFragment() {
+class NewWorkoutDialog : DialogFragment() {
 
-    private val binding by lazy { NewWorkoutDialogItemBinding.inflate(layoutInflater) }
+    private val binding by lazy { NewWorkoutDialogBinding.inflate(layoutInflater) }
 
     override fun onCreateView(
         inflater: LayoutInflater,

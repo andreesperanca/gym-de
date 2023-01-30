@@ -2,30 +2,30 @@ package com.andreesperanca.gymde.data
 
 import com.andreesperanca.gymde.R
 import com.andreesperanca.gymde.models.HealthArticles
-import com.andreesperanca.gymde.models.Workouts
+import com.andreesperanca.gymde.models.Workout
 import java.sql.Timestamp
 
-val mockWorkouts = listOf<Workouts>(
-    Workouts(
+val mockWorkouts = listOf<Workout>(
+    Workout(
         "Treino de peito",
         "Treino para peito",
         Timestamp(System.currentTimeMillis()),
         "Segunda",
         exercises = emptyList()
     ),
-    Workouts(
+    Workout(
         "Treino de peito",
         "Treino para peito",
         Timestamp(System.currentTimeMillis()),
         "Terça",
         exercises = emptyList()
-    ), Workouts(
+    ), Workout(
         "Treino de peito",
         "Treino para peito",
         Timestamp(System.currentTimeMillis()),
         "Quarta",
         exercises = emptyList()
-    ), Workouts(
+    ), Workout(
         "Treino de peito",
         "Treino para peito",
         Timestamp(System.currentTimeMillis()),

@@ -5,13 +5,15 @@ import android.view.ViewGroup
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.andreesperanca.gymde.R
+import com.andreesperanca.gymde.WorkoutDetailsFragment
 import com.andreesperanca.gymde.data.mockWorkouts
 import com.andreesperanca.gymde.databinding.MyWorkoutItemBinding
-import com.andreesperanca.gymde.models.Workouts
+import com.andreesperanca.gymde.models.Workout
+import com.andreesperanca.gymde.ui.main.MyWorkoutsFragmentDirections
 
 class MyWorkoutsAdapter() : RecyclerView.Adapter<MyWorkoutsAdapter.WorkoutsViewHolder>() {
 
-    val workoutsList: List<Workouts> = mockWorkouts
+    val workoutList: List<Workout> = mockWorkouts
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): WorkoutsViewHolder {
         val binding =
@@ -20,21 +22,22 @@ class MyWorkoutsAdapter() : RecyclerView.Adapter<MyWorkoutsAdapter.WorkoutsViewH
     }
 
     override fun onBindViewHolder(holder: WorkoutsViewHolder, position: Int) {
-        holder.bind(workoutsList[position])
+        holder.bind(workoutList[position])
     }
 
-    override fun getItemCount(): Int = workoutsList.size
+    override fun getItemCount(): Int = workoutList.size
 
     inner class WorkoutsViewHolder(private val binding: MyWorkoutItemBinding) :
         RecyclerView.ViewHolder(binding.root) {
 
-        fun bind(workouts: Workouts) {
+        fun bind(workout: Workout) {
 
-            binding.tvWorkoutTitle.text = workouts.name
-            binding.tvWorkoutDescription.text = workouts.description
+            binding.tvWorkoutTitle.text = workout.name
+            binding.tvWorkoutDescription.text = workout.description
 
             binding.root.setOnClickListener {
-                it.findNavController().navigate(R.id.action_myWorkoutsFragment_to_workoutDetailsFragment)
+                val action = MyWorkoutsFragmentDirections.actionMyWorkoutsFragmentToWorkoutDetailsFragment(workout)
+                it.findNavController().navigate(action)
             }
         }
     }

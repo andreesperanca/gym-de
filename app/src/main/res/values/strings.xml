@@ -54,4 +54,9 @@
     <string name="friday">Sexta-feira</string>
     <string name="saturday">Sábado</string>
     <string name="sunday">Domingo</string>
+    <string name="delete">Excluir</string>
+    <string name="exercises">Exercícios</string>
+    <string name="amount_series">Quantida de séries</string>
+    <string name="add_photo">Adicionar foto</string>
+    <string name="create_exercise">Criar exercício</string>
 </resources>

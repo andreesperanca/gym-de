@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main_navigation"
-    app:startDestination="@id/homeFragment">
+    app:startDestination="@id/myWorkoutsFragment">
 
     <fragment
         android:id="@+id/homeFragment"
@@ -28,5 +28,9 @@
         android:id="@+id/workoutDetailsFragment"
         android:name="com.andreesperanca.gymde.WorkoutDetailsFragment"
         android:label="fragment_workout_details"
-        tools:layout="@layout/fragment_workout_details" />
+        tools:layout="@layout/fragment_workout_details" >
+        <argument
+            android:name="workout"
+            app:argType="com.andreesperanca.gymde.models.Workout" />
+    </fragment>
 </navigation>
