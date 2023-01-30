@@ -10,7 +10,7 @@
         android:layout_width="match_parent"
         android:layout_height="200dp"
 
-        android:background="@color/blue"
+        android:background="?attr/colorPrimary"
         android:gravity="center"
 
         app:layout_constraintTop_toTopOf="parent">
@@ -20,7 +20,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
 
-            android:src="@drawable/gymde_logo" />
+            android:src="@drawable/gym_de_logo" />
 
     </androidx.appcompat.widget.LinearLayoutCompat>
 
@@ -30,7 +30,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
 
-        android:layout_marginTop="@dimen/small_margin"
+        android:layout_marginTop="@dimen/big_margin"
         android:text="@string/login"
         android:textStyle="bold"
 
@@ -44,6 +44,7 @@
         android:layout_height="wrap_content"
 
         android:layout_marginHorizontal="@dimen/big_margin"
+        android:layout_marginVertical="@dimen/medium_margin"
         android:hint="@string/email"
         app:layout_constraintTop_toBottomOf="@id/tv_login">
 
@@ -60,6 +61,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
 
+        android:layout_marginVertical="@dimen/medium_margin"
         android:layout_marginHorizontal="@dimen/big_margin"
         android:hint="@string/password"
 
@@ -75,26 +77,36 @@
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/btn_enter"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
 
         android:layout_marginHorizontal="@dimen/big_margin"
-        android:layout_marginTop="@dimen/small_margin"
+        android:layout_marginTop="@dimen/medium_margin"
 
         android:text="@string/enter"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@id/til_password" />
 
     <com.google.android.material.textview.MaterialTextView
-        android:id="@+id/rv_noHaveAccount"
-        style="@style/TextAppearance.Material3.BodySmall"
+        android:id="@+id/tv_noHaveAccount"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:textAppearance="@style/TextAppearance.Material3.BodyLarge"
 
         android:layout_marginVertical="@dimen/small_margin"
         android:text="@string/noHaveAccount"
         android:textAlignment="center"
 
         app:layout_constraintBottom_toBottomOf="parent" />
+
+    <com.google.android.material.progressindicator.LinearProgressIndicator
+        android:id="@+id/pg_loginProgressBar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+        app:layout_constraintTop_toTopOf="parent"
+        />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
