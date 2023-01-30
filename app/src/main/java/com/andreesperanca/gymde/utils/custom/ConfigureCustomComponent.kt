@@ -26,8 +26,8 @@ class ConfigureCustomComponent @JvmOverloads constructor(
 
     init {
         setup(context, attrs)
-        binding.tvDescription.text = mDescription
-        binding.tvWorkoutTitle.text = mTitle
+        binding.tvComponentDescription.text = mDescription
+        binding.tvComponentTitle.text = mTitle
         binding.ivIcon.setImageResource(mIcon)
     }
 

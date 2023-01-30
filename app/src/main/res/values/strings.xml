@@ -42,4 +42,7 @@
     <string name="title_workout">Título de treino</string>
     <string name="workout_day">Dia do treino.</string>
     <string name="edit_workout">Botão editar treino.</string>
+    <string name="new_exercise">Novo exercício</string>
+    <string name="title_exercise">Título exercício</string>
+    <string name="exercise_description">Descrição de exercício.</string>
 </resources>

@@ -27,10 +27,10 @@ class MyWorkoutsAdapter() : RecyclerView.Adapter<MyWorkoutsAdapter.WorkoutsViewH
         RecyclerView.ViewHolder(binding.root) {
 
         fun bind(workouts: Workouts) {
-            binding.ivWorkout.setImageResource(workouts.bg)
+
 
             binding.tvWorkoutTitle.text = workouts.name
-            binding.tvWorkoutDay.text = workouts.description
+            binding.tvWorkoutDescription.text = workouts.description
         }
     }
 }
