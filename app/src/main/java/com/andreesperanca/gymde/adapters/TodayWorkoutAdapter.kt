@@ -27,8 +27,6 @@ class TodayWorkoutAdapter() : RecyclerView.Adapter<TodayWorkoutAdapter.WorkoutsV
         RecyclerView.ViewHolder(binding.root) {
 
         fun bind(workouts: Workouts) {
-            binding.ivWorkout.setImageResource(workouts.bg)
-
             binding.tvWorkoutTitle.text = workouts.description
             binding.tvWorkoutDescription.text = workouts.description
 

@@ -9,4 +9,9 @@
         <item name="android:statusBarColor">?attr/colorPrimaryVariant</item>
     </style>
 
+
+    <style name="Theme.GymDe.FullScreen">
+        <item name="android:windowFullscreen">true</item>
+    </style>
+
 </resources>

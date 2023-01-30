@@ -2,7 +2,9 @@ package com.andreesperanca.gymde.adapters
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
+import com.andreesperanca.gymde.R
 import com.andreesperanca.gymde.data.mockWorkouts
 import com.andreesperanca.gymde.databinding.MyWorkoutItemBinding
 import com.andreesperanca.gymde.models.Workouts
@@ -28,9 +30,12 @@ class MyWorkoutsAdapter() : RecyclerView.Adapter<MyWorkoutsAdapter.WorkoutsViewH
 
         fun bind(workouts: Workouts) {
 
-
             binding.tvWorkoutTitle.text = workouts.name
             binding.tvWorkoutDescription.text = workouts.description
+
+            binding.root.setOnClickListener {
+                it.findNavController().navigate(R.id.action_myWorkoutsFragment_to_workoutDetailsFragment)
+            }
         }
     }
 }

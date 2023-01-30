@@ -5,10 +5,13 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentManager
+import androidx.fragment.app.FragmentTransaction
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.andreesperanca.gymde.adapters.MyWorkoutsAdapter
 import com.andreesperanca.gymde.databinding.FragmentMyWorkoutsBinding
+import com.andreesperanca.gymde.utils.dialogs.FullScreenDialog
 import com.google.android.material.divider.MaterialDividerItemDecoration
 
 class MyWorkoutsFragment : Fragment() {
@@ -32,5 +35,9 @@ class MyWorkoutsFragment : Fragment() {
         recyclerView.adapter = MyWorkoutsAdapter()
         recyclerView.layoutManager = LinearLayoutManager(requireContext())
         recyclerView.addItemDecoration(divider)
+
+        binding.extendedFab.setOnClickListener {
+            FullScreenDialog().show(this.parentFragmentManager, it.transitionName)
+        }
     }
 }

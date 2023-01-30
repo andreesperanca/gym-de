@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main_navigation"
-    app:startDestination="@id/workoutDetailsFragment">
+    app:startDestination="@id/homeFragment">
 
     <fragment
         android:id="@+id/homeFragment"
@@ -14,7 +14,11 @@
         android:id="@+id/myWorkoutsFragment"
         android:name="com.andreesperanca.gymde.ui.main.MyWorkoutsFragment"
         android:label="fragment_my_workouts"
-        tools:layout="@layout/fragment_my_workouts" />
+        tools:layout="@layout/fragment_my_workouts" >
+        <action
+            android:id="@+id/action_myWorkoutsFragment_to_workoutDetailsFragment"
+            app:destination="@id/workoutDetailsFragment" />
+    </fragment>
     <fragment
         android:id="@+id/myAccountFragment"
         android:name="com.andreesperanca.gymde.ui.main.MyAccountFragment"

@@ -7,7 +7,6 @@ import java.sql.Timestamp
 
 val mockWorkouts = listOf<Workouts>(
     Workouts(
-        R.drawable.mockphoto1,
         "Treino de peito",
         "Treino para peito",
         Timestamp(System.currentTimeMillis()),
@@ -15,21 +14,18 @@ val mockWorkouts = listOf<Workouts>(
         exercises = emptyList()
     ),
     Workouts(
-        R.drawable.mockphoto1,
         "Treino de peito",
         "Treino para peito",
         Timestamp(System.currentTimeMillis()),
         "Terça",
         exercises = emptyList()
     ), Workouts(
-        R.drawable.mockphoto1,
         "Treino de peito",
         "Treino para peito",
         Timestamp(System.currentTimeMillis()),
         "Quarta",
         exercises = emptyList()
     ), Workouts(
-        R.drawable.mockphoto1,
         "Treino de peito",
         "Treino para peito",
         Timestamp(System.currentTimeMillis()),
