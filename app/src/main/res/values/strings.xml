@@ -59,4 +59,6 @@
     <string name="amount_series">Quantida de séries</string>
     <string name="add_photo">Adicionar foto</string>
     <string name="create_exercise">Criar exercício</string>
+    <string name="short_password">Senha deve ter ao menos seis caracteres.</string>
+    <string name="no_valid_email">Email não é válido.</string>
 </resources>
