@@ -5,6 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:fillViewport="true"
     tools:context=".ui.login_and_register.GenderFragment">
 
     <com.google.android.material.appbar.MaterialToolbar
@@ -80,4 +81,5 @@
             android:text="@string/advance" />
 
     </androidx.appcompat.widget.LinearLayoutCompat>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

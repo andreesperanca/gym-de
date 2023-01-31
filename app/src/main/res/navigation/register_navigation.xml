@@ -43,22 +43,28 @@
 
     <fragment
         android:id="@+id/weightFragment"
-        android:name="com.andreesperanca.gymde.ui.main.WeightFragment"
+        android:name="com.andreesperanca.gymde.ui.login_and_register.WeightFragment"
         android:label="fragment_weight"
         tools:layout="@layout/fragment_weight" >
+        <argument
+            android:name="newUser"
+            app:argType="com.andreesperanca.gymde.models.User" />
         <action
-            android:id="@+id/action_weightFragment_to_focusFragment"
-            app:destination="@id/focusFragment" />
+            android:id="@+id/action_weightFragment_to_ageFragment"
+            app:destination="@id/ageFragment" />
     </fragment>
 
     <fragment
-        android:id="@+id/focusFragment"
+        android:id="@+id/ageFragment"
         android:name="com.andreesperanca.gymde.ui.login_and_register.AgeFragment"
         android:label="fragment_focus"
         tools:layout="@layout/fragment_age" >
         <action
             android:id="@+id/action_focusFragment_to_finishRegister"
             app:destination="@id/finishRegister" />
+        <argument
+            android:name="newUser"
+            app:argType="com.andreesperanca.gymde.models.User" />
     </fragment>
     <fragment
         android:id="@+id/loginFragment"
@@ -69,6 +75,10 @@
         android:id="@+id/finishRegister"
         android:name="com.andreesperanca.gymde.ui.login_and_register.FinishRegisterFragment"
         android:label="fragment_finish_register"
-        tools:layout="@layout/fragment_finish_register" />
+        tools:layout="@layout/fragment_finish_register" >
+        <argument
+            android:name="newUser"
+            app:argType="com.andreesperanca.gymde.models.User" />
+    </fragment>
 
 </navigation>

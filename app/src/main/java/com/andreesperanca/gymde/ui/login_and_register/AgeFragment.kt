@@ -6,10 +6,14 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
+import androidx.navigation.fragment.navArgs
 import com.andreesperanca.gymde.R
 import com.andreesperanca.gymde.databinding.FragmentAgeBinding
+import com.andreesperanca.gymde.utils.extensions.isValidAge
 
 class AgeFragment : Fragment() {
+
+    val args: AgeFragmentArgs by navArgs()
 
     private val binding by lazy {
         FragmentAgeBinding.inflate(layoutInflater)
@@ -23,10 +27,19 @@ class AgeFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        binding.btnAdvance.setOnClickListener {
-            findNavController().navigate(R.id.action_focusFragment_to_finishRegister)
+        binding.btnAdvanceAge.setOnClickListener {
+            val age = binding.tilHeight
+            val newUser = args.newUser
+            if ( age.isValidAge()) {
+                newUser.years = binding.tilHeight.editText?.text.toString()
+                val action = AgeFragmentDirections.actionFocusFragmentToFinishRegister(newUser)
+                findNavController().navigate(action)
+            }
+
+
+
         }
 
-    }
 
+    }
 }

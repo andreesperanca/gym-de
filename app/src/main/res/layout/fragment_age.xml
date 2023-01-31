@@ -1,56 +1,81 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
+
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:fillViewport="true"
+    android:layout_height="match_parent">
 
-    android:gravity="center"
-    android:orientation="vertical"
-    tools:context=".ui.login_and_register.GenderFragment">
-
-    <TextView
-        style="@style/TextAppearance.Material3.TitleLarge"
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:orientation="vertical"
+        android:gravity="center"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="wrap_content">
 
-        android:layout_marginBottom="@dimen/small_margin"
-        android:text="@string/what_is_your_age"
-        android:textAlignment="center" />
-
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/til_height"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-
-        android:layout_marginHorizontal="@dimen/big_margin"
-        android:hint="@string/age">
-
-        <com.google.android.material.textfield.TextInputEditText
+        <com.google.android.material.appbar.MaterialToolbar
+            android:id="@+id/tb_genderToolbar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            style="@style/Theme.GymDe.DefaultToolbar"
 
-            android:inputType="numberDecimal" />
-    </com.google.android.material.textfield.TextInputLayout>
+            app:layout_constraintTop_toTopOf="parent"/>
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+
+            android:gravity="center"
+            android:orientation="vertical"
+            tools:context=".ui.login_and_register.GenderFragment">
+
+            <TextView
+                style="@style/TextAppearance.Material3.TitleLarge"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+
+                android:layout_marginBottom="@dimen/small_margin"
+                android:text="@string/what_is_your_age"
+                android:textAlignment="center" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/til_height"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+
+                android:layout_marginHorizontal="@dimen/big_margin"
+                android:hint="@string/age">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+
+                    android:inputType="numberDecimal" />
+            </com.google.android.material.textfield.TextInputLayout>
 
 
-    <com.google.android.material.progressindicator.LinearProgressIndicator
-        android:layout_width="100dp"
-        android:layout_height="50dp"
+            <com.google.android.material.progressindicator.LinearProgressIndicator
+                android:layout_width="100dp"
+                android:layout_height="50dp"
 
-        android:layout_marginTop="@dimen/small_margin"
-        android:progress="80"
+                android:layout_marginTop="@dimen/small_margin"
+                android:progress="80"
 
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
-    <Button
-        android:id="@+id/btn_advance"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+            <Button
+                android:id="@+id/btn_advanceAge"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
 
-        android:layout_marginTop="8dp"
-        android:text="@string/advance"/>
-</androidx.appcompat.widget.LinearLayoutCompat>
+                android:layout_marginTop="8dp"
+                android:text="@string/advance" />
+
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+    </androidx.appcompat.widget.LinearLayoutCompat>
+
+</ScrollView>

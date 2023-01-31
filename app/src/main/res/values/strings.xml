@@ -61,4 +61,9 @@
     <string name="create_exercise">Criar exercício</string>
     <string name="short_password">Senha deve ter ao menos seis caracteres.</string>
     <string name="no_valid_email">Email não é válido.</string>
+    <string name="no_valid_height">Altura não é válida, lembre-se a altura deve ser descrita em centímetros.</string>
+    <string name="no_valid_weight">Peso não é válido, lembre-se o peso deve ser descrito em KG.</string>
+    <string name="no_valid_age">Idade não é válida, lembre-se a idade deve ser descrita em ANOS.</string>
+    <string name="no_valid_name">O nome não é valido.</string>
+    <string name="no_valid_confirm_password">Senha e confirmar senha devem ser iguais.</string>
 </resources>

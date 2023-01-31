@@ -6,14 +6,18 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
-import com.andreesperanca.gymde.R
+import androidx.navigation.fragment.navArgs
 import com.andreesperanca.gymde.databinding.FragmentHeightBinding
+import com.andreesperanca.gymde.utils.extensions.isValidHeight
 
 class HeightFragment : Fragment() {
+
+    val args: HeightFragmentArgs by navArgs()
 
     private val binding by lazy {
         FragmentHeightBinding.inflate(layoutInflater)
     }
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -22,8 +26,15 @@ class HeightFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        binding.btnAdvance.setOnClickListener {
-            findNavController().navigate(R.id.action_heightFragment_to_weightFragment)
+
+
+        binding.btnAdvanceHeight.setOnClickListener {
+            val newUser = args.newUser
+            if (binding.tilHeight.isValidHeight()) {
+                newUser.height = binding.tilHeight.editText?.text.toString()
+                val action = HeightFragmentDirections.actionHeightFragmentToWeightFragment(newUser)
+                findNavController().navigate(action)
+            }
         }
     }
 }
