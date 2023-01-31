@@ -3,7 +3,7 @@ package com.andreesperanca.gymde.utils.extensions
 import com.andreesperanca.gymde.R
 import com.google.android.material.textfield.TextInputLayout
 
-fun TextInputLayout.validatePassword(): Boolean {
+fun TextInputLayout.isValidPassword(): Boolean {
     this.error = null
     if (this.editText?.text?.length!! < 6) {
         this.error = this.context.getString(R.string.short_password)
@@ -12,7 +12,7 @@ fun TextInputLayout.validatePassword(): Boolean {
     return true
 }
 
-fun TextInputLayout.validateEmail(): Boolean {
+fun TextInputLayout.isValidEmail(): Boolean {
     val string = this.editText?.text
     this.error = null
     if (string != null) {

@@ -7,17 +7,13 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
-import android.widget.EditText
 import android.widget.ProgressBar
 import android.widget.TextView
 import androidx.fragment.app.Fragment
-import androidx.navigation.fragment.findNavController
-import com.andreesperanca.gymde.R
 import com.andreesperanca.gymde.databinding.FragmentLoginBinding
 import com.andreesperanca.gymde.ui.main.MainActivity
-import com.andreesperanca.gymde.utils.extensions.validateEmail
-import com.andreesperanca.gymde.utils.extensions.validatePassword
-import com.google.android.material.textfield.TextInputEditText
+import com.andreesperanca.gymde.utils.extensions.isValidEmail
+import com.andreesperanca.gymde.utils.extensions.isValidPassword
 import com.google.android.material.textfield.TextInputLayout
 
 class LoginFragment : Fragment() {
@@ -45,13 +41,12 @@ class LoginFragment : Fragment() {
             this@LoginFragment.tilEmail = binding.tilEmail
             this@LoginFragment.tilPassword = binding.tilPassword
             this@LoginFragment.btnEnter = binding.btnEnter
-            this@LoginFragment.btnCreateAccount = binding.tvNoHaveAccount
             this@LoginFragment.pgLogin = binding.pgLoginProgressBar
         }
 
         binding.btnEnter.setOnClickListener {
-            if (tilPassword.validatePassword() &&
-                tilEmail.validateEmail()
+            if (tilEmail.isValidEmail() &&
+                tilPassword.isValidPassword()
             ) {
                 tilPassword.editText?.isEnabled = false
                 tilEmail.editText?.isEnabled = false

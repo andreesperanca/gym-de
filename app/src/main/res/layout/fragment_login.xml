@@ -5,110 +5,113 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <androidx.appcompat.widget.LinearLayoutCompat
-        android:id="@+id/iv_logo"
-        android:layout_width="match_parent"
-        android:layout_height="200dp"
-
-        android:background="?attr/colorPrimary"
-        android:gravity="center"
-
-        app:layout_constraintTop_toTopOf="parent">
-
-        <androidx.appcompat.widget.AppCompatImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-
-            android:src="@drawable/gym_de_logo" />
-
-    </androidx.appcompat.widget.LinearLayoutCompat>
-
-    <com.google.android.material.textview.MaterialTextView
-        android:id="@+id/tv_login"
-        style="@style/TextAppearance.Material3.HeadlineLarge"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-
-        android:layout_marginTop="@dimen/big_margin"
-        android:text="@string/login"
-        android:textStyle="bold"
-
+    <ScrollView
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:fillViewport="true"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/iv_logo" />
+        >
 
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/til_email"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-
-        android:layout_marginHorizontal="@dimen/big_margin"
-        android:layout_marginVertical="@dimen/medium_margin"
-        android:hint="@string/email"
-        app:layout_constraintTop_toBottomOf="@id/tv_login">
-
-        <com.google.android.material.textfield.TextInputEditText
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="wrap_content">
 
-            android:inputType="textEmailAddress" />
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:id="@+id/iv_logo"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
 
-    </com.google.android.material.textfield.TextInputLayout>
+                android:background="?attr/colorPrimary"
+                android:gravity="center"
 
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/til_password"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+                app:layout_constraintTop_toTopOf="parent">
 
-        android:layout_marginVertical="@dimen/medium_margin"
-        android:layout_marginHorizontal="@dimen/big_margin"
-        android:hint="@string/password"
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
 
-        app:layout_constraintTop_toBottomOf="@id/til_email">
+                    android:src="@drawable/gym_de_logo" />
 
-        <com.google.android.material.textfield.TextInputEditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            </androidx.appcompat.widget.LinearLayoutCompat>
 
-            android:inputType="textPassword" />
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/tv_login"
+                style="@style/TextAppearance.Material3.HeadlineLarge"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
 
-    </com.google.android.material.textfield.TextInputLayout>
+                android:layout_marginTop="@dimen/big_margin"
+                android:text="@string/login"
+                android:textStyle="bold"
 
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/btn_enter"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/iv_logo" />
 
-        android:layout_marginHorizontal="@dimen/big_margin"
-        android:layout_marginTop="@dimen/medium_margin"
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/til_email"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
 
-        android:text="@string/enter"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/til_password" />
+                android:layout_marginHorizontal="@dimen/big_margin"
+                android:layout_marginVertical="@dimen/medium_margin"
+                android:hint="@string/email"
+                app:layout_constraintTop_toBottomOf="@id/tv_login">
 
-    <com.google.android.material.textview.MaterialTextView
-        android:id="@+id/tv_noHaveAccount"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textAppearance="@style/TextAppearance.Material3.BodyLarge"
+                <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
 
-        android:layout_marginVertical="@dimen/small_margin"
-        android:text="@string/noHaveAccount"
-        android:textAlignment="center"
+                    android:inputType="textEmailAddress" />
 
-        app:layout_constraintBottom_toBottomOf="parent" />
+            </com.google.android.material.textfield.TextInputLayout>
 
-    <com.google.android.material.progressindicator.LinearProgressIndicator
-        android:id="@+id/pg_loginProgressBar"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/til_password"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
 
-        android:visibility="invisible"
-        android:indeterminate="true"
+                android:layout_marginHorizontal="@dimen/big_margin"
+                android:layout_marginVertical="@dimen/medium_margin"
+                android:hint="@string/password"
 
-        app:layout_constraintTop_toTopOf="parent"/>
+                app:layout_constraintTop_toBottomOf="@id/til_email">
 
+                <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
 
+                    android:inputType="textPassword" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btn_enter"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+
+                android:layout_marginHorizontal="@dimen/big_margin"
+                android:layout_marginTop="@dimen/medium_margin"
+
+                android:text="@string/enter"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/til_password" />
+
+            <com.google.android.material.progressindicator.LinearProgressIndicator
+                android:id="@+id/pg_loginProgressBar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+
+                android:indeterminate="true"
+                android:visibility="invisible"
+
+                app:layout_constraintTop_toTopOf="parent" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
 </androidx.constraintlayout.widget.ConstraintLayout>
