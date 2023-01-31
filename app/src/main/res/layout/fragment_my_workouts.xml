@@ -17,6 +17,10 @@
         android:layout_height="wrap_content"
         app:shapeAppearance="@style/ShapeAppearanceOverlay.Material3.Corner.Top"
 
+        app:backgroundTint="@color/orange"
+        android:textColor="@color/white"
+        app:iconTint="@color/white"
+
         android:elevation="8dp"
         android:layout_gravity="bottom|center_horizontal"
         android:contentDescription="@string/new_workout_btn_description"

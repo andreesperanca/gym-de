@@ -32,7 +32,9 @@ class MainActivity : AppCompatActivity() {
             navHost.navController.addOnDestinationChangedListener { _, destination, _ ->
                 binding.bnvMainBottomNavigation.visibility =
                     if (
-                        destination.id == R.id.workoutDetailsFragment || destination.id == R.id.newExerciseFragment
+                        destination.id == R.id.workoutDetailsFragment ||
+                        destination.id == R.id.newExerciseFragment ||
+                        destination.id == R.id.createWorkoutFragment
                     ) {
                         View.GONE
                     } else {

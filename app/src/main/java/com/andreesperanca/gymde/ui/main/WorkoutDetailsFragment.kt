@@ -29,7 +29,8 @@ class WorkoutDetailsFragment : Fragment() {
         binding.tbWorkoutToolbar.apply {
             title = args.workout.name
             setNavigationOnClickListener { it.findNavController().popBackStack() }
-            inflateMenu(R.menu.workout_menu).apply {
+
+            binding.tbWorkoutToolbar.apply {
                 setOnMenuItemClickListener { menuItem ->
                     when (menuItem.itemId) {
                         R.id.excludeWorkout -> {
@@ -44,17 +45,18 @@ class WorkoutDetailsFragment : Fragment() {
                             false
                         }
                     }
-
                 }
             }
         }
     }
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
         return binding.root
     }
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
@@ -63,6 +65,7 @@ class WorkoutDetailsFragment : Fragment() {
             onDestroy()
         }
     }
+
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
         if (resultCode != Activity.RESULT_OK) {
