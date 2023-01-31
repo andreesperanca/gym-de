@@ -1,4 +1,4 @@
-package com.andreesperanca.gymde
+package com.andreesperanca.gymde.ui.main
 
 import android.os.Bundle
 import android.os.Handler
@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
+import com.andreesperanca.gymde.R
 import com.andreesperanca.gymde.databinding.FragmentCreateWorkoutBinding
 import com.andreesperanca.gymde.models.Workout
 import com.andreesperanca.gymde.utils.extensions.isValidName

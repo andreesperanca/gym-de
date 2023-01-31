@@ -3,6 +3,8 @@ plugins {
     id 'org.jetbrains.kotlin.android'
     id("kotlin-parcelize")
     id("androidx.navigation.safeargs")
+    id 'com.google.gms.google-services'
+
 }
 
 android {
@@ -52,6 +54,14 @@ dependencies {
 
     //Material
     implementation 'com.google.android.material:material:1.8.0'
+
+    //Firebase
+    implementation 'com.google.firebase:firebase-auth-ktx:21.1.0'
+    implementation 'com.google.firebase:firebase-firestore-ktx:24.4.2'
+    implementation 'com.google.firebase:firebase-storage-ktx:20.1.0'
+
+    //Koin
+    implementation "io.insert-koin:koin-android:3.2.0"
 
 
 }

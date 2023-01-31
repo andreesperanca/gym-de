@@ -46,7 +46,7 @@
         tools:layout="@layout/fragment_new_exercise" />
     <fragment
         android:id="@+id/createWorkoutFragment"
-        android:name="com.andreesperanca.gymde.CreateWorkoutFragment"
+        android:name="com.andreesperanca.gymde.ui.main.CreateWorkoutFragment"
         android:label="fragment_create_workout"
         tools:layout="@layout/fragment_create_workout" />
 </navigation>
