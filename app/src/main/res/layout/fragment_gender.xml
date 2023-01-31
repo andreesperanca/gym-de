@@ -1,65 +1,83 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
+
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:gravity="center"
-
-    android:orientation="vertical"
     tools:context=".ui.login_and_register.GenderFragment">
 
-    <com.google.android.material.textview.MaterialTextView
+    <com.google.android.material.appbar.MaterialToolbar
+        android:id="@+id/tb_genderToolbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        style="@style/TextAppearance.Material3.TitleLarge"
+        style="@style/Theme.GymDe.DefaultToolbar"
 
-        android:layout_marginBottom="@dimen/small_margin"
-        android:text="@string/what_is_your_sex"
-        android:textAlignment="center" />
+        app:layout_constraintTop_toTopOf="parent"/>
 
-    <RadioGroup
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
 
-        android:layout_marginVertical="@dimen/small_margin"
-        android:orientation="horizontal">
+        android:orientation="vertical">
 
-        <com.google.android.material.radiobutton.MaterialRadioButton
+        <com.google.android.material.textview.MaterialTextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            style="@style/TextAppearance.Material3.TitleLarge"
+
+            android:layout_marginBottom="@dimen/small_margin"
+            android:text="@string/what_is_your_sex"
+            android:textAlignment="center" />
+
+        <RadioGroup
+            android:id="@+id/rg_genderRadioGroup"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
 
-            android:layout_marginHorizontal="@dimen/small_margin"
-            android:drawableTop="@drawable/ic_male"
-            android:text="@string/male" />
+            android:layout_marginVertical="@dimen/small_margin"
+            android:orientation="horizontal">
 
-        <com.google.android.material.radiobutton.MaterialRadioButton
+            <com.google.android.material.radiobutton.MaterialRadioButton
+                android:id="@+id/rb_male"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+
+                android:layout_marginHorizontal="@dimen/small_margin"
+                android:checked="true"
+                android:drawableTop="@drawable/ic_male"
+                android:text="@string/male" />
+
+            <com.google.android.material.radiobutton.MaterialRadioButton
+                android:id="@+id/rb_female"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+
+                android:layout_marginHorizontal="@dimen/small_margin"
+                android:drawableTop="@drawable/ic_female"
+                android:text="@string/female" />
+        </RadioGroup>
+
+        <com.google.android.material.progressindicator.LinearProgressIndicator
+            android:layout_width="100dp"
+            android:layout_height="50dp"
+
+            android:layout_marginVertical="@dimen/small_margin"
+            android:progress="20"
+
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_advanceGender"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
 
-            android:layout_marginHorizontal="@dimen/small_margin"
-            android:drawableTop="@drawable/ic_female"
-            android:text="@string/female" />
-    </RadioGroup>
+            android:layout_marginTop="@dimen/small_margin"
+            android:text="@string/advance" />
 
-    <com.google.android.material.progressindicator.LinearProgressIndicator
-        android:layout_width="100dp"
-        android:layout_height="50dp"
-
-        android:layout_marginVertical="@dimen/small_margin"
-        android:progress="20"
-
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/btn_advance"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-
-        android:layout_marginTop="@dimen/small_margin"
-        android:text="@string/advance" />
-
-</androidx.appcompat.widget.LinearLayoutCompat>
+    </androidx.appcompat.widget.LinearLayoutCompat>
+</androidx.constraintlayout.widget.ConstraintLayout>

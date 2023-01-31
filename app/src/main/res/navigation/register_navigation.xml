@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/register_navigation"
-    app:startDestination="@id/loginFragment">
+    app:startDestination="@id/genderFragment">
 
     <fragment
         android:id="@+id/loginHomeScreen"
@@ -36,6 +36,9 @@
         <action
             android:id="@+id/action_heightFragment_to_weightFragment"
             app:destination="@id/weightFragment" />
+        <argument
+            android:name="newUser"
+            app:argType="com.andreesperanca.gymde.models.User" />
     </fragment>
 
     <fragment

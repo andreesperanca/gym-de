@@ -3,7 +3,11 @@
 
 
 
-    <style name="Theme.GymDe.DefaultButton" parent="Widget.Material3.Button.IconButton.Filled">
+    <style name="Theme.GymDe.DefaultToolbar" parent="Widget.Material3.Toolbar">
+        <item name="materialThemeOverlay">@style/ThemeOverlay.Material3.Toolbar.Surface</item>
+        <item name="titleTextAppearance">@style/TextAppearance.Material3.TitleLarge</item>
+        <item name="navigationIcon">@drawable/ic_arrow</item>
+        <item name="android:background">?attr/colorPrimary</item>
     </style>
 
 </resources>
