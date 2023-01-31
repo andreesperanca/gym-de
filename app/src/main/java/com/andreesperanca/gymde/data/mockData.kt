@@ -10,26 +10,7 @@ val mockWorkouts = listOf<Workout>(
         "Treino de peito",
         "Treino para peito",
         Timestamp(System.currentTimeMillis()),
-        "Segunda",
-        exercises = emptyList()
-    ),
-    Workout(
-        "Treino de peito",
-        "Treino para peito",
-        Timestamp(System.currentTimeMillis()),
-        "Terça",
-        exercises = emptyList()
-    ), Workout(
-        "Treino de peito",
-        "Treino para peito",
-        Timestamp(System.currentTimeMillis()),
-        "Quarta",
-        exercises = emptyList()
-    ), Workout(
-        "Treino de peito",
-        "Treino para peito",
-        Timestamp(System.currentTimeMillis()),
-        "Quinta",
+        emptyList(),
         exercises = emptyList()
     )
 )

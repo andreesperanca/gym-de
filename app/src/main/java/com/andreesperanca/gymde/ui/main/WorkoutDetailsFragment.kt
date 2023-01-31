@@ -1,11 +1,9 @@
-package com.andreesperanca.gymde
+package com.andreesperanca.gymde.ui.main
 
 import android.app.Activity
 import android.content.Intent
-import android.graphics.Bitmap
 import android.net.Uri
 import android.os.Bundle
-import android.provider.MediaStore
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -13,6 +11,7 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
+import com.andreesperanca.gymde.R
 import com.andreesperanca.gymde.databinding.FragmentWorkoutDetailsBinding
 import com.andreesperanca.gymde.utils.extensions.toastCreator
 

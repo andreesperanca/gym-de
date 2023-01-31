@@ -18,6 +18,9 @@
         <action
             android:id="@+id/action_myWorkoutsFragment_to_workoutDetailsFragment"
             app:destination="@id/workoutDetailsFragment" />
+        <action
+            android:id="@+id/action_myWorkoutsFragment_to_createWorkoutFragment"
+            app:destination="@id/createWorkoutFragment" />
     </fragment>
     <fragment
         android:id="@+id/myAccountFragment"
@@ -26,7 +29,7 @@
         tools:layout="@layout/fragment_my_account" />
     <fragment
         android:id="@+id/workoutDetailsFragment"
-        android:name="com.andreesperanca.gymde.WorkoutDetailsFragment"
+        android:name="com.andreesperanca.gymde.ui.main.WorkoutDetailsFragment"
         android:label="fragment_workout_details"
         tools:layout="@layout/fragment_workout_details" >
         <argument
@@ -38,7 +41,12 @@
     </fragment>
     <fragment
         android:id="@+id/newExerciseFragment"
-        android:name="com.andreesperanca.gymde.NewExerciseFragment"
+        android:name="com.andreesperanca.gymde.ui.main.NewExerciseFragment"
         android:label="fragment_new_exercise"
         tools:layout="@layout/fragment_new_exercise" />
+    <fragment
+        android:id="@+id/createWorkoutFragment"
+        android:name="com.andreesperanca.gymde.CreateWorkoutFragment"
+        android:label="fragment_create_workout"
+        tools:layout="@layout/fragment_create_workout" />
 </navigation>

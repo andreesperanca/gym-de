@@ -11,7 +11,10 @@ import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.andreesperanca.gymde.databinding.FragmentFinishRegisterBinding
 import com.andreesperanca.gymde.ui.main.MainActivity
-import com.andreesperanca.gymde.utils.extensions.*
+import com.andreesperanca.gymde.utils.extensions.isValidConfirmPassword
+import com.andreesperanca.gymde.utils.extensions.isValidEmail
+import com.andreesperanca.gymde.utils.extensions.isValidName
+import com.andreesperanca.gymde.utils.extensions.isValidPassword
 
 class FinishRegisterFragment : Fragment() {
 

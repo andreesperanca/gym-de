@@ -1,4 +1,4 @@
-package com.andreesperanca.gymde
+package com.andreesperanca.gymde.ui.main
 
 import android.app.Activity
 import android.content.Intent

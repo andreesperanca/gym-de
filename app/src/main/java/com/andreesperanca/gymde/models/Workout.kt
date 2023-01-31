@@ -11,6 +11,6 @@ data class Workout(
     val description: String,
     val date: Timestamp,
 
-    val dayOfWeek: String,
+    val dayOfWeek: List<String>,
     val exercises:  @RawValue List<Exercise> = emptyList()
 ) : Parcelable

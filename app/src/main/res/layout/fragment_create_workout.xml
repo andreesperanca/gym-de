@@ -10,6 +10,13 @@
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
+        <com.google.android.material.progressindicator.LinearProgressIndicator
+            android:id="@+id/pg_newWorkoutDialog"
+            android:indeterminate="true"
+            android:visibility="invisible"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/til_newWorkoutName"
             android:layout_width="match_parent"
@@ -52,36 +59,43 @@
             android:hint="@string/workout_day" />
 
         <com.google.android.material.checkbox.MaterialCheckBox
+            android:id="@+id/cb_monday"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/monday" />
 
         <com.google.android.material.checkbox.MaterialCheckBox
+            android:id="@+id/cb_tuesday"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/tuesday" />
 
         <com.google.android.material.checkbox.MaterialCheckBox
+            android:id="@+id/cb_wednesday"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/wednesday" />
 
         <com.google.android.material.checkbox.MaterialCheckBox
+            android:id="@+id/cb_thursday"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/thursday" />
 
         <com.google.android.material.checkbox.MaterialCheckBox
+            android:id="@+id/cb_friday"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/friday" />
 
         <com.google.android.material.checkbox.MaterialCheckBox
+            android:id="@+id/cb_saturday"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/saturday" />
 
         <com.google.android.material.checkbox.MaterialCheckBox
+            android:id="@+id/cb_sunday"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/sunday" />

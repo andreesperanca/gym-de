@@ -5,11 +5,12 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.andreesperanca.gymde.R
 import com.andreesperanca.gymde.adapters.MyWorkoutsAdapter
 import com.andreesperanca.gymde.databinding.FragmentMyWorkoutsBinding
-import com.andreesperanca.gymde.utils.dialogs.NewWorkoutDialog
 import com.google.android.material.divider.MaterialDividerItemDecoration
 
 class MyWorkoutsFragment : Fragment() {
@@ -35,7 +36,7 @@ class MyWorkoutsFragment : Fragment() {
         recyclerView.addItemDecoration(divider)
 
         binding.extendedFab.setOnClickListener {
-            NewWorkoutDialog().show(this.parentFragmentManager, it.transitionName)
+            findNavController().navigate(R.id.action_myWorkoutsFragment_to_createWorkoutFragment)
         }
     }
 }
