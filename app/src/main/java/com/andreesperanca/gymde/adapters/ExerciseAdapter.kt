@@ -8,6 +8,7 @@ import com.andreesperanca.gymde.adapters.ExerciseAdapter.ExerciseViewHolder
 import com.andreesperanca.gymde.databinding.ExerciseItemBinding
 import com.andreesperanca.gymde.models.Exercise
 import com.bumptech.glide.Glide
+import org.koin.core.component.getScopeId
 
 class ExerciseAdapter() : RecyclerView.Adapter<ExerciseViewHolder>() {
 
@@ -39,6 +40,7 @@ class ExerciseAdapter() : RecyclerView.Adapter<ExerciseViewHolder>() {
         fun bind(exercise: Exercise) {
             binding.tvExerciseTitle.text = exercise.name
             binding.tvExerciseDescription.text = exercise.description
+            binding.tvQuantitySeries.text = binding.root.context.getString(R.string.quantitySeries, exercise.series)
 
             Glide
                 .with(binding.root)

@@ -8,9 +8,7 @@ import android.net.Uri
 import android.os.Build
 import android.os.Bundle
 import android.provider.MediaStore
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
 import android.widget.Button
 import android.widget.ImageView
 import androidx.navigation.fragment.findNavController
@@ -21,7 +19,10 @@ import com.andreesperanca.gymde.models.Exercise
 import com.andreesperanca.gymde.ui.main.viewmodels.NewExerciseViewModel
 import com.andreesperanca.gymde.utils.DefaultValues
 import com.andreesperanca.gymde.utils.Resource
-import com.andreesperanca.gymde.utils.extensions.*
+import com.andreesperanca.gymde.utils.extensions.isValidName
+import com.andreesperanca.gymde.utils.extensions.isVisible
+import com.andreesperanca.gymde.utils.extensions.snackBarCreator
+import com.andreesperanca.gymde.utils.extensions.text
 import com.andreesperanca.gymde.utils.generics.BaseFragment
 import com.google.android.material.progressindicator.LinearProgressIndicator
 import com.google.android.material.textfield.TextInputLayout

@@ -4,6 +4,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
+import com.andreesperanca.gymde.R
 import com.andreesperanca.gymde.data.mockWorkouts
 import com.andreesperanca.gymde.databinding.MyWorkoutItemBinding
 import com.andreesperanca.gymde.models.Workout
@@ -38,19 +39,19 @@ class MyWorkoutsAdapter(
 
         fun bind(workout: Workout) {
 
-            binding.tvWorkoutTitle.text = workout.name
-            binding.tvWorkoutDescription.text = workout.description
+            with(binding) {
+                tvWorkoutTitle.text = workout.name
+                tvWorkoutDescription.text = workout.description
+                tvDateOfCreate.text = root.context.getString(R.string.create_day, workout.date)
 
-            binding.root.setOnClickListener {
-                val action =
-                    MyWorkoutsFragmentDirections.actionMyWorkoutsFragmentToWorkoutDetailsFragment(
-                        workout
-                    )
-                it.findNavController().navigate(action)
-            }
-
-            binding.iconButton.setOnClickListener {
-                updateWorkout(workout)
+                iconButton.setOnClickListener { updateWorkout(workout) }
+                root.setOnClickListener {
+                    val action =
+                        MyWorkoutsFragmentDirections.actionMyWorkoutsFragmentToWorkoutDetailsFragment(
+                            workout
+                        )
+                    it.findNavController().navigate(action)
+                }
             }
 
         }

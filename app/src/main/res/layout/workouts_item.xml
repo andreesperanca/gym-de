@@ -15,6 +15,8 @@
             android:layout_height="150dp"
             android:src="@drawable/workout_bg"
 
+            android:maxLines="1"
+            android:ellipsize="end"
             android:contentDescription="@string/image_workout"
             android:scaleType="centerCrop" />
 
@@ -29,6 +31,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
 
+                android:maxLines="1"
+                android:ellipsize="end"
                 android:textAppearance="?attr/textAppearanceTitleMedium" />
 
             <TextView
@@ -36,6 +40,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
 
+                android:maxLines="1"
+                android:ellipsize="end"
                 android:layout_margin="@dimen/small_margin"
                 android:textAppearance="?attr/textAppearanceBodyMedium"
                 android:textColor="?android:attr/textColorSecondary" />

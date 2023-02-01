@@ -40,7 +40,7 @@
     <string name="read_article">Ler artigo</string>
     <string name="workouts">Treinos</string>
     <string name="title_workout">Título de treino</string>
-    <string name="workout_day">Dias do treino</string>
+    <string name="create_day">Data de criação: %1$s</string>
     <string name="edit_workout">Botão editar treino.</string>
     <string name="new_exercise">Novo exercício</string>
     <string name="title_exercise">Título exercício</string>
@@ -56,7 +56,7 @@
     <string name="sunday">Domingo</string>
     <string name="delete">Excluir</string>
     <string name="exercises">Exercícios</string>
-    <string name="amount_series">Quantida de séries</string>
+    <string name="amount_series">Quantidade de séries</string>
     <string name="add_photo">Adicionar foto</string>
     <string name="create_exercise">Criar exercício</string>
     <string name="short_password">Senha deve ter ao menos seis caracteres.</string>
@@ -72,4 +72,6 @@
     <string name="save">Salvar</string>
     <string name="no_workout_today">Não há treinos marcados para hoje.</string>
     <string name="photo_error">Erro ao carregar a foto.</string>
+    <string name="quantitySeries">Repetições: %1$s </string>
+    <string name="workout_day">Dias do treino</string>
 </resources>

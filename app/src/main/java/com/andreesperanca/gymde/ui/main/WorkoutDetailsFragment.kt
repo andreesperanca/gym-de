@@ -6,6 +6,7 @@ import androidx.appcompat.widget.Toolbar
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
+import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.andreesperanca.gymde.R
@@ -16,6 +17,7 @@ import com.andreesperanca.gymde.utils.Resource
 import com.andreesperanca.gymde.utils.extensions.isVisible
 import com.andreesperanca.gymde.utils.extensions.toastCreator
 import com.andreesperanca.gymde.utils.generics.BaseFragment
+import com.google.android.material.divider.MaterialDividerItemDecoration
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.android.material.progressindicator.LinearProgressIndicator
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -53,9 +55,12 @@ class WorkoutDetailsFragment : BaseFragment<
     }
 
     private fun setupExercisesRecyclerView() {
-        binding.rvExercise.adapter = adapter
-        binding.rvExercise.layoutManager =
-            LinearLayoutManager(requireContext(), RecyclerView.VERTICAL, false)
+            val divider =
+                MaterialDividerItemDecoration(requireContext(), DividerItemDecoration.VERTICAL)
+        rvExercises.adapter = adapter
+        rvExercises.layoutManager = LinearLayoutManager(requireContext(), RecyclerView.VERTICAL, false)
+        rvExercises.addItemDecoration(divider)
+
     }
 
     override fun setupToolbar() {
