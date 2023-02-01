@@ -33,7 +33,7 @@ class FinishRegisterFragment : BaseFragment<
     private lateinit var _tilEmail: TextInputLayout
     private lateinit var _tilPassword: TextInputLayout
     private lateinit var _tilPasswordConfirm: TextInputLayout
-    private lateinit var btnAdvanceFinishRegister: Button
+    private lateinit var _btnAdvanceFinishRegister: Button
     private lateinit var pgFinishRegister: LinearProgressIndicator
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -43,7 +43,7 @@ class FinishRegisterFragment : BaseFragment<
 
     private fun setupClickListeners() {
 
-        btnAdvanceFinishRegister.setOnClickListener {
+        _btnAdvanceFinishRegister.setOnClickListener {
             if (_tilName.isValidName() &&
                 _tilEmail.isValidEmail() &&
                 _tilPassword.isValidPassword() &&
@@ -104,12 +104,14 @@ class FinishRegisterFragment : BaseFragment<
 
     override fun initComponents() {
         with(binding) {
-            tbFinishRegister = binding.tbFinishRegisterToolbar
-            pgFinishRegister = binding.pgProgressBarFinishRegister
-            _tilPassword = binding.tilPassword
-            _tilName = binding.tilName
-            _tilPasswordConfirm = binding.tilPasswordConfirm
-            _tilEmail = binding.tilEmail
+            tbFinishRegister = tbFinishRegisterToolbar
+            pgFinishRegister = pgProgressBarFinishRegister
+            _tilPassword = tilPassword
+            _tilName = tilName
+            _tilPasswordConfirm = tilPasswordConfirm
+            _tilEmail = tilEmail
+            _btnAdvanceFinishRegister = btnAdvanceFinishRegister
+
         }
     }
 }
