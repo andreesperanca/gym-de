@@ -19,6 +19,7 @@ import com.andreesperanca.gymde.models.Exercise
 import com.andreesperanca.gymde.ui.main.viewmodels.NewExerciseViewModel
 import com.andreesperanca.gymde.utils.DefaultValues
 import com.andreesperanca.gymde.utils.Resource
+import com.andreesperanca.gymde.utils.disableComponents
 import com.andreesperanca.gymde.utils.extensions.isValidName
 import com.andreesperanca.gymde.utils.extensions.isVisible
 import com.andreesperanca.gymde.utils.extensions.snackBarCreator
@@ -105,6 +106,16 @@ class NewExerciseFragment() : BaseFragment<
                     viewModel.createExercise(newExercise)
                 }
                 is Resource.Loading -> {
+                    disableComponents(
+                        listOf(
+                            _tilName,
+                            _tilDescription,
+                            _tilQuantitySeries,
+                            ivExercisePhoto,
+                            btnCreateExercise,
+                            btnCancelCreate
+                        )
+                    )
                     progressBarNewExercise.isVisible(true)
                 }
                 is Resource.Error -> {
@@ -122,6 +133,16 @@ class NewExerciseFragment() : BaseFragment<
                     findNavController().navigate(action)
                 }
                 is Resource.Loading -> {
+                    if (_tilName.isEnabled) disableComponents(
+                        listOf(
+                            _tilName,
+                            _tilDescription,
+                            _tilQuantitySeries,
+                            ivExercisePhoto,
+                            btnCreateExercise,
+                            btnCancelCreate
+                        )
+                    )
                     progressBarNewExercise.isVisible(true)
                 }
                 is Resource.Error -> {
