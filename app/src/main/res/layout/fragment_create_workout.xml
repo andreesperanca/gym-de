@@ -103,6 +103,7 @@
         <androidx.appcompat.widget.LinearLayoutCompat
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:gravity="center"
             android:orientation="horizontal"
             app:layout_constraintTop_toBottomOf="@id/til_newWorkoutName">
 
@@ -120,7 +121,6 @@
                 android:layout_height="wrap_content"
 
                 android:layout_marginHorizontal="@dimen/small_margin"
-
                 android:text="@string/cancel" />
 
         </androidx.appcompat.widget.LinearLayoutCompat>

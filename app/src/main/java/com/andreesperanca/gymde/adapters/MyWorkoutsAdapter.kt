@@ -11,7 +11,7 @@ import com.andreesperanca.gymde.ui.main.MyWorkoutsFragmentDirections
 
 class MyWorkoutsAdapter() : RecyclerView.Adapter<MyWorkoutsAdapter.WorkoutsViewHolder>() {
 
-    var workoutList: List<Workout> = mockWorkouts
+    var workoutList: List<Workout> = emptyList()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): WorkoutsViewHolder {
         val binding =

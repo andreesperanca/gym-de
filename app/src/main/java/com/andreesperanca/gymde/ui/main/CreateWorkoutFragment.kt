@@ -13,8 +13,10 @@ import com.andreesperanca.gymde.ui.main.viewmodels.CreateWorkoutViewModel
 import com.andreesperanca.gymde.utils.Resource
 import com.andreesperanca.gymde.utils.extensions.isValidName
 import com.andreesperanca.gymde.utils.extensions.toastCreator
+import org.koin.android.ext.android.get
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import java.sql.Timestamp
+import kotlin.math.absoluteValue
 
 
 class CreateWorkoutFragment : Fragment() {
@@ -42,25 +44,25 @@ class CreateWorkoutFragment : Fragment() {
 
             val daysOfWeek = mutableListOf<String>()
             if (binding.cbMonday.isChecked) {
-                daysOfWeek.add(R.string.monday.toString())
+                daysOfWeek.add(this.getString(R.string.monday))
             }
             if (binding.cbTuesday.isChecked) {
-                daysOfWeek.add(R.string.tuesday.toString())
+                daysOfWeek.add(this.getString(R.string.tuesday))
             }
             if (binding.cbWednesday.isChecked) {
-                daysOfWeek.add(R.string.wednesday.toString())
+                daysOfWeek.add(this.getString(R.string.wednesday))
             }
             if (binding.cbThursday.isChecked) {
-                daysOfWeek.add(R.string.thursday.toString())
+                daysOfWeek.add(this.getString(R.string.thursday))
             }
             if (binding.cbFriday.isChecked) {
-                daysOfWeek.add(R.string.friday.toString())
+                daysOfWeek.add(this.getString(R.string.friday))
             }
             if (binding.cbSaturday.isChecked) {
-                daysOfWeek.add(R.string.saturday.toString())
+                daysOfWeek.add(this.getString(R.string.saturday))
             }
             if (binding.cbSunday.isChecked) {
-                daysOfWeek.add(R.string.sunday.toString())
+                daysOfWeek.add(this.getString(R.string.sunday))
             }
 
             if (binding.tilNewWorkoutName.isValidName()) {

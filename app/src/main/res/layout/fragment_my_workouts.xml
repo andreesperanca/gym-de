@@ -6,6 +6,16 @@
     android:layout_height="match_parent"
     tools:context=".ui.main.MyWorkoutsFragment">
 
+
+    <com.google.android.material.progressindicator.LinearProgressIndicator
+        android:id="@+id/pg_progressBarMyWorkouts"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+        android:layout_gravity="top"
+        android:indeterminate="true"
+        />
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv_workout"
         android:layout_width="match_parent"

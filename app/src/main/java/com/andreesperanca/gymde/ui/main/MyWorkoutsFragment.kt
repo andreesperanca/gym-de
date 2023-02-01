@@ -58,12 +58,13 @@ class MyWorkoutsFragment : Fragment() {
             when(it){
                 is Resource.Success -> {
                     adapter.updateData(it.data)
+                    binding.pgProgressBarMyWorkouts.visibility = View.INVISIBLE
                 }
                 is Resource.Loading -> {
-                    toastCreator("Carregando")
+                    binding.pgProgressBarMyWorkouts.visibility = View.VISIBLE
                 }
                 is Resource.Error -> {
-                    toastCreator(it.message.toString())
+                    binding.pgProgressBarMyWorkouts.visibility = View.INVISIBLE
                     Log.i("iError", it.message.toString() )
                 }
             }
