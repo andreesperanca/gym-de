@@ -46,7 +46,14 @@
         android:id="@+id/newExerciseFragment"
         android:name="com.andreesperanca.gymde.ui.main.NewExerciseFragment"
         android:label="fragment_new_exercise"
-        tools:layout="@layout/fragment_new_exercise" />
+        tools:layout="@layout/fragment_new_exercise" >
+        <argument
+            android:name="workoutId"
+            app:argType="string" />
+        <action
+            android:id="@+id/action_newExerciseFragment_to_workoutDetailsFragment"
+            app:destination="@id/workoutDetailsFragment" />
+    </fragment>
     <fragment
         android:id="@+id/createWorkoutFragment"
         android:name="com.andreesperanca.gymde.ui.main.CreateWorkoutFragment"

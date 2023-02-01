@@ -1,8 +1,5 @@
 package com.andreesperanca.gymde.ui.main
 
-import android.app.Activity
-import android.content.Intent
-import android.net.Uri
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -26,7 +23,7 @@ class WorkoutDetailsFragment : Fragment() {
         FragmentWorkoutDetailsBinding.inflate(layoutInflater)
     }
 
-    private val viewModel : WorkoutDetailsViewModel by viewModel()
+    private val viewModel: WorkoutDetailsViewModel by viewModel()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -61,12 +58,16 @@ class WorkoutDetailsFragment : Fragment() {
         }
 
         binding.extendedFab.setOnClickListener {
-            findNavController().navigate(R.id.action_workoutDetailsFragment_to_newExerciseFragment)
+            val action =
+                WorkoutDetailsFragmentDirections.actionWorkoutDetailsFragmentToNewExerciseFragment(
+                    args.workout.uid
+                )
+            findNavController().navigate(action)
         }
 
         viewModel.excludeWorkout.observe(viewLifecycleOwner) {
 
-            when(it){
+            when (it) {
                 is Resource.Success -> {
                     findNavController().navigate(R.id.action_workoutDetailsFragment_to_myWorkoutsFragment)
                 }
