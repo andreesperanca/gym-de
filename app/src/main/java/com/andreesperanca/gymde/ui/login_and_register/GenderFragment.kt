@@ -13,22 +13,20 @@ import com.andreesperanca.gymde.utils.extensions.toastCreator
 
 class GenderFragment : Fragment() {
 
-    private val binding by lazy {
-        FragmentGenderBinding.inflate(layoutInflater)
-    }
+    private val binding by lazy { FragmentGenderBinding.inflate(layoutInflater) }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View = binding.root
 
-    override fun onStart() {
-        super.onStart()
-
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        setupClickListeners()
+    }
+    private fun setupClickListeners() {
         binding.tbGenderToolbar.apply {
-            setNavigationOnClickListener {
-                findNavController().popBackStack()
-            }
+            setNavigationOnClickListener{ findNavController().popBackStack() }
         }
 
         binding.btnAdvanceGender.setOnClickListener {
@@ -39,7 +37,6 @@ class GenderFragment : Fragment() {
                 newUser.sex = getString(R.string.female)
             }
             val action = GenderFragmentDirections.actionGenderFragmentToHeightFragment(newUser)
-            toastCreator(newUser.sex)
             findNavController().navigate(action)
         }
     }
