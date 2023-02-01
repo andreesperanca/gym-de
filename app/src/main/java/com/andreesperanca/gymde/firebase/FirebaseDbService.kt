@@ -5,6 +5,7 @@ import android.net.Uri
 import android.util.Log
 import com.andreesperanca.gymde.R
 import com.andreesperanca.gymde.models.Exercise
+import com.andreesperanca.gymde.models.User
 import com.andreesperanca.gymde.models.Workout
 import com.andreesperanca.gymde.utils.Resource
 import com.andreesperanca.gymde.utils.safeCall
@@ -166,6 +167,23 @@ class FirebaseDbService(
                 val objectWorkouts = exercises.toObjects(Workout::class.java)
 
                 Resource.Success(objectWorkouts)
+            }
+        }
+    }
+
+    suspend fun fetchUser(): Resource<User> {
+        return withContext(Dispatchers.IO) {
+            safeCall {
+                val user = firebaseDb
+                    .collection("users")
+                    .document(firebaseAuth.uid!!)
+                    .get()
+                    .await()
+
+                val myUser = user.toObject(User::class.java)
+                Log.i("height", myUser?.height.toString())
+
+                Resource.Success(myUser)
             }
         }
     }

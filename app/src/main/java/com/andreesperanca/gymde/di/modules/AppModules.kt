@@ -44,6 +44,9 @@ val appModules = module {
 
     single<HomeRepository> { HomeRepositoryImpl(get()) }
 
+
+    single<MyAccountRepository> { MyAccountRepositoryImpl(get()) }
+
     single<CreateWorkoutRepository> { CreateWorkoutRepositoryImpl(get()) }
 
     single<WorkoutDetailsRepository> { WorkoutDetailsRepositoryImpl(get()) }
@@ -63,5 +66,7 @@ val appModules = module {
     viewModel<NewExerciseViewModel>() { NewExerciseViewModel(get()) }
 
     viewModel<HomeViewModel>() { HomeViewModel( get()) }
+
+    viewModel<MyAccountViewModel>() { MyAccountViewModel( get()) }
 
 }

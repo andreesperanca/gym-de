@@ -1,99 +1,115 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical"
-    tools:context=".ui.main.MyAccountFragment">
+<layout>
 
-
-    <androidx.appcompat.widget.LinearLayoutCompat
+    <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        tools:context=".ui.main.MyAccountFragment">
 
-        <androidx.constraintlayout.widget.ConstraintLayout
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:orientation="vertical"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="wrap_content">
 
-            <com.google.android.material.imageview.ShapeableImageView
-                android:id="@+id/iv_userPhoto"
-                android:layout_width="150dp"
-                android:layout_height="150dp"
-                android:layout_marginTop="@dimen/medium_margin"
-                app:shapeAppearance="@style/ShapeAppearance.Material3.Corner.Full"
-                app:srcCompat="@drawable/mockphoto1"
-
-
-                android:scaleType="centerCrop"
-
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <com.google.android.material.floatingactionbutton.FloatingActionButton
-                android:id="@+id/floating_action_button"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                style="?attr/floatingActionButtonSmallStyle"
-                app:srcCompat="@drawable/ic_edit"
-
-                android:layout_marginStart="-50dp"
-                android:layout_marginTop="-50dp"
-                android:contentDescription="@string/btn_edit_photo"
-
-                app:layout_constraintStart_toEndOf="@id/iv_userPhoto"
-                app:layout_constraintTop_toBottomOf="@id/iv_userPhoto" />
-
-            <androidx.appcompat.widget.LinearLayoutCompat
-                android:id="@+id/ll_editAccount"
+            <com.google.android.material.progressindicator.LinearProgressIndicator
+                android:id="@+id/pg_myAccount"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
 
-                android:gravity="center"
-                android:orientation="vertical"
-                android:layout_marginTop="@dimen/medium_margin"
+                android:visibility="invisible"
+                android:indeterminate="true"
+                />
 
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/floating_action_button">
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
 
+                <ImageView
+                    android:id="@+id/iv_userPhoto"
+                    android:layout_width="150dp"
+                    android:layout_height="150dp"
+                    android:layout_marginTop="@dimen/medium_margin"
+                    android:scaleType="centerCrop"
 
-                <com.andreesperanca.gymde.utils.custom.ConfigureCustomComponent
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:shapeAppearance="@style/ShapeAppearance.Material3.Corner.Full"
+                    app:srcCompat="@drawable/ic_me" />
+
+                <com.google.android.material.floatingactionbutton.FloatingActionButton
+                    android:id="@+id/floating_action_button"
+                    style="?attr/floatingActionButtonSmallStyle"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginStart="-50dp"
 
-                    app:mIcon="@drawable/ic_me"
-                    app:mTitle="@string/name"
+                    android:layout_marginTop="-50dp"
+                    app:backgroundTint="@color/white"
+                    android:contentDescription="@string/btn_edit_photo"
+                    app:layout_constraintStart_toEndOf="@id/iv_userPhoto"
 
-                    tools:mDescription="André Luiz Esperança Correia" />
+                    app:layout_constraintTop_toBottomOf="@id/iv_userPhoto"
+                    app:srcCompat="@drawable/ic_edit" />
 
-                <com.andreesperanca.gymde.utils.custom.ConfigureCustomComponent
-                    android:layout_width="wrap_content"
+                <androidx.appcompat.widget.LinearLayoutCompat
+                    android:id="@+id/ll_editAccount"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
 
-                    app:mIcon="@drawable/ic_email"
-                    app:mTitle="@string/email"
+                    android:layout_marginTop="@dimen/medium_margin"
+                    android:gravity="center"
+                    android:orientation="vertical"
 
-                    tools:mDescription="andre@gmail.com" />
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/floating_action_button">
 
-                <com.andreesperanca.gymde.utils.custom.ConfigureCustomComponent
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
 
-                    app:mIcon="@drawable/ic_weight"
-                    app:mTitle="@string/weight"
+                    <com.andreesperanca.gymde.utils.custom.ConfigureCustomComponent
+                        android:id="@+id/custom_userName"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
 
-                    app:mDescription="68"/>
+                        app:mIcon="@drawable/ic_me"
+                        app:mTitle="@string/name"
 
-                <com.andreesperanca.gymde.utils.custom.ConfigureCustomComponent
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                        tools:mDescription="André Luiz Esperança Correia" />
 
-                    app:mIcon="@drawable/ic_height"
-                    app:mTitle="@string/height"
+                    <com.andreesperanca.gymde.utils.custom.ConfigureCustomComponent
+                        android:id="@+id/custom_userEmail"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
 
-                    tools:mDescription="178" />
-            </androidx.appcompat.widget.LinearLayoutCompat>
-        </androidx.constraintlayout.widget.ConstraintLayout>
-    </androidx.appcompat.widget.LinearLayoutCompat>
-</ScrollView>
+                        app:mIcon="@drawable/ic_email"
+                        app:mTitle="@string/email"
+
+                        tools:mDescription="andre@gmail.com" />
+
+                    <com.andreesperanca.gymde.utils.custom.ConfigureCustomComponent
+                        android:id="@+id/customUserWeight"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+
+                        app:mDescription="68"
+                        app:mIcon="@drawable/ic_weight"
+
+                        app:mTitle="@string/weight" />
+
+                    <com.andreesperanca.gymde.utils.custom.ConfigureCustomComponent
+                        android:id="@+id/customUserHeight"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+
+                        app:mIcon="@drawable/ic_height"
+                        app:mTitle="@string/height"
+
+                        tools:mDescription="178" />
+                </androidx.appcompat.widget.LinearLayoutCompat>
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.appcompat.widget.LinearLayoutCompat>
+    </ScrollView>
+</layout>

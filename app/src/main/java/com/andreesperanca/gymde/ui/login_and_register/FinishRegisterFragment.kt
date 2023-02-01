@@ -54,12 +54,12 @@ class FinishRegisterFragment : BaseFragment<
                 newUser.name = _tilName.text()
 
                 viewModel.createUser(
-                    sex = newUser.sex,
-                    height = newUser.height,
-                    weight = newUser.weight,
-                    age = newUser.years,
-                    name = newUser.name,
-                    email = newUser.email,
+                    sex = newUser.sex.toString(),
+                    height = newUser.height.toString(),
+                    weight = newUser.weight.toString(),
+                    age = newUser.years.toString(),
+                    name = newUser.name.toString(),
+                    email = newUser.email.toString(),
                     password = _tilPassword.text()
                 )
             }

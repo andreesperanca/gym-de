@@ -32,10 +32,8 @@ class ConfigureCustomComponent @JvmOverloads constructor(
     }
 
 
-    fun edit(
-        action: () -> Unit
-    ) {
-        action()
+    fun editDescription(description: String) {
+        binding.tvComponentDescription.text = description
     }
 
     private fun setup(context: Context, attrs: AttributeSet?) {
