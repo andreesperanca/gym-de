@@ -10,15 +10,19 @@ import androidx.navigation.fragment.navArgs
 import com.andreesperanca.gymde.R
 import com.andreesperanca.gymde.databinding.FragmentWeightBinding
 import com.andreesperanca.gymde.utils.extensions.isValidWeight
+import com.andreesperanca.gymde.utils.extensions.text
 
 class WeightFragment : Fragment() {
 
 
-    val args: HeightFragmentArgs by navArgs()
+    private val args: HeightFragmentArgs by navArgs()
 
-    private val binding by lazy {
-        FragmentWeightBinding.inflate(layoutInflater)
-    }
+    private val binding by lazy { FragmentWeightBinding.inflate(layoutInflater) }
+
+    /** UI COMPONENTS **/
+    private val weightToolbar by lazy { binding.tbWeightToolbar }
+    private val btnAdvanceWeight by lazy { binding.btnAdvanceWeight }
+    private val tilWeight by lazy { binding.tilWeight }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -27,21 +31,18 @@ class WeightFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val newUser = args.newUser
-        val weight = binding.tilWeight
 
-        binding.btnAdvance.setOnClickListener {
-            if (weight.isValidWeight()) {
-                newUser.weight = weight.editText?.text.toString()
+        val newUser = args.newUser
+        btnAdvanceWeight.setOnClickListener {
+            if (tilWeight.isValidWeight()) {
+                newUser.weight = tilWeight.text()
                 val action = WeightFragmentDirections.actionWeightFragmentToAgeFragment(newUser)
                 findNavController().navigate(action)
             }
         }
 
-        binding.tbWeightToolbar.apply {
-            setNavigationOnClickListener {
-                findNavController().popBackStack()
-            }
+        weightToolbar.apply {
+            setNavigationOnClickListener { findNavController().popBackStack() }
         }
     }
 }
