@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import com.andreesperanca.gymde.R
 import com.andreesperanca.gymde.databinding.UpdateWorkoutDialogBinding
 import com.andreesperanca.gymde.utils.extensions.isValidName
+import com.andreesperanca.gymde.utils.extensions.text
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 
 class UpdateWorkoutBottomSheetDialog(
@@ -35,8 +36,8 @@ class UpdateWorkoutBottomSheetDialog(
             val tilNewName = binding.tilUpdateWorkoutName
             val tilNewDescription = binding.tilUpdateWorkoutDescription
 
-            val newName = tilNewName.editText?.text.toString()
-            val newDescription = tilNewDescription.editText?.text.toString()
+            val newName = tilNewName.text()
+            val newDescription = tilNewDescription.text()
 
             if (tilNewName.isValidName()) {
                 updateWorkout(newName, newDescription)

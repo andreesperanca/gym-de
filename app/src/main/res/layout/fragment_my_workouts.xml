@@ -1,40 +1,42 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".ui.main.MyWorkoutsFragment">
+<layout>
 
-
-    <com.google.android.material.progressindicator.LinearProgressIndicator
-        android:id="@+id/pg_progressBarMyWorkouts"
+    <androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
+        tools:context=".ui.main.MyWorkoutsFragment">
 
-        android:layout_gravity="top"
-        android:indeterminate="true"
-        />
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rv_workout"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        <com.google.android.material.progressindicator.LinearProgressIndicator
+            android:id="@+id/pg_progressBarMyWorkouts"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
 
-    <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
-        android:id="@+id/extended_fab"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:shapeAppearance="@style/ShapeAppearanceOverlay.Material3.Corner.Top"
+            android:layout_gravity="top"
+            android:indeterminate="true" />
 
-        app:backgroundTint="@color/orange"
-        android:textColor="@color/white"
-        app:iconTint="@color/white"
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_workout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
 
-        android:elevation="8dp"
-        android:layout_gravity="bottom|center_horizontal"
-        android:contentDescription="@string/new_workout_btn_description"
-        android:text="@string/new_workout"
-        app:icon="@drawable/ic_plus" />
+        <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
+            android:id="@+id/extended_fab"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|center_horizontal"
 
-</androidx.coordinatorlayout.widget.CoordinatorLayout>
+            android:contentDescription="@string/new_workout_btn_description"
+            android:elevation="8dp"
+            android:text="@string/new_workout"
+
+            android:textColor="@color/white"
+            app:backgroundTint="@color/orange"
+            app:icon="@drawable/ic_plus"
+            app:iconTint="@color/white"
+            app:shapeAppearance="@style/ShapeAppearanceOverlay.Material3.Corner.Top" />
+
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+</layout>

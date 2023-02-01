@@ -1,97 +1,104 @@
 package com.andreesperanca.gymde.ui.main
 
 import android.os.Bundle
-import android.util.Log
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
-import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.andreesperanca.gymde.R
 import com.andreesperanca.gymde.adapters.MyWorkoutsAdapter
 import com.andreesperanca.gymde.databinding.FragmentMyWorkoutsBinding
 import com.andreesperanca.gymde.ui.main.viewmodels.MyWorkoutsViewModel
 import com.andreesperanca.gymde.utils.Resource
 import com.andreesperanca.gymde.utils.bottom_sheet_dialogs.UpdateWorkoutBottomSheetDialog
-import com.andreesperanca.gymde.utils.extensions.toastCreator
+import com.andreesperanca.gymde.utils.extensions.isVisible
+import com.andreesperanca.gymde.utils.extensions.snackBarCreator
+import com.andreesperanca.gymde.utils.generics.BaseFragment
 import com.google.android.material.divider.MaterialDividerItemDecoration
+import com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
+import com.google.android.material.progressindicator.LinearProgressIndicator
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
-class MyWorkoutsFragment : Fragment() {
+class MyWorkoutsFragment : BaseFragment<
+        FragmentMyWorkoutsBinding,
+        MyWorkoutsViewModel>(R.layout.fragment_my_workouts) {
 
-    private val binding by lazy {
-        FragmentMyWorkoutsBinding.inflate(layoutInflater)
-    }
+    /** UI COMPONENTS **/
+    private lateinit var _rvMyWorkouts: RecyclerView
+    private lateinit var _addWorkoutButton: ExtendedFloatingActionButton
+    private lateinit var _pgMyWorkouts: LinearProgressIndicator
 
-    private val adapter by lazy {
-        MyWorkoutsAdapter()
-    }
-
-    private val viewModel : MyWorkoutsViewModel by viewModel()
-
-
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View = binding.root
-
+    private val adapter by lazy { MyWorkoutsAdapter() }
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        setupMyWorkoutsRecyclerView()
+        setupClickListeners()
 
-        val divider = MaterialDividerItemDecoration(requireContext(), DividerItemDecoration.VERTICAL)
-        val recyclerView = binding.rvWorkout
+        /** FETCH DATA **/
+        viewModel.fetchWorkouts()
+    }
+
+    private fun setupClickListeners() {
+        _addWorkoutButton.setOnClickListener {
+            findNavController().navigate(R.id.action_myWorkoutsFragment_to_createWorkoutFragment)
+        }
+    }
+    private fun setupMyWorkoutsRecyclerView() {
+        val divider =
+            MaterialDividerItemDecoration(requireContext(), DividerItemDecoration.VERTICAL)
         adapter.updateWorkout = {
             val modalBottomSheet = UpdateWorkoutBottomSheetDialog(
                 updateWorkout = { newName, newDescription ->
                     viewModel.updateWorkout(it, newName, newDescription)
-            })
+                })
             modalBottomSheet.show(this.parentFragmentManager, UpdateWorkoutBottomSheetDialog.TAG)
         }
-        recyclerView.adapter = adapter
-        recyclerView.layoutManager = LinearLayoutManager(requireContext())
-        recyclerView.addItemDecoration(divider)
+        _rvMyWorkouts.adapter = adapter
+        _rvMyWorkouts.layoutManager = LinearLayoutManager(requireContext())
+        _rvMyWorkouts.addItemDecoration(divider)
+    }
+    override fun setupToolbar() { /** NO HAVE TOOLBAR **/ }
+    override fun setupViewModel() {
+        val viewModel: MyWorkoutsViewModel by viewModel()
+        this.viewModel = viewModel
+    }
 
-        binding.extendedFab.setOnClickListener {
-            findNavController().navigate(R.id.action_myWorkoutsFragment_to_createWorkoutFragment)
-        }
-
-        viewModel.fetchWorkouts()
-
-        viewModel.workouts.observe(viewLifecycleOwner) {
-
-            when(it){
+    override fun setupObservers() {
+        viewModel.workouts.observe(viewLifecycleOwner) { workoutList ->
+            when (workoutList) {
                 is Resource.Success -> {
-                    adapter.updateData(it.data)
-                    binding.pgProgressBarMyWorkouts.visibility = View.INVISIBLE
+                    adapter.updateData(workoutList.data)
+                    _pgMyWorkouts.isVisible(false)
                 }
                 is Resource.Loading -> {
-                    binding.pgProgressBarMyWorkouts.visibility = View.VISIBLE
+                    _pgMyWorkouts.isVisible(true)
                 }
                 is Resource.Error -> {
-                    binding.pgProgressBarMyWorkouts.visibility = View.INVISIBLE
-                    Log.i("iError", it.message.toString() )
+                    snackBarCreator(workoutList.message.toString())
+                    _pgMyWorkouts.isVisible(false)
                 }
             }
         }
-
-        viewModel.updateWorkouts.observe(viewLifecycleOwner) {
-
-            when(it){
+        viewModel.updateWorkouts.observe(viewLifecycleOwner) { update ->
+            when (update) {
                 is Resource.Success -> {
                     viewModel.fetchWorkouts()
-                    binding.pgProgressBarMyWorkouts.visibility = View.INVISIBLE
+                    _pgMyWorkouts.isVisible(false)
                 }
                 is Resource.Loading -> {
-                    binding.pgProgressBarMyWorkouts.visibility = View.VISIBLE
+                    _pgMyWorkouts.isVisible(true)
                 }
-                is Resource.Error -> {
-                    binding.pgProgressBarMyWorkouts.visibility = View.INVISIBLE
-                }
+                is Resource.Error -> { snackBarCreator(update.message.toString()) }
             }
 
         }
+    }
+
+    override fun initComponents() {
+        _rvMyWorkouts = binding.rvWorkout
+        _addWorkoutButton = binding.extendedFab
+        _pgMyWorkouts = binding.pgProgressBarMyWorkouts
     }
 }
