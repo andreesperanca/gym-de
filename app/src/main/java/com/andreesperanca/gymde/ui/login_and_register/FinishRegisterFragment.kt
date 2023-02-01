@@ -2,55 +2,50 @@ package com.andreesperanca.gymde.ui.login_and_register
 
 import android.content.Intent
 import android.os.Bundle
-import android.os.Handler
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
-import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
+import com.andreesperanca.gymde.R
 import com.andreesperanca.gymde.databinding.FragmentFinishRegisterBinding
 import com.andreesperanca.gymde.ui.login_and_register.viewmodels.LoginAndRegisterViewModel
 import com.andreesperanca.gymde.ui.main.MainActivity
 import com.andreesperanca.gymde.utils.Resource
+import com.andreesperanca.gymde.utils.disableComponents
 import com.andreesperanca.gymde.utils.extensions.*
+import com.andreesperanca.gymde.utils.generics.BaseFragment
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
-class FinishRegisterFragment : Fragment() {
+class FinishRegisterFragment : BaseFragment<
+        FragmentFinishRegisterBinding,
+        LoginAndRegisterViewModel>(
+    R.layout.fragment_finish_register
+) {
+    private val args: HeightFragmentArgs by navArgs()
 
-    val args: HeightFragmentArgs by navArgs()
-
-    private val binding by lazy {
-        FragmentFinishRegisterBinding.inflate(layoutInflater)
-    }
-
-    private val viewModel: LoginAndRegisterViewModel by viewModel()
-
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View = binding.root
+    /** UI COMPONENTS **/
+    private val tbFinishRegister by lazy { binding.tbFinishRegisterToolbar }
+    private val tilName by lazy { binding.tilName }
+    private val tilEmail by lazy { binding.tilEmail }
+    private val tilPassword by lazy { binding.tilPassword }
+    private val tilPasswordConfirm by lazy { binding.tilPasswordConfirm }
+    private val btnAdvanceFinishRegister by lazy { binding.btnAdvanceFinishRegister }
+    private val pgFinishRegister by lazy { binding.pgProgressBarFinishRegister }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        setupClickListeners()
+    }
 
-        binding.btnAdvanceFinishRegister.setOnClickListener {
-            val email = binding.tilEmail
-            val password = binding.tilPassword
-            val confirmPassword = binding.tilPasswordConfirm
-            val name = binding.tilName
-
-            val tPassword = password.editText?.text.toString()
-
-            if (name.isValidName() &&
-                email.isValidEmail() &&
-                password.isValidPassword() &&
-                confirmPassword.isValidConfirmPassword(tPassword)
+    private fun setupClickListeners() {
+        btnAdvanceFinishRegister.setOnClickListener {
+            if (tilName.isValidName() &&
+                tilEmail.isValidEmail() &&
+                tilPassword.isValidPassword() &&
+                tilPasswordConfirm.isValidConfirmPassword(tilPassword.text())
             ) {
-
                 val newUser = args.newUser
-                newUser.email = email.editText?.text.toString()
-                newUser.name = name.editText?.text.toString()
+                newUser.email = tilEmail.text()
+                newUser.name = tilName.text()
 
                 viewModel.createUser(
                     sex = newUser.sex,
@@ -59,38 +54,40 @@ class FinishRegisterFragment : Fragment() {
                     age = newUser.years,
                     name = newUser.name,
                     email = newUser.email,
-                    password = tPassword
+                    password = tilPassword.text()
                 )
             }
         }
 
-        binding.tbFinishRegisterToolbar.setNavigationOnClickListener {
+        tbFinishRegister.setNavigationOnClickListener {
             findNavController().popBackStack()
         }
-
-        viewModel.userRegistrationStatus.observe(viewLifecycleOwner) {
-
-            when (it) {
+    }
+    override fun setupToolbar() { /** NO HAVA TOOLBAR **/ }
+    override fun setupViewModel() {
+        val viewModel : LoginAndRegisterViewModel by viewModel()
+        this.viewModel = viewModel
+    }
+    override fun setupObservers() {
+        viewModel.userRegistrationStatus.observe(viewLifecycleOwner) { register ->
+            when (register) {
                 is Resource.Success -> {
-                    binding.pgProgressBarFinishRegister.visibility = View.INVISIBLE
+                    pgFinishRegister.isVisible(false)
                     val intent = Intent(requireContext(), MainActivity::class.java)
                     startActivity(intent)
                     activity?.finish()
                 }
                 is Resource.Loading -> {
-                    binding.tilEmail.isEnabled = false
-                    binding.tilName.isEnabled = false
-                    binding.tilPassword.isEnabled = false
-                    binding.tilPasswordConfirm.isEnabled = false
-                    binding.pgProgressBarFinishRegister.visibility = View.VISIBLE
+                    pgFinishRegister.isVisible(true)
+                    disableComponents(
+                        listOf(tilEmail, tilName, tilPassword, tilPasswordConfirm))
+
                 }
                 is Resource.Error -> {
-                    toastCreator(it.message.toString())
-                    binding.pgProgressBarFinishRegister.visibility = View.INVISIBLE
+                    snackBarCreator(register.message.toString())
+                    pgFinishRegister.isVisible(false)
                 }
             }
         }
-
     }
-
 }

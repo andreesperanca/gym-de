@@ -1,130 +1,132 @@
 <?xml version="1.0" encoding="utf-8"?>
+<layout>
 
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:fillViewport="true"
-    tools:context=".ui.login_and_register.FinishRegisterFragment">
-
-    <androidx.appcompat.widget.LinearLayoutCompat
+    <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical">
-
-        <com.google.android.material.appbar.MaterialToolbar
-            android:id="@+id/tb_finishRegisterToolbar"
-            style="@style/Theme.GymDe.DefaultToolbar"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <com.google.android.material.progressindicator.LinearProgressIndicator
-            android:id="@+id/pg_ProgressBarFinishRegister"
-            android:visibility="invisible"
-            android:indeterminate="true"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
+        android:layout_height="match_parent"
+        android:fillViewport="true"
+        tools:context=".ui.login_and_register.FinishRegisterFragment">
 
         <androidx.appcompat.widget.LinearLayoutCompat
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_gravity="center"
-            android:gravity="center"
+            android:layout_height="wrap_content"
             android:orientation="vertical">
 
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/til_name"
+            <com.google.android.material.appbar.MaterialToolbar
+                android:id="@+id/tb_finishRegisterToolbar"
+                style="@style/Theme.GymDe.DefaultToolbar"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
 
-                android:layout_marginHorizontal="@dimen/big_margin"
-                android:layout_marginVertical="@dimen/small_margin"
-                android:hint="@string/name">
-
-                <com.google.android.material.textfield.TextInputEditText
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-
-                    android:inputType="textPersonName" />
-
-            </com.google.android.material.textfield.TextInputLayout>
-
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/til_email"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-
-                android:layout_marginHorizontal="@dimen/big_margin"
-                android:layout_marginVertical="@dimen/small_margin"
-                android:hint="@string/email">
-
-                <com.google.android.material.textfield.TextInputEditText
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-
-                    android:inputType="textEmailAddress" />
-
-            </com.google.android.material.textfield.TextInputLayout>
-
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/til_password"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-
-                android:layout_marginHorizontal="@dimen/big_margin"
-                android:layout_marginVertical="@dimen/small_margin"
-                android:hint="@string/password">
-
-                <com.google.android.material.textfield.TextInputEditText
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-
-                    android:inputType="textPassword" />
-
-            </com.google.android.material.textfield.TextInputLayout>
-
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/til_password_confirm"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-
-                android:layout_marginHorizontal="@dimen/big_margin"
-                android:layout_marginVertical="@dimen/small_margin"
-                android:hint="@string/confirm_password">
-
-                <com.google.android.material.textfield.TextInputEditText
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-
-                    android:inputType="textPassword" />
-
-            </com.google.android.material.textfield.TextInputLayout>
-
-            <com.google.android.material.progressindicator.LinearProgressIndicator
-                android:layout_width="100dp"
-                android:layout_height="50dp"
-
-                android:layout_marginTop="@dimen/small_margin"
-                android:progress="100"
-
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
-            <com.google.android.material.button.MaterialButton
-                android:id="@+id/btn_advanceFinishRegister"
-                android:layout_width="wrap_content"
+            <com.google.android.material.progressindicator.LinearProgressIndicator
+                android:id="@+id/pg_ProgressBarFinishRegister"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:indeterminate="true"
+                android:visibility="invisible" />
 
-                android:layout_marginTop="@dimen/small_margin"
-                android:text="@string/register" />
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/til_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+
+                    android:layout_marginHorizontal="@dimen/big_margin"
+                    android:layout_marginVertical="@dimen/small_margin"
+                    android:hint="@string/name">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+
+                        android:inputType="textPersonName" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/til_email"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+
+                    android:layout_marginHorizontal="@dimen/big_margin"
+                    android:layout_marginVertical="@dimen/small_margin"
+                    android:hint="@string/email">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+
+                        android:inputType="textEmailAddress" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/til_password"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+
+                    android:layout_marginHorizontal="@dimen/big_margin"
+                    android:layout_marginVertical="@dimen/small_margin"
+                    android:hint="@string/password">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+
+                        android:inputType="textPassword" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/til_password_confirm"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+
+                    android:layout_marginHorizontal="@dimen/big_margin"
+                    android:layout_marginVertical="@dimen/small_margin"
+                    android:hint="@string/confirm_password">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+
+                        android:inputType="textPassword" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.progressindicator.LinearProgressIndicator
+                    android:layout_width="100dp"
+                    android:layout_height="50dp"
+
+                    android:layout_marginTop="@dimen/small_margin"
+                    android:progress="100"
+
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btn_advanceFinishRegister"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+
+                    android:layout_marginTop="@dimen/small_margin"
+                    android:text="@string/register" />
+
+            </androidx.appcompat.widget.LinearLayoutCompat>
 
         </androidx.appcompat.widget.LinearLayoutCompat>
 
-    </androidx.appcompat.widget.LinearLayoutCompat>
-
-</ScrollView>
+    </ScrollView>
+</layout>

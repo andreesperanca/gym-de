@@ -28,11 +28,11 @@ class LoginFragment() : BaseFragment<
         LoginAndRegisterViewModel>(R.layout.fragment_login) {
 
     /** UI COMPONENTS **/
-    private lateinit var _tilEmail: TextInputLayout
-    private lateinit var _tilPassword: TextInputLayout
-    private lateinit var _btnEnter: Button
-    private lateinit var _btnCreateAccount: TextView
-    private lateinit var _pgLogin: ProgressBar
+    private val _tilEmail by lazy { binding.tilEmail }
+    private val _tilPassword by lazy { binding.tilPassword }
+    private val _btnEnter by lazy { binding.btnEnter }
+    private val _pgLogin by lazy { binding.pgLoginProgressBar }
+
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -56,30 +56,21 @@ class LoginFragment() : BaseFragment<
         viewModel.login.observe(viewLifecycleOwner) { login ->
             when (login) {
                 is Resource.Success -> {
-                    _pgLogin.visibility = View.INVISIBLE
+                    _pgLogin.isVisible(false)
                     val intent = Intent(requireContext(), MainActivity::class.java)
                     startActivity(intent)
                     activity?.finish()
                 }
                 is Resource.Loading -> {
-                    _pgLogin.visibility = View.VISIBLE
-                    disableComponents(listOf(_tilEmail, _tilPassword, _btnCreateAccount))
+                    _pgLogin.isVisible(true)
+                    disableComponents(listOf(_tilEmail, _tilPassword))
                 }
                 is Resource.Error -> {
                     snackBarCreator(login.message.toString())
-                    _pgLogin.visibility = View.INVISIBLE
-                    enableComponents(listOf(_tilEmail, _tilPassword, _btnCreateAccount))
+                    _pgLogin.isVisible(false)
+                    enableComponents(listOf(_tilEmail, _tilPassword))
                 }
             }
-        }
-    }
-    override fun initComponents() {
-        with(binding) {
-            _tilEmail = tilEmail
-            _tilPassword = tilPassword
-            _btnEnter = btnEnter
-            _btnCreateAccount = btnEnter
-            _pgLogin = pgLoginProgressBar
         }
     }
 }

@@ -12,8 +12,7 @@ import androidx.lifecycle.ViewModel
 
 abstract class BaseFragment<
         T : ViewDataBinding,
-        V : ViewModel
-        >(
+        V : ViewModel>(
     @LayoutRes private val layoutId: Int
 
 ) : Fragment() {
@@ -32,7 +31,6 @@ abstract class BaseFragment<
         .apply {
             lifecycleOwner = viewLifecycleOwner
             binding = this
-            initComponents()
         }.root
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -44,5 +42,4 @@ abstract class BaseFragment<
     abstract fun setupToolbar()
     abstract fun setupViewModel()
     abstract fun setupObservers()
-    abstract fun initComponents()
 }
