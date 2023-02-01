@@ -8,6 +8,7 @@ import com.andreesperanca.gymde.adapters.HealthArticlesAdapter.*
 import com.andreesperanca.gymde.data.healthArticles
 import com.andreesperanca.gymde.databinding.HealthArticlesItemBinding
 import com.andreesperanca.gymde.models.HealthArticles
+import com.google.android.material.snackbar.Snackbar
 
 class HealthArticlesAdapter() : RecyclerView.Adapter<HealthArticlesViewHolder>() {
 
@@ -29,8 +30,11 @@ class HealthArticlesAdapter() : RecyclerView.Adapter<HealthArticlesViewHolder>()
         fun bind(healthArticles: HealthArticles) {
 
             binding.ivHealthArticles.setImageResource(healthArticles.bg)
-
             binding.tvTitleArticle.text = healthArticles.title
+
+            binding.btnReadArticle.setOnClickListener {
+                Snackbar.make(binding.root, "Não implementado.", Snackbar.LENGTH_LONG).show()
+            }
         }
     }
 }

@@ -1,5 +1,7 @@
 package com.andreesperanca.gymde.di.modules
 
+import com.andreesperanca.gymde.adapters.HealthArticlesAdapter
+import com.andreesperanca.gymde.adapters.TodayWorkoutAdapter
 import com.andreesperanca.gymde.firebase.FirebaseDbService
 import com.andreesperanca.gymde.firebase.FirebaseLoginAndRegisterService
 import com.andreesperanca.gymde.repositories.*
@@ -15,6 +17,9 @@ import org.koin.dsl.module
 
 val appModules = module {
 
+    single<TodayWorkoutAdapter> { TodayWorkoutAdapter() }
+
+    single<HealthArticlesAdapter> { HealthArticlesAdapter() }
 
     single<FirebaseAuth> { FirebaseAuth.getInstance() }
 

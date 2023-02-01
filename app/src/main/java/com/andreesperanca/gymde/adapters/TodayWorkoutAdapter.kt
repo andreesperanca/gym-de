@@ -31,7 +31,6 @@ class TodayWorkoutAdapter() : RecyclerView.Adapter<TodayWorkoutAdapter.WorkoutsV
             workoutList = data
             notifyDataSetChanged()
         }
-
     }
 
     inner class WorkoutsViewHolder(private val binding: WorkoutsItemBinding) :

@@ -2,14 +2,8 @@ package com.andreesperanca.gymde.ui.login_and_register
 
 import android.content.Intent
 import android.os.Bundle
-import android.os.Handler
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
 import android.widget.Button
-import android.widget.ProgressBar
-import android.widget.TextView
-import androidx.fragment.app.Fragment
 import com.andreesperanca.gymde.R
 import com.andreesperanca.gymde.databinding.FragmentLoginBinding
 import com.andreesperanca.gymde.ui.login_and_register.viewmodels.LoginAndRegisterViewModel
@@ -19,20 +13,19 @@ import com.andreesperanca.gymde.utils.disableComponents
 import com.andreesperanca.gymde.utils.enableComponents
 import com.andreesperanca.gymde.utils.extensions.*
 import com.andreesperanca.gymde.utils.generics.BaseFragment
+import com.google.android.material.progressindicator.LinearProgressIndicator
 import com.google.android.material.textfield.TextInputLayout
 import org.koin.androidx.viewmodel.ext.android.sharedViewModel
-import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class LoginFragment() : BaseFragment<
         FragmentLoginBinding,
         LoginAndRegisterViewModel>(R.layout.fragment_login) {
 
     /** UI COMPONENTS **/
-    private val _tilEmail by lazy { binding.tilEmail }
-    private val _tilPassword by lazy { binding.tilPassword }
-    private val _btnEnter by lazy { binding.btnEnter }
-    private val _pgLogin by lazy { binding.pgLoginProgressBar }
-
+    private lateinit var _tilEmail: TextInputLayout
+    private lateinit var _tilPassword: TextInputLayout
+    private lateinit var _btnEnter: Button
+    private lateinit var _pgLogin: LinearProgressIndicator
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -45,13 +38,16 @@ class LoginFragment() : BaseFragment<
             }
         }
     }
+
     override fun setupToolbar() {
         /** NO HAVE TOOLBAR **/
     }
+
     override fun setupViewModel() {
         val loginAndRegisterViewModel: LoginAndRegisterViewModel by sharedViewModel()
         this.viewModel = loginAndRegisterViewModel
     }
+
     override fun setupObservers() {
         viewModel.login.observe(viewLifecycleOwner) { login ->
             when (login) {
@@ -72,5 +68,12 @@ class LoginFragment() : BaseFragment<
                 }
             }
         }
+    }
+
+    override fun initComponents() {
+        _tilEmail = binding.tilEmail
+        _tilPassword = binding.tilPassword
+        _btnEnter = binding.btnEnter
+        _pgLogin = binding.pgLoginProgressBar
     }
 }

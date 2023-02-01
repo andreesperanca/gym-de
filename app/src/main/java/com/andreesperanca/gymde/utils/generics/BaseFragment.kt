@@ -35,6 +35,7 @@ abstract class BaseFragment<
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        initComponents()
         setupToolbar()
         setupObservers()
     }
@@ -42,4 +43,5 @@ abstract class BaseFragment<
     abstract fun setupToolbar()
     abstract fun setupViewModel()
     abstract fun setupObservers()
+    abstract fun initComponents()
 }

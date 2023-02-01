@@ -144,12 +144,12 @@ class FirebaseDbService(
             safeCall {
                 val today: String = when (Calendar.getInstance().get(Calendar.DAY_OF_WEEK)) {
                     1 -> {context.getString(R.string.sunday)}
-                    2 -> {context.getString(R.string.tuesday)}
-                    3 -> {context.getString(R.string.wednesday)}
-                    4 -> {context.getString(R.string.thursday)}
-                    5 -> {context.getString(R.string.friday)}
-                    6 -> {context.getString(R.string.saturday)}
-                    7 -> {context.getString(R.string.sunday)}
+                    2 -> {context.getString(R.string.monday)}
+                    3 -> {context.getString(R.string.tuesday)}
+                    4 -> {context.getString(R.string.wednesday)}
+                    5 -> {context.getString(R.string.thursday)}
+                    6 -> {context.getString(R.string.friday)}
+                    7 -> {context.getString(R.string.saturday)}
                     else -> {context.getString(R.string.sunday)}
                 }
 

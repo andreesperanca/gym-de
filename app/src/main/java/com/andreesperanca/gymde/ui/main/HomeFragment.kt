@@ -1,88 +1,86 @@
 package com.andreesperanca.gymde.ui.main
 
 import android.os.Bundle
-import android.util.Log
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
-import androidx.fragment.app.Fragment
+import android.widget.ProgressBar
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.andreesperanca.gymde.R
 import com.andreesperanca.gymde.adapters.HealthArticlesAdapter
 import com.andreesperanca.gymde.adapters.TodayWorkoutAdapter
-import com.andreesperanca.gymde.databinding.EmptyWorkoutItemBinding
-import com.andreesperanca.gymde.databinding.ExerciseItemBinding
 import com.andreesperanca.gymde.databinding.FragmentHomeBinding
 import com.andreesperanca.gymde.ui.main.viewmodels.HomeViewModel
 import com.andreesperanca.gymde.utils.EmptyDataObserver
 import com.andreesperanca.gymde.utils.Resource
-import com.andreesperanca.gymde.utils.extensions.toastCreator
-import kotlinx.coroutines.NonDisposableHandle.parent
+import com.andreesperanca.gymde.utils.extensions.isVisible
+import com.andreesperanca.gymde.utils.extensions.snackBarCreator
+import com.andreesperanca.gymde.utils.generics.BaseFragment
+import org.koin.android.ext.android.inject
 import org.koin.androidx.viewmodel.ext.android.viewModel
-import java.util.*
-import kotlin.time.Duration.Companion.days
 
-class HomeFragment : Fragment() {
+class HomeFragment : BaseFragment<
+        FragmentHomeBinding, HomeViewModel>(
+    R.layout.fragment_home
+) {
+    /** UI COMPONENTS **/
+    private lateinit var _rvTodayWorkouts: RecyclerView
+    private lateinit var _rvHealthArticles: RecyclerView
+    private lateinit var _pgHomeScreen: ProgressBar
 
-
-    private val adapter by lazy {
-        TodayWorkoutAdapter()
-    }
-
-
-    private val hAdapter by lazy {
-        HealthArticlesAdapter()
-    }
-
-    private val binding by lazy {
-        FragmentHomeBinding.inflate(layoutInflater)
-    }
-
-    private val viewModel: HomeViewModel by viewModel()
-
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View = binding.root
-
+    private val todayWorkoutsAdapter: TodayWorkoutAdapter by inject()
+    private val healthArticlesAdapter: HealthArticlesAdapter by inject()
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
         viewModel.fetchWorkouts(requireContext())
 
-        val recyclerViewWorkouts = binding.rvWorkouts
-        recyclerViewWorkouts.adapter = this.adapter
-        recyclerViewWorkouts.layoutManager =
-            LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
-
-        val empty_data_parent = binding.emptyDataParent.root
-
-        val emptyDataObserver = EmptyDataObserver(binding.rvWorkouts, empty_data_parent)
-        adapter.registerAdapterDataObserver(emptyDataObserver)
-
-        val recyclerViewHealthArticles = binding.rvHealthArticles
-        recyclerViewHealthArticles.adapter = this.hAdapter
-        recyclerViewHealthArticles.layoutManager =
-            LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
-
-
-        viewModel.todayWorkouts.observe(viewLifecycleOwner) {
-            when(it){
+        setupRecyclerViewHealthArticles()
+        setupTodayWorkoutRecyclerView()
+    }
+    private fun setupRecyclerViewHealthArticles() {
+        _rvHealthArticles.adapter = healthArticlesAdapter
+        _rvHealthArticles.layoutManager = LinearLayoutManager(
+            requireContext(),
+            LinearLayoutManager.HORIZONTAL,
+            false
+        )
+    }
+    private fun setupTodayWorkoutRecyclerView() {
+        _rvTodayWorkouts.adapter = todayWorkoutsAdapter
+        _rvTodayWorkouts.layoutManager =
+            LinearLayoutManager(
+                requireContext(),
+                LinearLayoutManager.HORIZONTAL,
+                false)
+        val emptyDataView = binding.emptyDataParent.root
+        val emptyDataObserver = EmptyDataObserver(binding.rvWorkouts, emptyDataView)
+        todayWorkoutsAdapter.registerAdapterDataObserver(emptyDataObserver)
+    }
+    override fun setupToolbar() { /**  NO HAVE TOOLBAR **/}
+    override fun setupViewModel() {
+        val viewModel: HomeViewModel by viewModel()
+        this.viewModel = viewModel
+    }
+    override fun setupObservers() {
+        viewModel.todayWorkouts.observe(viewLifecycleOwner) { todayWorkouts ->
+            when (todayWorkouts) {
                 is Resource.Success -> {
-                    adapter.updateData(it.data)
-                    Log.i("data",it.data?.size.toString())
-                    binding.pgProgressBarHomeScreen.visibility = View.INVISIBLE
+                    todayWorkoutsAdapter.updateData(todayWorkouts.data)
+                    _pgHomeScreen.isVisible(false)
                 }
                 is Resource.Loading -> {
-                    binding.pgProgressBarHomeScreen.visibility = View.VISIBLE
+                    _pgHomeScreen.isVisible(true)
                 }
                 is Resource.Error -> {
-                    binding.pgProgressBarHomeScreen.visibility = View.INVISIBLE
-                    toastCreator(it.message.toString())
+                    _pgHomeScreen.isVisible(false)
+                    snackBarCreator(todayWorkouts.message.toString())
                 }
             }
         }
-
     }
-
+    override fun initComponents() {
+        _rvTodayWorkouts = binding.rvWorkouts
+        _rvHealthArticles = binding.rvHealthArticles
+        _pgHomeScreen = binding.pgProgressBarHome
+    }
 }

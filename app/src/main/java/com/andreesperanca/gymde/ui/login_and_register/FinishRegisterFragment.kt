@@ -3,6 +3,9 @@ package com.andreesperanca.gymde.ui.login_and_register
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
+import android.widget.Button
+import android.widget.ProgressBar
+import androidx.appcompat.widget.Toolbar
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.andreesperanca.gymde.R
@@ -13,6 +16,8 @@ import com.andreesperanca.gymde.utils.Resource
 import com.andreesperanca.gymde.utils.disableComponents
 import com.andreesperanca.gymde.utils.extensions.*
 import com.andreesperanca.gymde.utils.generics.BaseFragment
+import com.google.android.material.progressindicator.LinearProgressIndicator
+import com.google.android.material.textfield.TextInputLayout
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class FinishRegisterFragment : BaseFragment<
@@ -23,13 +28,13 @@ class FinishRegisterFragment : BaseFragment<
     private val args: HeightFragmentArgs by navArgs()
 
     /** UI COMPONENTS **/
-    private val tbFinishRegister by lazy { binding.tbFinishRegisterToolbar }
-    private val tilName by lazy { binding.tilName }
-    private val tilEmail by lazy { binding.tilEmail }
-    private val tilPassword by lazy { binding.tilPassword }
-    private val tilPasswordConfirm by lazy { binding.tilPasswordConfirm }
-    private val btnAdvanceFinishRegister by lazy { binding.btnAdvanceFinishRegister }
-    private val pgFinishRegister by lazy { binding.pgProgressBarFinishRegister }
+    private lateinit var tbFinishRegister: Toolbar
+    private lateinit var _tilName: TextInputLayout
+    private lateinit var _tilEmail: TextInputLayout
+    private lateinit var _tilPassword: TextInputLayout
+    private lateinit var _tilPasswordConfirm: TextInputLayout
+    private lateinit var btnAdvanceFinishRegister: Button
+    private lateinit var pgFinishRegister: LinearProgressIndicator
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -37,15 +42,16 @@ class FinishRegisterFragment : BaseFragment<
     }
 
     private fun setupClickListeners() {
+
         btnAdvanceFinishRegister.setOnClickListener {
-            if (tilName.isValidName() &&
-                tilEmail.isValidEmail() &&
-                tilPassword.isValidPassword() &&
-                tilPasswordConfirm.isValidConfirmPassword(tilPassword.text())
+            if (_tilName.isValidName() &&
+                _tilEmail.isValidEmail() &&
+                _tilPassword.isValidPassword() &&
+                _tilPasswordConfirm.isValidConfirmPassword(_tilPassword.text())
             ) {
                 val newUser = args.newUser
-                newUser.email = tilEmail.text()
-                newUser.name = tilName.text()
+                newUser.email = _tilEmail.text()
+                newUser.name = _tilName.text()
 
                 viewModel.createUser(
                     sex = newUser.sex,
@@ -54,7 +60,7 @@ class FinishRegisterFragment : BaseFragment<
                     age = newUser.years,
                     name = newUser.name,
                     email = newUser.email,
-                    password = tilPassword.text()
+                    password = _tilPassword.text()
                 )
             }
         }
@@ -63,11 +69,15 @@ class FinishRegisterFragment : BaseFragment<
             findNavController().popBackStack()
         }
     }
-    override fun setupToolbar() { /** NO HAVA TOOLBAR **/ }
+    override fun setupToolbar() {
+        /** NO HAVA TOOLBAR **/
+    }
+
     override fun setupViewModel() {
-        val viewModel : LoginAndRegisterViewModel by viewModel()
+        val viewModel: LoginAndRegisterViewModel by viewModel()
         this.viewModel = viewModel
     }
+
     override fun setupObservers() {
         viewModel.userRegistrationStatus.observe(viewLifecycleOwner) { register ->
             when (register) {
@@ -80,7 +90,8 @@ class FinishRegisterFragment : BaseFragment<
                 is Resource.Loading -> {
                     pgFinishRegister.isVisible(true)
                     disableComponents(
-                        listOf(tilEmail, tilName, tilPassword, tilPasswordConfirm))
+                        listOf(_tilEmail, _tilName, _tilPassword, _tilPasswordConfirm)
+                    )
 
                 }
                 is Resource.Error -> {
@@ -88,6 +99,17 @@ class FinishRegisterFragment : BaseFragment<
                     pgFinishRegister.isVisible(false)
                 }
             }
+        }
+    }
+
+    override fun initComponents() {
+        with(binding) {
+            tbFinishRegister = binding.tbFinishRegisterToolbar
+            pgFinishRegister = binding.pgProgressBarFinishRegister
+            _tilPassword = binding.tilPassword
+            _tilName = binding.tilName
+            _tilPasswordConfirm = binding.tilPasswordConfirm
+            _tilEmail = binding.tilEmail
         }
     }
 }
