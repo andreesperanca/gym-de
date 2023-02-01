@@ -11,7 +11,6 @@ import com.andreesperanca.gymde.R
 import com.andreesperanca.gymde.databinding.FragmentLoginHomeScreenBinding
 import com.andreesperanca.gymde.ui.login_and_register.viewmodels.LoginAndRegisterViewModel
 import com.andreesperanca.gymde.ui.main.MainActivity
-import com.andreesperanca.gymde.utils.Resource
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class LoginHomeScreen : Fragment() {
@@ -20,7 +19,7 @@ class LoginHomeScreen : Fragment() {
         FragmentLoginHomeScreenBinding.inflate(layoutInflater)
     }
 
-    val viewModel: LoginAndRegisterViewModel by viewModel()
+    private val viewModel: LoginAndRegisterViewModel by viewModel()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -37,7 +36,9 @@ class LoginHomeScreen : Fragment() {
             startActivity(intent)
             activity?.finish()
         }
-
+        setupButtons()
+    }
+    private fun setupButtons() {
         binding.btnEnter.setOnClickListener {
             findNavController().navigate(R.id.action_loginHomeScreen_to_loginFragment)
         }

@@ -1,22 +1,21 @@
 package com.andreesperanca.gymde.firebase
 
+import android.content.Context
 import android.net.Uri
 import android.util.Log
-import androidx.constraintlayout.helper.widget.MotionEffect.TAG
-import com.andreesperanca.gymde.data.mockWorkouts
+import com.andreesperanca.gymde.R
 import com.andreesperanca.gymde.models.Exercise
-import com.andreesperanca.gymde.models.User
 import com.andreesperanca.gymde.models.Workout
 import com.andreesperanca.gymde.utils.Resource
 import com.andreesperanca.gymde.utils.safeCall
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.storage.FirebaseStorage
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.tasks.await
 import kotlinx.coroutines.withContext
-import java.net.URI
+import java.util.*
+import kotlin.math.absoluteValue
 
 class FirebaseDbService(
     private val firebaseDb: FirebaseFirestore,
@@ -136,6 +135,37 @@ class FirebaseDbService(
                 val objectExercises = exercises.toObjects(Exercise::class.java)
 
                 Resource.Success(objectExercises)
+            }
+        }
+    }
+
+    suspend fun fetchTodayWorkouts(context: Context): Resource<List<Workout>> {
+        return withContext(Dispatchers.IO) {
+            safeCall {
+                val today: String = when (Calendar.getInstance().get(Calendar.DAY_OF_WEEK)) {
+                    1 -> {context.getString(R.string.sunday)}
+                    2 -> {context.getString(R.string.tuesday)}
+                    3 -> {context.getString(R.string.wednesday)}
+                    4 -> {context.getString(R.string.thursday)}
+                    5 -> {context.getString(R.string.friday)}
+                    6 -> {context.getString(R.string.saturday)}
+                    7 -> {context.getString(R.string.sunday)}
+                    else -> {context.getString(R.string.sunday)}
+                }
+
+                Log.i("dayWeek",today.toString())
+
+                val exercises = firebaseDb
+                    .collection("users")
+                    .document(firebaseAuth.uid!!)
+                    .collection("workoutList")
+                    .whereArrayContains("dayOfWeek", today)
+                    .get()
+                    .await()
+
+                val objectWorkouts = exercises.toObjects(Workout::class.java)
+
+                Resource.Success(objectWorkouts)
             }
         }
     }
