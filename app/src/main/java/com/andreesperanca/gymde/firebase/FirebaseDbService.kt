@@ -63,4 +63,26 @@ class FirebaseDbService(
             }
         }
     }
+
+    suspend fun updateWorkout(workout: Workout, newName: String, newDescription: String) : Resource<Unit> {
+        return withContext(Dispatchers.IO) {
+            safeCall {
+                firebaseDb
+                    .collection("users")
+                    .document(firebaseAuth.uid!!)
+                    .collection("workoutList")
+                    .document(workout.uid)
+                    .update("name", newName).await()
+
+                firebaseDb
+                    .collection("users")
+                    .document(firebaseAuth.uid!!)
+                    .collection("workoutList")
+                    .document(workout.uid)
+                    .update("description", newDescription).await()
+
+                Resource.Success(Unit)
+            }
+        }
+    }
 }

@@ -14,6 +14,7 @@ import com.andreesperanca.gymde.adapters.MyWorkoutsAdapter
 import com.andreesperanca.gymde.databinding.FragmentMyWorkoutsBinding
 import com.andreesperanca.gymde.ui.main.viewmodels.MyWorkoutsViewModel
 import com.andreesperanca.gymde.utils.Resource
+import com.andreesperanca.gymde.utils.bottom_sheet_dialogs.UpdateWorkoutBottomSheetDialog
 import com.andreesperanca.gymde.utils.extensions.toastCreator
 import com.google.android.material.divider.MaterialDividerItemDecoration
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -40,9 +41,15 @@ class MyWorkoutsFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
 
-        val divider =
-            MaterialDividerItemDecoration(requireContext(), DividerItemDecoration.VERTICAL)
+        val divider = MaterialDividerItemDecoration(requireContext(), DividerItemDecoration.VERTICAL)
         val recyclerView = binding.rvWorkout
+        adapter.updateWorkout = {
+            val modalBottomSheet = UpdateWorkoutBottomSheetDialog(
+                updateWorkout = { newName, newDescription ->
+                    viewModel.updateWorkout(it, newName, newDescription)
+            })
+            modalBottomSheet.show(this.parentFragmentManager, UpdateWorkoutBottomSheetDialog.TAG)
+        }
         recyclerView.adapter = adapter
         recyclerView.layoutManager = LinearLayoutManager(requireContext())
         recyclerView.addItemDecoration(divider)
@@ -68,6 +75,23 @@ class MyWorkoutsFragment : Fragment() {
                     Log.i("iError", it.message.toString() )
                 }
             }
+        }
+
+        viewModel.updateWorkouts.observe(viewLifecycleOwner) {
+
+            when(it){
+                is Resource.Success -> {
+                    viewModel.fetchWorkouts()
+                    binding.pgProgressBarMyWorkouts.visibility = View.INVISIBLE
+                }
+                is Resource.Loading -> {
+                    binding.pgProgressBarMyWorkouts.visibility = View.VISIBLE
+                }
+                is Resource.Error -> {
+                    binding.pgProgressBarMyWorkouts.visibility = View.INVISIBLE
+                }
+            }
+
         }
     }
 }

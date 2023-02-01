@@ -9,7 +9,9 @@ import com.andreesperanca.gymde.databinding.MyWorkoutItemBinding
 import com.andreesperanca.gymde.models.Workout
 import com.andreesperanca.gymde.ui.main.MyWorkoutsFragmentDirections
 
-class MyWorkoutsAdapter() : RecyclerView.Adapter<MyWorkoutsAdapter.WorkoutsViewHolder>() {
+class MyWorkoutsAdapter(
+    var updateWorkout : (workout: Workout) -> Unit = {}
+) : RecyclerView.Adapter<MyWorkoutsAdapter.WorkoutsViewHolder>() {
 
     var workoutList: List<Workout> = emptyList()
 
@@ -46,6 +48,11 @@ class MyWorkoutsAdapter() : RecyclerView.Adapter<MyWorkoutsAdapter.WorkoutsViewH
                     )
                 it.findNavController().navigate(action)
             }
+
+            binding.iconButton.setOnClickListener {
+                updateWorkout(workout)
+            }
+
         }
     }
 }

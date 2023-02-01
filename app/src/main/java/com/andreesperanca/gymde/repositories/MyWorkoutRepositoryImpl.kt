@@ -11,4 +11,12 @@ class MyWorkoutRepositoryImpl(
 
     override suspend fun fetchWorkouts(): Resource<List<Workout>> =
         firebaseDbService.fetchWorkouts()
+
+    override suspend fun updateWorkout(
+        workout: Workout,
+        newName: String,
+        newDescription: String
+    ): Resource<Unit> =
+        firebaseDbService.updateWorkout(workout, newName, newDescription)
+
 }
