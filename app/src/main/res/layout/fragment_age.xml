@@ -14,7 +14,7 @@
         android:layout_height="wrap_content">
 
         <com.google.android.material.appbar.MaterialToolbar
-            android:id="@+id/tb_genderToolbar"
+            android:id="@+id/tb_ageToolbar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             style="@style/Theme.GymDe.DefaultToolbar"
@@ -39,7 +39,7 @@
                 android:textAlignment="center" />
 
             <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/til_height"
+                android:id="@+id/til_age"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
 

@@ -9,15 +9,18 @@ import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.andreesperanca.gymde.databinding.FragmentAgeBinding
 import com.andreesperanca.gymde.utils.extensions.isValidAge
+import com.andreesperanca.gymde.utils.extensions.text
 
 class AgeFragment : Fragment() {
 
-    val args: AgeFragmentArgs by navArgs()
+    private val args: AgeFragmentArgs by navArgs()
 
-    private val binding by lazy {
-        FragmentAgeBinding.inflate(layoutInflater)
-    }
+    private val binding by lazy { FragmentAgeBinding.inflate(layoutInflater) }
 
+    /** UI COMPONENTS **/
+    private val tbAgeFragment by lazy { binding.tbAgeToolbar }
+    private val tilAge by lazy { binding.tilAge }
+    private val btnAdvanceAge by lazy { binding.btnAdvanceAge }
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -26,14 +29,17 @@ class AgeFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        binding.btnAdvanceAge.setOnClickListener {
-            val age = binding.tilHeight
+        btnAdvanceAge.setOnClickListener {
             val newUser = args.newUser
-            if ( age.isValidAge()) {
-                newUser.years = binding.tilHeight.editText?.text.toString()
+            if (tilAge.isValidAge()) {
+                newUser.years = tilAge.text()
                 val action = AgeFragmentDirections.actionFocusFragmentToFinishRegister(newUser)
                 findNavController().navigate(action)
             }
+        }
+
+        tbAgeFragment.apply {
+            this.setNavigationOnClickListener { findNavController().popBackStack() }
         }
 
     }
