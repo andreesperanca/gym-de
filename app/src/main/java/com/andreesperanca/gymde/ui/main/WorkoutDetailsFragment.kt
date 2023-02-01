@@ -17,6 +17,7 @@ import com.andreesperanca.gymde.utils.Resource
 import com.andreesperanca.gymde.utils.extensions.isVisible
 import com.andreesperanca.gymde.utils.extensions.toastCreator
 import com.andreesperanca.gymde.utils.generics.BaseFragment
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.android.material.divider.MaterialDividerItemDecoration
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.android.material.progressindicator.LinearProgressIndicator
@@ -70,7 +71,17 @@ class WorkoutDetailsFragment : BaseFragment<
             setOnMenuItemClickListener { menuItem ->
                 when (menuItem.itemId) {
                     R.id.excludeWorkout -> {
-                        viewModel.excludeWorkout(args.workout)
+                        MaterialAlertDialogBuilder(context)
+                            .setTitle(resources.getString(R.string.AlertDialogTitle))
+                            .setMessage(resources.getString(R.string.supporting_text))
+                            .setNegativeButton(resources.getString(R.string.cancel)) { dialog, _ ->
+                                dialog.dismiss()
+                            }
+                            .setPositiveButton(resources.getString(R.string.delete)) { dialog, _ ->
+                                viewModel.excludeWorkout(args.workout)
+                                dialog.dismiss()
+                            }
+                            .show()
                         true
                     }
                     else -> {

@@ -74,4 +74,6 @@
     <string name="photo_error">Erro ao carregar a foto.</string>
     <string name="quantitySeries">Repetições: %1$s </string>
     <string name="workout_day">Dias do treino</string>
+    <string name="AlertDialogTitle">Atenção</string>
+    <string name="supporting_text">Você quer mesmo excluir este treino?</string>
 </resources>
