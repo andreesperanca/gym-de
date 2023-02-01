@@ -1,128 +1,130 @@
 <?xml version="1.0" encoding="utf-8"?>
+<layout>
 
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
-
-    <androidx.appcompat.widget.LinearLayoutCompat
+    <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical">
-
-        <com.google.android.material.progressindicator.LinearProgressIndicator
-            android:id="@+id/pg_newWorkoutDialog"
-            android:indeterminate="true"
-            android:visibility="invisible"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
-
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/til_newWorkoutName"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-
-            android:layout_marginHorizontal="@dimen/big_margin"
-            android:layout_marginVertical="@dimen/small_margin"
-            android:hint="@string/name">
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:inputType="text" />
-
-        </com.google.android.material.textfield.TextInputLayout>
-
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/til_newWorkoutDescription"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-
-            android:layout_marginHorizontal="@dimen/big_margin"
-            android:layout_marginVertical="@dimen/small_margin"
-            android:hint="@string/description">
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:inputType="text" />
-
-        </com.google.android.material.textfield.TextInputLayout>
-
-        <TextView
-            android:id="@+id/tv_workoutDaysTitle"
-            style="@style/TextAppearance.Material3.TitleLarge"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="@dimen/small_margin"
-
-            android:hint="@string/workout_day" />
-
-        <com.google.android.material.checkbox.MaterialCheckBox
-            android:id="@+id/cb_monday"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/monday" />
-
-        <com.google.android.material.checkbox.MaterialCheckBox
-            android:id="@+id/cb_tuesday"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/tuesday" />
-
-        <com.google.android.material.checkbox.MaterialCheckBox
-            android:id="@+id/cb_wednesday"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/wednesday" />
-
-        <com.google.android.material.checkbox.MaterialCheckBox
-            android:id="@+id/cb_thursday"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/thursday" />
-
-        <com.google.android.material.checkbox.MaterialCheckBox
-            android:id="@+id/cb_friday"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/friday" />
-
-        <com.google.android.material.checkbox.MaterialCheckBox
-            android:id="@+id/cb_saturday"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/saturday" />
-
-        <com.google.android.material.checkbox.MaterialCheckBox
-            android:id="@+id/cb_sunday"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/sunday" />
+        android:layout_height="match_parent">
 
         <androidx.appcompat.widget.LinearLayoutCompat
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:gravity="center"
-            android:orientation="horizontal"
-            app:layout_constraintTop_toBottomOf="@id/til_newWorkoutName">
+            android:orientation="vertical">
 
-            <com.google.android.material.button.MaterialButton
-                android:id="@+id/btn_createWorkout"
-                android:layout_width="wrap_content"
+            <com.google.android.material.progressindicator.LinearProgressIndicator
+                android:id="@+id/pg_newWorkoutDialog"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:indeterminate="true"
+                android:visibility="invisible" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/til_newWorkoutName"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
 
-                android:layout_marginHorizontal="@dimen/small_margin"
-                android:text="@string/create_workout" />
+                android:layout_marginHorizontal="@dimen/big_margin"
+                android:layout_marginVertical="@dimen/small_margin"
+                android:hint="@string/name">
 
-            <com.google.android.material.button.MaterialButton
-                android:id="@+id/btn_cancel"
-                android:layout_width="wrap_content"
+                <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="text" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/til_newWorkoutDescription"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
 
-                android:layout_marginHorizontal="@dimen/small_margin"
-                android:text="@string/cancel" />
+                android:layout_marginHorizontal="@dimen/big_margin"
+                android:layout_marginVertical="@dimen/small_margin"
+                android:hint="@string/description">
 
+                <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="text" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <TextView
+                android:id="@+id/tv_workoutDaysTitle"
+                style="@style/TextAppearance.Material3.TitleLarge"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/small_margin"
+
+                android:hint="@string/workout_day" />
+
+            <com.google.android.material.checkbox.MaterialCheckBox
+                android:id="@+id/cb_monday"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/monday" />
+
+            <com.google.android.material.checkbox.MaterialCheckBox
+                android:id="@+id/cb_tuesday"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/tuesday" />
+
+            <com.google.android.material.checkbox.MaterialCheckBox
+                android:id="@+id/cb_wednesday"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/wednesday" />
+
+            <com.google.android.material.checkbox.MaterialCheckBox
+                android:id="@+id/cb_thursday"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/thursday" />
+
+            <com.google.android.material.checkbox.MaterialCheckBox
+                android:id="@+id/cb_friday"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/friday" />
+
+            <com.google.android.material.checkbox.MaterialCheckBox
+                android:id="@+id/cb_saturday"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/saturday" />
+
+            <com.google.android.material.checkbox.MaterialCheckBox
+                android:id="@+id/cb_sunday"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/sunday" />
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:orientation="horizontal"
+                app:layout_constraintTop_toBottomOf="@id/til_newWorkoutName">
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btn_createWorkout"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+
+                    android:layout_marginHorizontal="@dimen/small_margin"
+                    android:text="@string/create_workout" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btn_cancel"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+
+                    android:layout_marginHorizontal="@dimen/small_margin"
+                    android:text="@string/cancel" />
+
+            </androidx.appcompat.widget.LinearLayoutCompat>
         </androidx.appcompat.widget.LinearLayoutCompat>
-    </androidx.appcompat.widget.LinearLayoutCompat>
-</ScrollView>
+    </ScrollView>
+</layout>
