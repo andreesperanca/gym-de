@@ -37,6 +37,17 @@ class MyAccountFragment : BaseFragment<
         /** FETCH USER **/
         viewModel.fetchUser()
 
+        setClickListeners()
+
+    }
+
+    private fun setClickListeners() {
+        fabEditPhoto.setOnClickListener {
+            snackBarCreator(getString(R.string.similar_feature_in_exercises) )
+        }
+
+        cUserName.setClickEditBtn { snackBarCreator(getString(R.string.similar_feature_update_workouts)) }
+
     }
 
     override fun setupToolbar() {

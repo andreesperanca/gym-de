@@ -8,6 +8,7 @@ import com.andreesperanca.gymde.adapters.ExerciseAdapter.ExerciseViewHolder
 import com.andreesperanca.gymde.databinding.ExerciseItemBinding
 import com.andreesperanca.gymde.models.Exercise
 import com.bumptech.glide.Glide
+import com.google.android.material.snackbar.Snackbar
 
 class ExerciseAdapter() : RecyclerView.Adapter<ExerciseViewHolder>() {
 
@@ -26,28 +27,38 @@ class ExerciseAdapter() : RecyclerView.Adapter<ExerciseViewHolder>() {
     override fun getItemCount(): Int = exerciseList.size
 
     fun updateData(data: List<Exercise>?) {
-        if( data != null) {
+        if (data != null) {
             exerciseList = data
             notifyItemRangeInserted(0, exerciseList.size)
         }
     }
 
-
     inner class ExerciseViewHolder(private val binding: ExerciseItemBinding) :
         RecyclerView.ViewHolder(binding.root) {
 
         fun bind(exercise: Exercise) {
-            binding.tvExerciseTitle.text = exercise.name
-            binding.tvExerciseDescription.text = exercise.description
-            binding.tvQuantitySeries.text = binding.root.context.getString(R.string.quantitySeries, exercise.series)
 
-            Glide
-                .with(binding.root)
-                .load(exercise.image)
-                .centerCrop()
-                .placeholder(R.drawable.workout_bg)
-                .into(binding.ivExercise)
+            with(binding) {
+                tvExerciseTitle.text = exercise.name
+                tvExerciseDescription.text = exercise.description
+                tvQuantitySeries.text =
+                    root.context.getString(R.string.quantitySeries, exercise.series)
 
+                btnEditButton.setOnClickListener {
+                    Snackbar.make(
+                        it.rootView,
+                        root.context.getText(R.string.similar_feature_update_workouts),
+                        Snackbar.LENGTH_LONG
+                    ).show()
+                }
+
+                Glide
+                    .with(root)
+                    .load(exercise.image)
+                    .centerCrop()
+                    .placeholder(R.drawable.workout_bg)
+                    .into(ivExercise)
+            }
         }
     }
 }

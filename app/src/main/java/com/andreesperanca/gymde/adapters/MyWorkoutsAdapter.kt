@@ -11,7 +11,7 @@ import com.andreesperanca.gymde.models.Workout
 import com.andreesperanca.gymde.ui.main.MyWorkoutsFragmentDirections
 
 class MyWorkoutsAdapter(
-    var updateWorkout : (workout: Workout) -> Unit = {}
+    var updateWorkout: (workout: Workout) -> Unit = {}
 ) : RecyclerView.Adapter<MyWorkoutsAdapter.WorkoutsViewHolder>() {
 
     var workoutList: List<Workout> = emptyList()
@@ -38,7 +38,6 @@ class MyWorkoutsAdapter(
         RecyclerView.ViewHolder(binding.root) {
 
         fun bind(workout: Workout) {
-
             with(binding) {
                 tvWorkoutTitle.text = workout.name
                 tvWorkoutDescription.text = workout.description
@@ -53,7 +52,6 @@ class MyWorkoutsAdapter(
                     it.findNavController().navigate(action)
                 }
             }
-
         }
     }
 }

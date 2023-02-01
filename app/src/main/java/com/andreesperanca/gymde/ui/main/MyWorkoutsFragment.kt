@@ -11,7 +11,7 @@ import com.andreesperanca.gymde.adapters.MyWorkoutsAdapter
 import com.andreesperanca.gymde.databinding.FragmentMyWorkoutsBinding
 import com.andreesperanca.gymde.ui.main.viewmodels.MyWorkoutsViewModel
 import com.andreesperanca.gymde.utils.Resource
-import com.andreesperanca.gymde.utils.bottom_sheet_dialogs.UpdateWorkoutBottomSheetDialog
+import com.andreesperanca.gymde.utils.dialogs.UpdateWorkoutBottomSheetDialog
 import com.andreesperanca.gymde.utils.extensions.isVisible
 import com.andreesperanca.gymde.utils.extensions.snackBarCreator
 import com.andreesperanca.gymde.utils.generics.BaseFragment

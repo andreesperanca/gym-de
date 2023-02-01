@@ -76,4 +76,8 @@
     <string name="workout_day">Dias do treino</string>
     <string name="AlertDialogTitle">Atenção</string>
     <string name="supporting_text">Você quer mesmo excluir este treino?</string>
+
+    <string name="similar_feature_in_exercises">Feature semelhante implementada ao criar exercícios.</string>
+    <string name="similar_feature_update_workouts">Feature semelhante implementada ao atualizar treinos.</string>
+    <string name="no_implementation">Feature não implementada.</string>
 </resources>

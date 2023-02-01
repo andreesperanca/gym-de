@@ -37,21 +37,22 @@ class TodayWorkoutAdapter() : RecyclerView.Adapter<TodayWorkoutAdapter.WorkoutsV
         RecyclerView.ViewHolder(binding.root) {
 
         fun bind(workout: Workout) {
-            binding.tvWorkoutTitle.text = workout.description
-            binding.tvWorkoutDescription.text = workout.description
+            with(binding) {
+                tvWorkoutTitle.text = workout.description
+                tvWorkoutDescription.text = workout.description
+                btnEditWorkout.setOnClickListener {
+                    Snackbar.make(
+                        binding.root,
+                        "Função implementada apenas na aba treinos.",
+                        Snackbar.LENGTH_LONG
+                    ).show()
 
-            binding.btnEditWorkout.setOnClickListener {
-                Snackbar.make(
-                    binding.root,
-                    "Função implementada apenas na aba treinos.",
-                    Snackbar.LENGTH_LONG
-                ).show()
-
-            }
-            binding.btnStartWorkout.setOnClickListener {
-                val action =
-                    HomeFragmentDirections.actionHomeFragmentToWorkoutDetailsFragment(workout)
-                it.findNavController().navigate(action)
+                }
+                btnStartWorkout.setOnClickListener {
+                    val action =
+                        HomeFragmentDirections.actionHomeFragmentToWorkoutDetailsFragment(workout)
+                    it.findNavController().navigate(action)
+                }
             }
         }
     }

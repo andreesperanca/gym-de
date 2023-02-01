@@ -36,6 +36,10 @@ class ConfigureCustomComponent @JvmOverloads constructor(
         binding.tvComponentDescription.text = description
     }
 
+    fun setClickEditBtn(action : () -> Unit) {
+        binding.iconButton.setOnClickListener { action() }
+    }
+
     private fun setup(context: Context, attrs: AttributeSet?) {
         val typedArray =
             context.theme.obtainStyledAttributes(

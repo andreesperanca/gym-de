@@ -1,10 +1,9 @@
-package com.andreesperanca.gymde.utils.bottom_sheet_dialogs
+package com.andreesperanca.gymde.utils.dialogs
 
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.andreesperanca.gymde.R
 import com.andreesperanca.gymde.databinding.UpdateWorkoutDialogBinding
 import com.andreesperanca.gymde.utils.extensions.isValidName
 import com.andreesperanca.gymde.utils.extensions.text

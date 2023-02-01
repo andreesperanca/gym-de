@@ -29,11 +29,12 @@ class HealthArticlesAdapter() : RecyclerView.Adapter<HealthArticlesViewHolder>()
         RecyclerView.ViewHolder(binding.root) {
         fun bind(healthArticles: HealthArticles) {
 
-            binding.ivHealthArticles.setImageResource(healthArticles.bg)
-            binding.tvTitleArticle.text = healthArticles.title
-
-            binding.btnReadArticle.setOnClickListener {
-                Snackbar.make(binding.root, "Não implementado.", Snackbar.LENGTH_LONG).show()
+            with(binding) {
+                ivHealthArticles.setImageResource(healthArticles.bg)
+                tvTitleArticle.text = healthArticles.title
+                btnReadArticle.setOnClickListener {
+                    Snackbar.make(binding.root, root.context.getText(R.string.no_implementation), Snackbar.LENGTH_LONG).show()
+                }
             }
         }
     }
