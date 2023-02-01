@@ -8,7 +8,11 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
+import androidx.recyclerview.widget.DividerItemDecoration.VERTICAL
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.andreesperanca.gymde.R
+import com.andreesperanca.gymde.adapters.ExerciseAdapter
 import com.andreesperanca.gymde.databinding.FragmentWorkoutDetailsBinding
 import com.andreesperanca.gymde.ui.main.viewmodels.WorkoutDetailsViewModel
 import com.andreesperanca.gymde.utils.Resource
@@ -23,6 +27,10 @@ class WorkoutDetailsFragment : Fragment() {
         FragmentWorkoutDetailsBinding.inflate(layoutInflater)
     }
 
+    private val adapter by lazy {
+        ExerciseAdapter()
+    }
+
     private val viewModel: WorkoutDetailsViewModel by viewModel()
 
     override fun onCreateView(
@@ -34,6 +42,11 @@ class WorkoutDetailsFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        binding.rvExercise.adapter = adapter
+        binding.rvExercise.layoutManager = LinearLayoutManager(requireContext(), RecyclerView.VERTICAL, false )
+
+        viewModel.fetchExercises(args.workout.uid)
 
         binding.tbWorkoutToolbar.apply {
             title = args.workout.name
@@ -59,9 +72,7 @@ class WorkoutDetailsFragment : Fragment() {
 
         binding.extendedFab.setOnClickListener {
             val action =
-                WorkoutDetailsFragmentDirections.actionWorkoutDetailsFragmentToNewExerciseFragment(
-                    args.workout.uid
-                )
+                WorkoutDetailsFragmentDirections.actionWorkoutDetailsFragmentToNewExerciseFragment(args.workout)
             findNavController().navigate(action)
         }
 
@@ -80,6 +91,22 @@ class WorkoutDetailsFragment : Fragment() {
                 }
             }
 
+        }
+
+        viewModel.fetchExercises.observe(viewLifecycleOwner) {
+            when (it) {
+                is Resource.Success -> {
+                    adapter.updateData(it.data)
+                    binding.pgProgressBarWorkoutDetails.visibility = View.INVISIBLE
+                }
+                is Resource.Loading -> {
+                    binding.pgProgressBarWorkoutDetails.visibility = View.VISIBLE
+                }
+                is Resource.Error -> {
+                    toastCreator(it.message.toString())
+                    binding.pgProgressBarWorkoutDetails.visibility = View.INVISIBLE
+                }
+            }
         }
 
     }

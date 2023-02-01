@@ -60,7 +60,8 @@ class FirebaseDbService(
                     .collection("users")
                     .document(firebaseAuth.uid!!)
                     .collection("workoutList")
-                    .get().await()
+                    .get()
+                    .await()
 
                 val objectWorkout = workouts.toObjects(Workout::class.java)
 
@@ -120,6 +121,22 @@ class FirebaseDbService(
             Log.i("linkdownload", linkDownload.toString())
 
             Resource.Success(linkDownload)
+        }
+    }
+
+    suspend fun fetchExercises(workoutId: String): Resource<List<Exercise>> {
+        return withContext(Dispatchers.IO) {
+            safeCall {
+                val exercises = firebaseDb
+                    .collection("exercises")
+                    .whereEqualTo("workoutId", workoutId)
+                    .get()
+                    .await()
+
+                val objectExercises = exercises.toObjects(Exercise::class.java)
+
+                Resource.Success(objectExercises)
+            }
         }
     }
 }

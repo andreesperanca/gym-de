@@ -71,7 +71,7 @@ class NewExerciseFragment() : Fragment() {
                     val description = binding.tilNewExerciseDescription
                     val quantitySeries = binding.tilNewExerciseSeries
                     val newExercise = Exercise(
-                        workoutId = args.workoutId,
+                        workoutId = args.workout.uid,
                         name = name.editText?.text.toString(),
                         description = description.editText?.text.toString(),
                         image = it.data.toString(),
@@ -92,7 +92,8 @@ class NewExerciseFragment() : Fragment() {
             when(it){
                 is Resource.Success -> {
                     binding.pgProgressBarNewExercise.visibility = View.INVISIBLE
-                    findNavController().popBackStack()
+                    val action = NewExerciseFragmentDirections.actionNewExerciseFragmentToWorkoutDetailsFragment(args.workout)
+                    findNavController().navigate(action)
                 }
                 is Resource.Loading -> {
                 }
