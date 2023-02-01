@@ -1,113 +1,115 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
-
-    <androidx.appcompat.widget.LinearLayoutCompat
+<layout>
+    <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-
-        android:orientation="vertical">
-
-        <com.google.android.material.progressindicator.LinearProgressIndicator
-            android:id="@+id/pg_progressBarNewExercise"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-
-            android:visibility="invisible"
-            android:layout_gravity="top"
-            android:indeterminate="true" />
-
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/til_newExerciseName"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-
-            android:layout_marginHorizontal="@dimen/big_margin"
-            android:layout_marginVertical="@dimen/small_margin"
-            android:hint="@string/name">
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:inputType="text" />
-
-        </com.google.android.material.textfield.TextInputLayout>
-
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/til_newExerciseDescription"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-
-            android:layout_marginHorizontal="@dimen/big_margin"
-            android:layout_marginVertical="@dimen/small_margin"
-            android:hint="@string/description">
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:inputType="text" />
-
-        </com.google.android.material.textfield.TextInputLayout>
-
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/til_newExerciseSeries"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-
-            android:layout_marginHorizontal="@dimen/big_margin"
-            android:layout_marginVertical="@dimen/small_margin"
-            android:hint="@string/amount_series">
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:inputType="numberDecimal" />
-
-        </com.google.android.material.textfield.TextInputLayout>
-
-        <TextView
-            style="@style/TextAppearance.Material3.TitleLarge"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/add_photo" />
-
-        <ImageView
-            android:id="@+id/iv_exercisePhoto"
-            android:layout_width="200dp"
-            android:layout_height="200dp"
-            android:layout_gravity="center"
-            android:src="@drawable/ic_add_photo" />
+        android:layout_height="match_parent">
 
         <androidx.appcompat.widget.LinearLayoutCompat
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
 
+            android:orientation="vertical">
+
+            <com.google.android.material.progressindicator.LinearProgressIndicator
+                android:id="@+id/pg_progressBarNewExercise"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+
+                android:layout_gravity="top"
+                android:indeterminate="true"
+                android:visibility="invisible" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/til_newExerciseName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+
+                android:layout_marginHorizontal="@dimen/big_margin"
+                android:layout_marginVertical="@dimen/small_margin"
+                android:hint="@string/name">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="text" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/til_newExerciseDescription"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+
+                android:layout_marginHorizontal="@dimen/big_margin"
+                android:layout_marginVertical="@dimen/small_margin"
+                android:hint="@string/description">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="text" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/til_newExerciseSeries"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+
+                android:layout_marginHorizontal="@dimen/big_margin"
+                android:layout_marginVertical="@dimen/small_margin"
+                android:hint="@string/amount_series">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="numberDecimal" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <TextView
+                style="@style/TextAppearance.Material3.TitleLarge"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/add_photo" />
+
+            <ImageView
+                android:id="@+id/iv_exercisePhoto"
+                android:layout_width="200dp"
+                android:layout_height="200dp"
+                android:layout_gravity="center"
+                android:src="@drawable/ic_add_photo" />
 
             <androidx.appcompat.widget.LinearLayoutCompat
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
 
-                <com.google.android.material.button.MaterialButton
-                    android:id="@+id/btn_createExercise"
-                    android:layout_width="wrap_content"
+
+                <androidx.appcompat.widget.LinearLayoutCompat
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:orientation="horizontal">
 
-                    android:layout_marginHorizontal="@dimen/small_margin"
-                    android:text="@string/create_exercise" />
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btn_createExercise"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
 
-                <com.google.android.material.button.MaterialButton
-                    android:id="@+id/btn_cancelCreateExercise"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="@dimen/small_margin"
+                        android:text="@string/create_exercise" />
 
-                    android:layout_marginHorizontal="@dimen/small_margin"
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btn_cancelCreateExercise"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
 
-                    android:text="@string/cancel" />
+                        android:layout_marginHorizontal="@dimen/small_margin"
 
+                        android:text="@string/cancel" />
+
+                </androidx.appcompat.widget.LinearLayoutCompat>
             </androidx.appcompat.widget.LinearLayoutCompat>
         </androidx.appcompat.widget.LinearLayoutCompat>
-    </androidx.appcompat.widget.LinearLayoutCompat>
-</ScrollView>
+    </ScrollView>
+</layout>

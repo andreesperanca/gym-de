@@ -71,4 +71,5 @@
     <string name="new_description">Nova descrição</string>
     <string name="save">Salvar</string>
     <string name="no_workout_today">Não há treinos marcados para hoje.</string>
+    <string name="photo_error">Erro ao carregar a foto.</string>
 </resources>

@@ -8,136 +8,165 @@ import android.net.Uri
 import android.os.Build
 import android.os.Bundle
 import android.provider.MediaStore
-import android.provider.MediaStore.Audio.Media
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
+import android.widget.ImageView
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.andreesperanca.gymde.R
 import com.andreesperanca.gymde.databinding.FragmentNewExerciseBinding
 import com.andreesperanca.gymde.models.Exercise
 import com.andreesperanca.gymde.ui.main.viewmodels.NewExerciseViewModel
+import com.andreesperanca.gymde.utils.DefaultValues
 import com.andreesperanca.gymde.utils.Resource
-import com.andreesperanca.gymde.utils.extensions.isValidName
-import com.andreesperanca.gymde.utils.extensions.toastCreator
+import com.andreesperanca.gymde.utils.extensions.*
+import com.andreesperanca.gymde.utils.generics.BaseFragment
+import com.google.android.material.progressindicator.LinearProgressIndicator
+import com.google.android.material.textfield.TextInputLayout
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
-class NewExerciseFragment() : Fragment() {
+class NewExerciseFragment() : BaseFragment<
+        FragmentNewExerciseBinding,
+        NewExerciseViewModel
+        >(R.layout.fragment_new_exercise) {
 
-    private val binding by lazy {
-        FragmentNewExerciseBinding.inflate(layoutInflater)
-    }
+    private val args: NewExerciseFragmentArgs by navArgs()
+    private var cUri: Uri? = null
 
-    val args : NewExerciseFragmentArgs by navArgs()
-
-    private lateinit var cUri: Uri
-
-    val viewModel: NewExerciseViewModel by viewModel()
-
-    private val PHOTO_PICKER_REQUEST_CODE = 1231
-
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View = binding.root
-
+    /** UI COMPONENTS **/
+    private lateinit var _tilName: TextInputLayout
+    private lateinit var _tilDescription: TextInputLayout
+    private lateinit var _tilQuantitySeries: TextInputLayout
+    private lateinit var ivExercisePhoto: ImageView
+    private lateinit var btnCreateExercise: Button
+    private lateinit var btnCancelCreate: Button
+    private lateinit var progressBarNewExercise: LinearProgressIndicator
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        setupClickListeners()
+    }
 
-        binding.ivExercisePhoto.setOnClickListener {
-            val intent = Intent(MediaStore.ACTION_PICK_IMAGES)
-            intent.type = "image/*"
-            startActivityForResult(intent, PHOTO_PICKER_REQUEST_CODE)
-        }
-
-        binding.btnCreateExercise.setOnClickListener {
-            val name = binding.tilNewExerciseName
-            val description = binding.tilNewExerciseDescription
-            val seriesQuantity = binding.tilNewExerciseSeries
-
-            if (name.isValidName()) {
-                viewModel.uploadPhoto(uri = cUri)
+    private fun setupClickListeners() {
+        ivExercisePhoto.setOnClickListener {
+            val intent = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+                Intent(MediaStore.ACTION_PICK_IMAGES)
+            } else {
+                TODO("VERSION.SDK_INT < TIRAMISU")
             }
-
+            intent.type = "image/*"
+            startActivityForResult(intent, DefaultValues.PHOTO_PICKER_REQUEST_CODE)
         }
 
-        viewModel.uploadPhoto.observe(viewLifecycleOwner) {
-            when(it){
+        btnCreateExercise.setOnClickListener {
+            if (_tilName.isValidName()) {
+                if (cUri != null) {
+                    viewModel.uploadPhoto(cUri!!)
+                } else {
+                    viewModel.createExercise(
+                        Exercise(
+                            workoutId = args.workout.uid,
+                            name = _tilName.text(),
+                            description = _tilDescription.text(),
+                            image = "https://firebasestorage.googleapis.com/v0/b/gym-de.appspot.com/o/exercisesImages%2Fdefault_exercise_photo.webp?alt=media&token=e2c05d18-85f0-4248-aafd-0d7ff6720450",
+                            series = _tilQuantitySeries.text()
+                        )
+                    )
+                }
+            }
+        }
+
+        btnCancelCreate.setOnClickListener { findNavController().popBackStack() }
+    }
+
+    override fun setupToolbar() {
+        /** NO HAVE TOOLBAR **/
+    }
+
+    override fun setupViewModel() {
+        val viewModel: NewExerciseViewModel by viewModel()
+        this.viewModel = viewModel
+    }
+
+    override fun setupObservers() {
+
+        viewModel.uploadPhoto.observe(viewLifecycleOwner) { uploadLink ->
+            when (uploadLink) {
                 is Resource.Success -> {
-                    /** CREATE EXERCISE **/
-                    val name = binding.tilNewExerciseName
-                    val description = binding.tilNewExerciseDescription
-                    val quantitySeries = binding.tilNewExerciseSeries
                     val newExercise = Exercise(
                         workoutId = args.workout.uid,
-                        name = name.editText?.text.toString(),
-                        description = description.editText?.text.toString(),
-                        image = it.data.toString(),
-                        series = quantitySeries.editText?.text.toString()
+                        name = _tilName.text(),
+                        description = _tilDescription.text(),
+                        image = uploadLink.data.toString(),
+                        series = _tilQuantitySeries.text()
                     )
                     viewModel.createExercise(newExercise)
                 }
                 is Resource.Loading -> {
-                    binding.pgProgressBarNewExercise.visibility = View.VISIBLE
+                    progressBarNewExercise.isVisible(true)
                 }
                 is Resource.Error -> {
-                    toastCreator(it.message.toString())
+                    snackBarCreator(uploadLink.message.toString())
+                    progressBarNewExercise.isVisible(false)
                 }
             }
         }
-
-        viewModel.createExercise.observe(viewLifecycleOwner) {
-            when(it){
+        viewModel.createExercise.observe(viewLifecycleOwner) { newExercise ->
+            when (newExercise) {
                 is Resource.Success -> {
-                    binding.pgProgressBarNewExercise.visibility = View.INVISIBLE
-                    val action = NewExerciseFragmentDirections.actionNewExerciseFragmentToWorkoutDetailsFragment(args.workout)
+                    progressBarNewExercise.isVisible(false)
+                    val action =
+                        NewExerciseFragmentDirections.actionNewExerciseFragmentToWorkoutDetailsFragment(
+                            args.workout
+                        )
                     findNavController().navigate(action)
                 }
                 is Resource.Loading -> {
+                    progressBarNewExercise.isVisible(true)
                 }
                 is Resource.Error -> {
-                    toastCreator(it.message.toString())
-                    binding.pgProgressBarNewExercise.visibility = View.INVISIBLE
+                    snackBarCreator(newExercise.message.toString())
+                    progressBarNewExercise.isVisible(false)
                 }
             }
         }
-
     }
 
-    // onActivityResult() handles callbacks from the photo picker.
+    override fun initComponents() {
+        _tilName = binding.tilNewExerciseName
+        _tilDescription = binding.tilNewExerciseDescription
+        _tilQuantitySeries = binding.tilNewExerciseSeries
+        ivExercisePhoto = binding.ivExercisePhoto
+        btnCreateExercise = binding.btnCreateExercise
+        btnCancelCreate = binding.btnCancelCreateExercise
+        progressBarNewExercise = binding.pgProgressBarNewExercise
+    }
+
+
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
         if (resultCode != Activity.RESULT_OK) {
-            // Handle error
+            snackBarCreator(getString(R.string.photo_error))
             return
         }
         when (requestCode) {
-            PHOTO_PICKER_REQUEST_CODE -> {
-                // Get photo picker response for single select.
+            DefaultValues.PHOTO_PICKER_REQUEST_CODE -> {
                 val currentUri: Uri = data?.data!!
-
                 cUri = currentUri
-
                 val bitmap: Bitmap = if (Build.VERSION.SDK_INT < 28) {
                     MediaStore.Images.Media.getBitmap(
                         requireContext().contentResolver,
                         currentUri
                     )
                 } else {
-                    val source = ImageDecoder.createSource(
-                        requireContext().contentResolver,
-                        currentUri
-                    )
+                    val source =
+                        ImageDecoder.createSource(requireContext().contentResolver, currentUri)
                     ImageDecoder.decodeBitmap(source)
                 }
-
-                binding.ivExercisePhoto.setImageBitmap(bitmap)
-                // Do stuff with the photo/video URI.
+                ivExercisePhoto.setImageBitmap(bitmap)
                 return
             }
-
         }
     }
 }
