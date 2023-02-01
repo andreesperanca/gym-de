@@ -17,6 +17,17 @@
 
         app:layout_constraintTop_toTopOf="parent"/>
 
+    <com.google.android.material.progressindicator.LinearProgressIndicator
+        android:id="@+id/pg_progressBarWorkoutDetails"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+        android:indeterminate="true"
+        android:visibility="invisible"
+
+        app:layout_constraintTop_toBottomOf="@id/tb_workoutToolbar"
+        />
+
     <TextView
         android:id="@+id/tv_exerciseTitle"
         style="@style/TextAppearance.Material3.TitleLarge"
@@ -25,7 +36,7 @@
 
         android:layout_margin="@dimen/small_margin"
         android:text="@string/exercises"
-        app:layout_constraintTop_toBottomOf="@id/tb_workoutToolbar" />
+        app:layout_constraintTop_toBottomOf="@id/pg_progressBarWorkoutDetails" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv_exercise"

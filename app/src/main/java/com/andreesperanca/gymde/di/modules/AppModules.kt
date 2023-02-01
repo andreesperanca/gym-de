@@ -6,6 +6,7 @@ import com.andreesperanca.gymde.repositories.*
 import com.andreesperanca.gymde.ui.login_and_register.viewmodels.LoginAndRegisterViewModel
 import com.andreesperanca.gymde.ui.main.viewmodels.CreateWorkoutViewModel
 import com.andreesperanca.gymde.ui.main.viewmodels.MyWorkoutsViewModel
+import com.andreesperanca.gymde.ui.main.viewmodels.WorkoutDetailsViewModel
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.ktx.Firebase
@@ -35,6 +36,8 @@ val appModules = module {
 
     single<CreateWorkoutRepository> { CreateWorkoutRepositoryImpl(get()) }
 
+    single<WorkoutDetailsRepository> { WorkoutDetailsRepositoryImpl(get()) }
+
     viewModel<LoginAndRegisterViewModel>() {
         LoginAndRegisterViewModel(repository = get())
     }
@@ -44,5 +47,7 @@ val appModules = module {
     }
 
     viewModel<MyWorkoutsViewModel>() { MyWorkoutsViewModel(get()) }
+
+    viewModel<WorkoutDetailsViewModel>() { WorkoutDetailsViewModel(get()) }
 
 }

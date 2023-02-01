@@ -13,28 +13,39 @@ import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.andreesperanca.gymde.R
 import com.andreesperanca.gymde.databinding.FragmentWorkoutDetailsBinding
+import com.andreesperanca.gymde.ui.main.viewmodels.WorkoutDetailsViewModel
+import com.andreesperanca.gymde.utils.Resource
 import com.andreesperanca.gymde.utils.extensions.toastCreator
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class WorkoutDetailsFragment : Fragment() {
 
     val args: WorkoutDetailsFragmentArgs by navArgs()
-    val PHOTO_PICKER_REQUEST_CODE = 2783
 
     private val binding by lazy {
         FragmentWorkoutDetailsBinding.inflate(layoutInflater)
     }
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
+    private val viewModel : WorkoutDetailsViewModel by viewModel()
+
+    override fun onCreateView(
+        inflater: LayoutInflater, container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View {
+        return binding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
         binding.tbWorkoutToolbar.apply {
             title = args.workout.name
             setNavigationOnClickListener { it.findNavController().popBackStack() }
-
             binding.tbWorkoutToolbar.apply {
                 setOnMenuItemClickListener { menuItem ->
                     when (menuItem.itemId) {
                         R.id.excludeWorkout -> {
-                            toastCreator("Exclude workout")
+                            viewModel.excludeWorkout(args.workout)
                             true
                         }
                         R.id.editWorkout -> {
@@ -48,38 +59,27 @@ class WorkoutDetailsFragment : Fragment() {
                 }
             }
         }
-    }
-
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View {
-        return binding.root
-    }
-
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
 
         binding.extendedFab.setOnClickListener {
             findNavController().navigate(R.id.action_workoutDetailsFragment_to_newExerciseFragment)
-            onDestroy()
         }
-    }
 
-    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-        super.onActivityResult(requestCode, resultCode, data)
-        if (resultCode != Activity.RESULT_OK) {
-            // Handle error
-            return
-        }
-        when (requestCode) {
-            PHOTO_PICKER_REQUEST_CODE -> {
-                // Get photo picker response for single select.
-                val currentUri: Uri? = data?.data
+        viewModel.excludeWorkout.observe(viewLifecycleOwner) {
 
-                return
+            when(it){
+                is Resource.Success -> {
+                    findNavController().navigate(R.id.action_workoutDetailsFragment_to_myWorkoutsFragment)
+                }
+                is Resource.Loading -> {
+                    binding.pgProgressBarWorkoutDetails.visibility = View.VISIBLE
+                }
+                is Resource.Error -> {
+                    toastCreator(it.message.toString())
+                    binding.pgProgressBarWorkoutDetails.visibility = View.INVISIBLE
+                }
             }
-        }
-    }
 
+        }
+
+    }
 }
