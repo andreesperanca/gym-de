@@ -6,10 +6,15 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.andreesperanca.gymde.repositories.LoginAndRegisterRepository
 import com.andreesperanca.gymde.utils.Resource
+import com.andreesperanca.gymde.utils.safeCall
 import com.google.firebase.auth.AuthResult
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
+import com.google.rpc.context.AttributeContext.Auth
+import com.google.rpc.context.AttributeContext.ResourceOrBuilder
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.tasks.await
 import kotlinx.coroutines.withContext
 
 class LoginAndRegisterViewModel(
@@ -22,6 +27,16 @@ class LoginAndRegisterViewModel(
     private val _loggedUser = MutableLiveData<Resource<FirebaseUser?>>()
     val loggedUser: LiveData<Resource<FirebaseUser?>> = _loggedUser
 
+    private val _login = MutableLiveData<Resource<AuthResult>>()
+    val login: LiveData<Resource<AuthResult>> = _login
+
+    fun login(email: String, password: String) {
+        _login.value = Resource.Loading()
+        viewModelScope.launch {
+            val authResult = repository.login(email, password)
+            _login.value = authResult
+        }
+    }
     fun getUserLiveData() = repository.getUser()
 
     fun createUser(
@@ -39,5 +54,6 @@ class LoginAndRegisterViewModel(
             _userRegistrationStatus.value = Resource.Success(result)
         }
     }
+
 
 }

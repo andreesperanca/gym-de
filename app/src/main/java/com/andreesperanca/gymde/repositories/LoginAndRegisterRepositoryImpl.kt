@@ -2,6 +2,7 @@ package com.andreesperanca.gymde.repositories
 
 import com.andreesperanca.gymde.firebase.FirebaseLoginAndRegisterService
 import com.andreesperanca.gymde.utils.Resource
+import com.google.firebase.auth.AuthResult
 import com.google.firebase.auth.FirebaseUser
 
 class LoginAndRegisterRepositoryImpl(
@@ -18,5 +19,7 @@ class LoginAndRegisterRepositoryImpl(
         password: String,
     ) = firebaseService.createUser(sex, height, weight, age, name, email, password)
 
+    override suspend fun login(email: String, password: String): Resource<AuthResult> =
+        firebaseService.login(email, password)
 
 }

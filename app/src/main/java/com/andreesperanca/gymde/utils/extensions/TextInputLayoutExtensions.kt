@@ -2,6 +2,11 @@ package com.andreesperanca.gymde.utils.extensions
 
 import com.andreesperanca.gymde.R
 import com.google.android.material.textfield.TextInputLayout
+import org.w3c.dom.Text
+
+fun TextInputLayout.text() : String {
+    return this.editText?.text.toString()
+}
 
 fun TextInputLayout.isValidPassword(): Boolean {
     this.error = null

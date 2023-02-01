@@ -18,4 +18,6 @@ interface LoginAndRegisterRepository {
 
     fun getUser(): FirebaseUser?
 
+    suspend fun login(email: String, password: String) : Resource<AuthResult>
+
 }
