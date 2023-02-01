@@ -24,7 +24,7 @@
 
     <TextView
         android:id="@+id/tv_exerciseTitle"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
 
         app:layout_constraintTop_toTopOf="@id/iv_exercise"
@@ -32,16 +32,22 @@
 
         tools:text="@string/title_exercise"
         style="@style/TextAppearance.Material3.TitleMedium"
+        android:maxLines="1"
+        android:ellipsize="end"
 
+        app:layout_constraintEnd_toStartOf="@id/btn_editButton"
         app:layout_constraintStart_toEndOf="@id/iv_exercise"/>
 
     <TextView
         android:id="@+id/tv_exerciseDescription"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
 
         tools:text="@string/exercise_description"
         style="@style/TextAppearance.Material3.BodySmall"
+        android:maxLines="1"
+        android:ellipsize="end"
+        app:layout_constraintEnd_toStartOf="@id/btn_editButton"
 
         app:layout_constraintStart_toEndOf="@id/iv_exercise"
         app:layout_constraintTop_toBottomOf="@id/tv_exerciseTitle"
@@ -49,11 +55,14 @@
 
     <TextView
         android:id="@+id/tv_quantitySeries"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
 
-        tools:text="@string/dayOfWeek"
+        tools:text="@string/workout_day"
         style="@style/TextAppearance.Material3.BodySmall"
+        android:maxLines="1"
+        android:ellipsize="end"
+        app:layout_constraintEnd_toStartOf="@id/btn_editButton"
 
         app:layout_constraintStart_toEndOf="@id/iv_exercise"
         app:layout_constraintTop_toBottomOf="@id/tv_exerciseDescription"
