@@ -8,7 +8,6 @@ import com.andreesperanca.gymde.adapters.ExerciseAdapter.ExerciseViewHolder
 import com.andreesperanca.gymde.databinding.ExerciseItemBinding
 import com.andreesperanca.gymde.models.Exercise
 import com.bumptech.glide.Glide
-import org.koin.core.component.getScopeId
 
 class ExerciseAdapter() : RecyclerView.Adapter<ExerciseViewHolder>() {
 

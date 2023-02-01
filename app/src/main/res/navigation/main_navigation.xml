@@ -40,6 +40,7 @@
             android:name="workout"
             app:argType="com.andreesperanca.gymde.models.Workout" />
         <action
+            app:popUpTo="@id/myWorkoutsFragment"
             android:id="@+id/action_workoutDetailsFragment_to_newExerciseFragment"
             app:destination="@id/newExerciseFragment" />
         <action
@@ -52,6 +53,7 @@
         android:label="fragment_new_exercise"
         tools:layout="@layout/fragment_new_exercise" >
         <action
+            app:popUpTo="@id/myWorkoutsFragment"
             android:id="@+id/action_newExerciseFragment_to_workoutDetailsFragment"
             app:destination="@id/workoutDetailsFragment" />
         <argument

@@ -70,7 +70,7 @@ class NewExerciseFragment() : BaseFragment<
                             workoutId = args.workout.uid,
                             name = _tilName.text(),
                             description = _tilDescription.text(),
-                            image = "https://firebasestorage.googleapis.com/v0/b/gym-de.appspot.com/o/exercisesImages%2Fdefault_exercise_photo.webp?alt=media&token=e2c05d18-85f0-4248-aafd-0d7ff6720450",
+                            image = DefaultValues.FIREBASE_DEFAULT_EXERCISE_PHOTO,
                             series = _tilQuantitySeries.text()
                         )
                     )
@@ -117,10 +117,8 @@ class NewExerciseFragment() : BaseFragment<
             when (newExercise) {
                 is Resource.Success -> {
                     progressBarNewExercise.isVisible(false)
-                    val action =
-                        NewExerciseFragmentDirections.actionNewExerciseFragmentToWorkoutDetailsFragment(
-                            args.workout
-                        )
+                    val action = NewExerciseFragmentDirections
+                        .actionNewExerciseFragmentToWorkoutDetailsFragment(args.workout)
                     findNavController().navigate(action)
                 }
                 is Resource.Loading -> {
