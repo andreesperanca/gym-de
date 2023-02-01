@@ -12,21 +12,16 @@ import com.andreesperanca.gymde.utils.extensions.isValidHeight
 
 class HeightFragment : Fragment() {
 
-    val args: HeightFragmentArgs by navArgs()
+    private val args: HeightFragmentArgs by navArgs()
 
-    private val binding by lazy {
-        FragmentHeightBinding.inflate(layoutInflater)
-    }
-
+    private val binding by lazy { FragmentHeightBinding.inflate(layoutInflater) }
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View = binding.root
 
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
 
         binding.btnAdvanceHeight.setOnClickListener {
             val newUser = args.newUser
@@ -36,5 +31,6 @@ class HeightFragment : Fragment() {
                 findNavController().navigate(action)
             }
         }
+
     }
 }

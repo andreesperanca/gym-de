@@ -7,7 +7,6 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
-import com.andreesperanca.gymde.R
 import com.andreesperanca.gymde.databinding.FragmentAgeBinding
 import com.andreesperanca.gymde.utils.extensions.isValidAge
 
@@ -35,11 +34,7 @@ class AgeFragment : Fragment() {
                 val action = AgeFragmentDirections.actionFocusFragmentToFinishRegister(newUser)
                 findNavController().navigate(action)
             }
-
-
-
         }
-
 
     }
 }
