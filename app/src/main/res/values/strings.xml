@@ -66,4 +66,5 @@
     <string name="no_valid_age">Idade não é válida, lembre-se a idade deve ser descrita em ANOS.</string>
     <string name="no_valid_name">O nome não é valido.</string>
     <string name="no_valid_confirm_password">Senha e confirmar senha devem ser iguais.</string>
+    <string name="create_success">Treino criado com sucesso.</string>
 </resources>

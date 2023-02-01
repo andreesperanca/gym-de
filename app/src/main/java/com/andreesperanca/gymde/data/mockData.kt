@@ -7,11 +7,10 @@ import java.sql.Timestamp
 
 val mockWorkouts = listOf<Workout>(
     Workout(
-        "Treino de peito",
-        "Treino para peito",
-        Timestamp(System.currentTimeMillis()),
-        emptyList(),
-        exercises = emptyList()
+        name ="Treino de peito",
+        description = "Treino para peito",
+        date = Timestamp(System.currentTimeMillis()),
+        dayOfWeek = emptyList()
     )
 )
 

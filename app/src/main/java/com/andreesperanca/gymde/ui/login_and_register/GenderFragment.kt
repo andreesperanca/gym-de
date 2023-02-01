@@ -9,6 +9,7 @@ import androidx.navigation.fragment.findNavController
 import com.andreesperanca.gymde.R
 import com.andreesperanca.gymde.databinding.FragmentGenderBinding
 import com.andreesperanca.gymde.models.User
+import com.andreesperanca.gymde.utils.extensions.toastCreator
 
 class GenderFragment : Fragment() {
 
@@ -22,6 +23,7 @@ class GenderFragment : Fragment() {
     ): View = binding.root
 
     override fun onStart() {
+        super.onStart()
 
         binding.tbGenderToolbar.apply {
             setNavigationOnClickListener {
@@ -29,15 +31,15 @@ class GenderFragment : Fragment() {
             }
         }
 
-        super.onStart()
         binding.btnAdvanceGender.setOnClickListener {
             val newUser = User()
-            if (binding.rgGenderRadioGroup.id == R.id.rb_male) {
+            if (binding.rgGenderRadioGroup.checkedRadioButtonId == R.id.rb_male) {
                 newUser.sex = getString(R.string.male)
             } else {
                 newUser.sex = getString(R.string.female)
             }
             val action = GenderFragmentDirections.actionGenderFragmentToHeightFragment(newUser)
+            toastCreator(newUser.sex)
             findNavController().navigate(action)
         }
     }

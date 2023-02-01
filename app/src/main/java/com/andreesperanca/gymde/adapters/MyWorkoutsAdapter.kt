@@ -11,7 +11,7 @@ import com.andreesperanca.gymde.ui.main.MyWorkoutsFragmentDirections
 
 class MyWorkoutsAdapter() : RecyclerView.Adapter<MyWorkoutsAdapter.WorkoutsViewHolder>() {
 
-    val workoutList: List<Workout> = mockWorkouts
+    var workoutList: List<Workout> = mockWorkouts
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): WorkoutsViewHolder {
         val binding =
@@ -24,6 +24,12 @@ class MyWorkoutsAdapter() : RecyclerView.Adapter<MyWorkoutsAdapter.WorkoutsViewH
     }
 
     override fun getItemCount(): Int = workoutList.size
+    fun updateData(data: List<Workout>?) {
+        if (data != null) {
+            workoutList = data
+            notifyItemRangeChanged(0, data.size)
+        }
+    }
 
     inner class WorkoutsViewHolder(private val binding: MyWorkoutItemBinding) :
         RecyclerView.ViewHolder(binding.root) {
@@ -34,7 +40,10 @@ class MyWorkoutsAdapter() : RecyclerView.Adapter<MyWorkoutsAdapter.WorkoutsViewH
             binding.tvWorkoutDescription.text = workout.description
 
             binding.root.setOnClickListener {
-                val action = MyWorkoutsFragmentDirections.actionMyWorkoutsFragmentToWorkoutDetailsFragment(workout)
+                val action =
+                    MyWorkoutsFragmentDirections.actionMyWorkoutsFragmentToWorkoutDetailsFragment(
+                        workout
+                    )
                 it.findNavController().navigate(action)
             }
         }

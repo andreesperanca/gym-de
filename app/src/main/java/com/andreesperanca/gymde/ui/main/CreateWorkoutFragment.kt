@@ -1,7 +1,6 @@
 package com.andreesperanca.gymde.ui.main
 
 import android.os.Bundle
-import android.os.Handler
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -10,7 +9,11 @@ import androidx.navigation.fragment.findNavController
 import com.andreesperanca.gymde.R
 import com.andreesperanca.gymde.databinding.FragmentCreateWorkoutBinding
 import com.andreesperanca.gymde.models.Workout
+import com.andreesperanca.gymde.ui.main.viewmodels.CreateWorkoutViewModel
+import com.andreesperanca.gymde.utils.Resource
 import com.andreesperanca.gymde.utils.extensions.isValidName
+import com.andreesperanca.gymde.utils.extensions.toastCreator
+import org.koin.androidx.viewmodel.ext.android.viewModel
 import java.sql.Timestamp
 
 
@@ -19,6 +22,8 @@ class CreateWorkoutFragment : Fragment() {
     private val binding by lazy {
         FragmentCreateWorkoutBinding.inflate(layoutInflater)
     }
+
+    private val viewModel: CreateWorkoutViewModel by viewModel()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -60,32 +65,42 @@ class CreateWorkoutFragment : Fragment() {
 
             if (binding.tilNewWorkoutName.isValidName()) {
 
-                binding.tilNewWorkoutName.isEnabled = false
-                binding.tilNewWorkoutDescription.isEnabled = false
-                binding.cbMonday.isEnabled = false
-                binding.cbTuesday.isEnabled = false
-                binding.cbThursday.isEnabled = false
-                binding.cbWednesday.isEnabled = false
-                binding.cbFriday.isEnabled = false
-                binding.cbSaturday.isEnabled = false
-                binding.cbSunday.isEnabled = false
-
-                binding.pgNewWorkoutDialog.visibility = View.VISIBLE
-
                 val newWorkout = Workout(
                     name = name,
                     description = description,
                     date = Timestamp(System.currentTimeMillis()),
                     dayOfWeek = daysOfWeek,
-                    exercises = emptyList()
                 )
-                /** create new workout db **/
-                Handler().postDelayed({
-                    findNavController().popBackStack()
-                }, 3000)
-            }
 
+
+                viewModel.createWorkout(newWorkout)
+
+
+            }
         }
 
+        viewModel.createWorkout.observe(viewLifecycleOwner) {
+            when (it) {
+                is Resource.Success -> {
+                    toastCreator(getString(R.string.create_success))
+                    findNavController().popBackStack()
+                }
+                is Resource.Error -> {
+                    toastCreator(it.message.toString())
+                }
+                is Resource.Loading -> {
+                    binding.tilNewWorkoutName.isEnabled = false
+                    binding.tilNewWorkoutDescription.isEnabled = false
+                    binding.cbMonday.isEnabled = false
+                    binding.cbTuesday.isEnabled = false
+                    binding.cbThursday.isEnabled = false
+                    binding.cbWednesday.isEnabled = false
+                    binding.cbFriday.isEnabled = false
+                    binding.cbSaturday.isEnabled = false
+                    binding.cbSunday.isEnabled = false
+                    binding.pgNewWorkoutDialog.visibility = View.VISIBLE
+                }
+            }
+        }
     }
 }

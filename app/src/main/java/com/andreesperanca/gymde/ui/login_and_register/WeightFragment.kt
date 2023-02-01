@@ -32,7 +32,7 @@ class WeightFragment : Fragment() {
 
         binding.btnAdvance.setOnClickListener {
             if (weight.isValidWeight()) {
-                newUser.weight = weight.toString()
+                newUser.weight = weight.editText?.text.toString()
                 val action = WeightFragmentDirections.actionWeightFragmentToAgeFragment(newUser)
                 findNavController().navigate(action)
             }
