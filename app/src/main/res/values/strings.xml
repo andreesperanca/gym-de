@@ -80,4 +80,5 @@
     <string name="similar_feature_in_exercises">Feature semelhante implementada ao criar exercícios.</string>
     <string name="similar_feature_update_workouts">Feature semelhante implementada ao atualizar treinos.</string>
     <string name="no_implementation">Feature não implementada.</string>
+    <string name="workoutDays">Dias do treino: %1$s</string>
 </resources>

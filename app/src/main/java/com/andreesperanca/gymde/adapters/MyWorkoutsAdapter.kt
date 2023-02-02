@@ -43,6 +43,9 @@ class MyWorkoutsAdapter(
                 tvWorkoutDescription.text = workout.description
                 tvDateOfCreate.text = root.context.getString(R.string.create_day, workout.date)
 
+                tvDayOfWorkout.text = root.context.getString(R.string.workoutDays, workout.dayOfWeek?.joinToString())
+
+
                 iconButton.setOnClickListener { updateWorkout(workout) }
                 root.setOnClickListener {
                     val action =

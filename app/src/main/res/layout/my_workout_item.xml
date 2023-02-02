@@ -40,6 +40,20 @@
         app:layout_constraintStart_toStartOf="@id/tv_workoutTitle"/>
 
     <TextView
+        android:id="@+id/tv_dayOfWorkout"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+
+        android:text="@string/workoutDays"
+        android:maxLines="1"
+        android:ellipsize="end"
+        style="@style/TextAppearance.Material3.BodySmall"
+
+        app:layout_constraintEnd_toStartOf="@id/iconButton"
+        app:layout_constraintTop_toBottomOf="@id/tv_workoutDescription"
+        app:layout_constraintStart_toStartOf="@id/tv_workoutDescription"/>
+
+    <TextView
         android:id="@+id/tv_dateOfCreate"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
@@ -51,8 +65,8 @@
         style="@style/TextAppearance.Material3.BodySmall"
 
         app:layout_constraintEnd_toStartOf="@id/iconButton"
-        app:layout_constraintTop_toBottomOf="@id/tv_workoutDescription"
-        app:layout_constraintStart_toStartOf="@id/tv_workoutDescription"/>
+        app:layout_constraintTop_toBottomOf="@id/tv_dayOfWorkout"
+        app:layout_constraintStart_toStartOf="@id/tv_dayOfWorkout"/>
 
 
     <com.google.android.material.button.MaterialButton
