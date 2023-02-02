@@ -37,7 +37,6 @@ class ExerciseAdapter() : RecyclerView.Adapter<ExerciseViewHolder>() {
         RecyclerView.ViewHolder(binding.root) {
 
         fun bind(exercise: Exercise) {
-
             with(binding) {
                 tvExerciseTitle.text = exercise.name
                 tvExerciseDescription.text = exercise.description
@@ -51,7 +50,6 @@ class ExerciseAdapter() : RecyclerView.Adapter<ExerciseViewHolder>() {
                         Snackbar.LENGTH_LONG
                     ).show()
                 }
-
                 Glide
                     .with(root)
                     .load(exercise.image)

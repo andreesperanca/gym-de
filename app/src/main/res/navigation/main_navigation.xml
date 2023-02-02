@@ -45,6 +45,8 @@
             app:destination="@id/newExerciseFragment" />
         <action
             android:id="@+id/action_workoutDetailsFragment_to_myWorkoutsFragment"
+            app:popUpTo="@id/homeFragment"
+            app:popUpToInclusive="true"
             app:destination="@id/myWorkoutsFragment" />
     </fragment>
     <fragment

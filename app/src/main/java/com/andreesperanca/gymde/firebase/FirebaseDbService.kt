@@ -143,7 +143,10 @@ class FirebaseDbService(
     suspend fun fetchTodayWorkouts(context: Context): Resource<List<Workout>> {
         return withContext(Dispatchers.IO) {
             safeCall {
-                val today: String = when (Calendar.getInstance().get(Calendar.DAY_OF_WEEK)) {
+                val tz = TimeZone.getTimeZone("America/Sao_Paulo")
+                TimeZone.setDefault(tz)
+                val calendar = Calendar.getInstance(tz)
+                val today: String = when (calendar.get(Calendar.DAY_OF_WEEK)) {
                     1 -> {context.getString(R.string.sunday)}
                     2 -> {context.getString(R.string.monday)}
                     3 -> {context.getString(R.string.tuesday)}
