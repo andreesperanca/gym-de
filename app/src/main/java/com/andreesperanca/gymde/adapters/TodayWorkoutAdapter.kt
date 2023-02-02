@@ -4,10 +4,8 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
-import com.andreesperanca.gymde.data.mockWorkouts
 import com.andreesperanca.gymde.databinding.WorkoutsItemBinding
 import com.andreesperanca.gymde.models.Workout
-import com.andreesperanca.gymde.ui.login_and_register.LoginHomeScreenDirections
 import com.andreesperanca.gymde.ui.main.HomeFragmentDirections
 import com.google.android.material.snackbar.Snackbar
 

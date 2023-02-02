@@ -5,7 +5,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.andreesperanca.gymde.models.Workout
-import com.andreesperanca.gymde.repositories.CreateWorkoutRepository
+import com.andreesperanca.gymde.repositories.interfaces.CreateWorkoutRepository
 import com.andreesperanca.gymde.utils.Resource
 import kotlinx.coroutines.launch
 

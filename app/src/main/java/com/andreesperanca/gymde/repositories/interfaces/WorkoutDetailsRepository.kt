@@ -1,4 +1,4 @@
-package com.andreesperanca.gymde.repositories
+package com.andreesperanca.gymde.repositories.interfaces
 
 import com.andreesperanca.gymde.models.Exercise
 import com.andreesperanca.gymde.models.Workout

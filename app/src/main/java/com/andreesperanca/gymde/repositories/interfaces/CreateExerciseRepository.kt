@@ -1,4 +1,4 @@
-package com.andreesperanca.gymde.repositories
+package com.andreesperanca.gymde.repositories.interfaces
 
 import android.net.Uri
 import com.andreesperanca.gymde.models.Exercise

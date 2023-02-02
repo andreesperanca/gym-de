@@ -16,7 +16,6 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.tasks.await
 import kotlinx.coroutines.withContext
 import java.util.*
-import kotlin.math.absoluteValue
 
 class FirebaseDbService(
     private val firebaseDb: FirebaseFirestore,
@@ -28,7 +27,7 @@ class FirebaseDbService(
         return withContext(Dispatchers.IO) {
             safeCall {
                 val uid = newWorkout.uid
-                val newWorkoutRef = firebaseDb
+                firebaseDb
                     .collection("users")
                     .document(firebaseAuth.uid!!)
                     .collection("workoutList")
@@ -38,7 +37,6 @@ class FirebaseDbService(
             }
         }
     }
-
     suspend fun deleteWorkout(workout: Workout): Resource<Unit> {
         return withContext(Dispatchers.IO) {
             safeCall {
@@ -52,7 +50,6 @@ class FirebaseDbService(
             }
         }
     }
-
     suspend fun fetchWorkouts(): Resource<List<Workout>> {
         return withContext(Dispatchers.IO) {
             safeCall {
@@ -69,7 +66,6 @@ class FirebaseDbService(
             }
         }
     }
-
     suspend fun updateWorkout(
         workout: Workout,
         newName: String,
@@ -107,7 +103,6 @@ class FirebaseDbService(
             }
         }
     }
-
     suspend fun uploadPhoto(Uri: Uri): Resource<Uri> {
         return withContext(Dispatchers.IO) {
 
@@ -139,23 +134,38 @@ class FirebaseDbService(
             }
         }
     }
-
     suspend fun fetchTodayWorkouts(context: Context): Resource<List<Workout>> {
         return withContext(Dispatchers.IO) {
             safeCall {
-                val today: String = when (Calendar.getInstance().get(Calendar.DAY_OF_WEEK)) {
-                    1 -> {context.getString(R.string.sunday)}
-                    2 -> {context.getString(R.string.monday)}
-                    3 -> {context.getString(R.string.tuesday)}
-                    4 -> {context.getString(R.string.wednesday)}
-                    5 -> {context.getString(R.string.thursday)}
-                    6 -> {context.getString(R.string.friday)}
-                    7 -> {context.getString(R.string.saturday)}
-                    else -> {context.getString(R.string.sunday)}
+                val tz = TimeZone.getTimeZone("America/Sao_Paulo")
+                TimeZone.setDefault(tz)
+                val calendar = GregorianCalendar.getInstance(tz)
+                val today: String = when (calendar.get(Calendar.DAY_OF_WEEK)) {
+                    1 -> {
+                        context.getString(R.string.sunday)
+                    }
+                    2 -> {
+                        context.getString(R.string.monday)
+                    }
+                    3 -> {
+                        context.getString(R.string.tuesday)
+                    }
+                    4 -> {
+                        context.getString(R.string.wednesday)
+                    }
+                    5 -> {
+                        context.getString(R.string.thursday)
+                    }
+                    6 -> {
+                        context.getString(R.string.friday)
+                    }
+                    7 -> {
+                        context.getString(R.string.saturday)
+                    }
+                    else -> {
+                        context.getString(R.string.sunday)
+                    }
                 }
-
-                Log.i("dayWeek",today.toString())
-
                 val exercises = firebaseDb
                     .collection("users")
                     .document(firebaseAuth.uid!!)
@@ -165,12 +175,10 @@ class FirebaseDbService(
                     .await()
 
                 val objectWorkouts = exercises.toObjects(Workout::class.java)
-
                 Resource.Success(objectWorkouts)
             }
         }
     }
-
     suspend fun fetchUser(): Resource<User> {
         return withContext(Dispatchers.IO) {
             safeCall {
