@@ -5,6 +5,7 @@ import android.view.ViewGroup
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.andreesperanca.gymde.R
+import com.andreesperanca.gymde.data.mockWorkouts
 import com.andreesperanca.gymde.databinding.MyWorkoutItemBinding
 import com.andreesperanca.gymde.models.Workout
 import com.andreesperanca.gymde.ui.main.MyWorkoutsFragmentDirections

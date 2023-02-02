@@ -5,7 +5,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.andreesperanca.gymde.models.User
-import com.andreesperanca.gymde.repositories.interfaces.MyAccountRepository
+import com.andreesperanca.gymde.repositories.MyAccountRepository
 import com.andreesperanca.gymde.utils.Resource
 import kotlinx.coroutines.launch
 

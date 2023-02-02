@@ -5,8 +5,9 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.andreesperanca.gymde.models.Workout
-import com.andreesperanca.gymde.repositories.interfaces.MyWorkoutRepository
+import com.andreesperanca.gymde.repositories.MyWorkoutRepository
 import com.andreesperanca.gymde.utils.Resource
+import com.google.firebase.auth.FirebaseUser
 import kotlinx.coroutines.launch
 
 class MyWorkoutsViewModel(

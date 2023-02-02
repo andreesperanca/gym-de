@@ -1,9 +1,7 @@
 package com.andreesperanca.gymde.application
 
 import android.app.Application
-import com.andreesperanca.gymde.di.modules.firebaseModules
-import com.andreesperanca.gymde.di.modules.repositoriesModules
-import com.andreesperanca.gymde.di.modules.viewModelModules
+import com.andreesperanca.gymde.di.modules.appModules
 import org.koin.android.ext.koin.androidContext
 import org.koin.core.context.startKoin
 
@@ -14,9 +12,7 @@ class GymDeApplication : Application() {
 
         startKoin {
             androidContext(this@GymDeApplication)
-            modules(firebaseModules)
-            modules(repositoriesModules)
-            modules(viewModelModules)
+            modules(appModules)
         }
 
     }

@@ -15,6 +15,7 @@ class FirebaseLoginAndRegisterService(
     private val auth: FirebaseAuth,
     private val firebaseDb: FirebaseFirestore
 ) {
+
     fun getUserLiveData(): FirebaseUser? = auth.currentUser
 
     suspend fun createUser(

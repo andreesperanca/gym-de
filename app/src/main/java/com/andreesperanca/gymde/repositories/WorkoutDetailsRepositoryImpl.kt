@@ -3,7 +3,6 @@ package com.andreesperanca.gymde.repositories
 import com.andreesperanca.gymde.firebase.FirebaseDbService
 import com.andreesperanca.gymde.models.Exercise
 import com.andreesperanca.gymde.models.Workout
-import com.andreesperanca.gymde.repositories.interfaces.WorkoutDetailsRepository
 import com.andreesperanca.gymde.utils.Resource
 
 class WorkoutDetailsRepositoryImpl(

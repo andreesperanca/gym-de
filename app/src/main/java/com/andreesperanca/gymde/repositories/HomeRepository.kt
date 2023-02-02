@@ -1,4 +1,4 @@
-package com.andreesperanca.gymde.repositories.interfaces
+package com.andreesperanca.gymde.repositories
 
 import android.content.Context
 import com.andreesperanca.gymde.models.Workout

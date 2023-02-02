@@ -1,7 +1,6 @@
 package com.andreesperanca.gymde.repositories
 
 import com.andreesperanca.gymde.firebase.FirebaseLoginAndRegisterService
-import com.andreesperanca.gymde.repositories.interfaces.LoginAndRegisterRepository
 import com.andreesperanca.gymde.utils.Resource
 import com.google.firebase.auth.AuthResult
 import com.google.firebase.auth.FirebaseUser

@@ -1,4 +1,4 @@
-package com.andreesperanca.gymde.repositories.interfaces
+package com.andreesperanca.gymde.repositories
 
 import com.andreesperanca.gymde.models.User
 import com.andreesperanca.gymde.utils.Resource
