@@ -27,8 +27,8 @@ class HomeFragment : BaseFragment<
     private lateinit var _rvHealthArticles: RecyclerView
     private lateinit var _pgHomeScreen: ProgressBar
 
-    private val todayWorkoutsAdapter: TodayWorkoutAdapter by inject()
-    private val healthArticlesAdapter: HealthArticlesAdapter by inject()
+    private val todayWorkoutsAdapter by lazy { TodayWorkoutAdapter()  }
+    private val healthArticlesAdapter by lazy { HealthArticlesAdapter() }
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
