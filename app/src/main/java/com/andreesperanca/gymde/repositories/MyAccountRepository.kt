@@ -6,4 +6,5 @@ import com.andreesperanca.gymde.utils.Resource
 interface MyAccountRepository {
 
     suspend fun fetchUser() : Resource<User>
+    fun logOut()
 }

@@ -1,11 +1,14 @@
 package com.andreesperanca.gymde.ui.main
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.View
+import android.widget.Button
 import android.widget.ImageView
 import com.andreesperanca.gymde.R
 import com.andreesperanca.gymde.databinding.FragmentMyAccountBinding
 import com.andreesperanca.gymde.models.User
+import com.andreesperanca.gymde.ui.login_and_register.LoginAndRegisterActivity
 import com.andreesperanca.gymde.ui.main.viewmodels.MyAccountViewModel
 import com.andreesperanca.gymde.utils.Resource
 import com.andreesperanca.gymde.utils.custom.ConfigureCustomComponent
@@ -30,6 +33,7 @@ class MyAccountFragment : BaseFragment<
     private lateinit var cUserHeight: ConfigureCustomComponent
     private lateinit var cUserWeight: ConfigureCustomComponent
     private lateinit var progressBarMyAccount: LinearProgressIndicator
+    private lateinit var btnLogout: Button
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -47,6 +51,13 @@ class MyAccountFragment : BaseFragment<
         }
 
         cUserName.setClickEditBtn { snackBarCreator(getString(R.string.similar_feature_update_workouts)) }
+
+        btnLogout.setOnClickListener {
+            viewModel.logOut()
+            val intent = Intent(requireContext(), LoginAndRegisterActivity::class.java)
+            startActivity(intent)
+            activity?.finish()
+        }
 
     }
 
@@ -93,6 +104,7 @@ class MyAccountFragment : BaseFragment<
         cUserName = binding.customUserName
         cUserHeight = binding.customUserHeight
         progressBarMyAccount = binding.pgMyAccount
+        btnLogout = binding.btnLogout
     }
 
 }

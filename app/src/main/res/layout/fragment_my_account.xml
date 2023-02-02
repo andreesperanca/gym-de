@@ -108,7 +108,19 @@
                         app:mTitle="@string/height"
 
                         tools:mDescription="178" />
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btn_logout"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+
+                        android:layout_marginHorizontal="@dimen/big_margin"
+                        android:layout_margin="@dimen/medium_margin"
+
+                        android:text="@string/logout"/>
+
                 </androidx.appcompat.widget.LinearLayoutCompat>
+
             </androidx.constraintlayout.widget.ConstraintLayout>
         </androidx.appcompat.widget.LinearLayoutCompat>
     </ScrollView>

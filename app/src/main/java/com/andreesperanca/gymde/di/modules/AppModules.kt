@@ -16,7 +16,7 @@ val repositoriesModules = module {
     single<LoginAndRegisterRepository> { LoginAndRegisterRepositoryImpl(firebaseService = get()) }
     single<MyWorkoutRepository> { MyWorkoutRepositoryImpl(get()) }
     single<HomeRepository> { HomeRepositoryImpl(get()) }
-    single<MyAccountRepository> { MyAccountRepositoryImpl(get()) }
+    single<MyAccountRepository> { MyAccountRepositoryImpl(get(), get()) }
     single<CreateWorkoutRepository> { CreateWorkoutRepositoryImpl(get()) }
     single<WorkoutDetailsRepository> { WorkoutDetailsRepositoryImpl(get()) }
 }

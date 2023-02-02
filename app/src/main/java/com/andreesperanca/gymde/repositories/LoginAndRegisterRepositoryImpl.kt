@@ -8,7 +8,7 @@ import com.google.firebase.auth.FirebaseUser
 class LoginAndRegisterRepositoryImpl(
     private val firebaseService: FirebaseLoginAndRegisterService
 ) : LoginAndRegisterRepository {
-    override fun getUser(): FirebaseUser? = firebaseService.getUserLiveData()
+    override fun getUser(): FirebaseUser? = firebaseService.getCurrentUser()
     override suspend fun createUser(
         sex: String,
         height: String,

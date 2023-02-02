@@ -15,6 +15,9 @@ class MyAccountViewModel(private val repository: MyAccountRepository) : ViewMode
     private val _user = MutableLiveData<Resource<User>>()
     val user: LiveData<Resource<User>> = _user
 
+    private val _logout = MutableLiveData<Resource<Unit>>()
+    val logout: LiveData<Resource<Unit>> = _logout
+
     fun fetchUser() {
         _user.value = Resource.Loading()
         viewModelScope.launch {
@@ -22,5 +25,7 @@ class MyAccountViewModel(private val repository: MyAccountRepository) : ViewMode
             _user.value = user
         }
     }
+
+    fun logOut() = repository.logOut()
 
 }
